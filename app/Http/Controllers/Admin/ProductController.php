@@ -107,7 +107,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $this->productService->destroy($id);
-
+ // dgfkjdfghdfkjghkfjg
         return redirect()->route('product.index')->with('status', 'Продукт удален!');
     }
 }
