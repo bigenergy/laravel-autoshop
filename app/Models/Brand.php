@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-
     use HasImages;
 
     protected $fillable = [
-        'name', 'description', 'disable',
+        'id', 'name', 'description', 'disable',
     ];
 
     public function product()

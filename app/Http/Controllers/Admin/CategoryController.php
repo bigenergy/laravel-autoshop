@@ -51,12 +51,6 @@ class CategoryController extends Controller
 
     public function store(CategoryCreateRequest $request)
     {
-//        $createdCategory = new Category;
-//        $createdCategory->fill($request->all());
-//        $createdCategory->save();
-//
-//        $createdCategory->addSingleImage($request->file('image'));
-
         $attributes = $request->all();
         $this->categoryService->add($attributes);
 
@@ -70,7 +64,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categoryForEdit = Category::where('id', $id)->first();
+        $categoryForEdit = $this->categoryService->repository->getById($id);
+        //$categoryForEdit = Category::where('id', $id)->first();
 
         return view('admin.category.edit', compact('categoryForEdit'));
     }
