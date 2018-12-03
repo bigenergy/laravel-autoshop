@@ -19,6 +19,7 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
     public function __construct(Category $category)
     {
         $this->model = $category;
+        parent::__construct($category);
     }
 
     /**
