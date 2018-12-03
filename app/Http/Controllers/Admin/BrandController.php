@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\BrandCreateRequest;
 use App\Http\Requests\BrandEditRequest;
-use App\Http\Traits\HasImages;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\BrandService;
 
 class BrandController extends Controller
 {
 
-    use HasImages;
+    private $brandService;
 
-    public function __construct()
+    public function __construct(BrandService $brandService)
     {
         $this->middleware('admin');
+        $this->brandService = $brandService;
     }
 
     /**
@@ -26,7 +26,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brandShowList = Brand::paginate(15);
+        $brandShowList = $this->brandService->repository->getPaginated();
 
         return view('admin.brand.list', ['brandShowList' => $brandShowList]);
     }
@@ -49,11 +49,8 @@ class BrandController extends Controller
      */
     public function store(BrandCreateRequest $request)
     {
-        $createdBrand = new Brand();
-        $createdBrand->fill($request->all());
-        $createdBrand->save();
-
-        $createdBrand->addBrandSingleImage($request->file('image'));
+        $attributes = $request->all();
+        $this->brandService->add($attributes);
 
         return redirect()->route('brand.create')->with('status', 'Бренд добавлен!');
     }
@@ -67,7 +64,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brandForEdit = Brand::where('id', $id)->first();
+        $brandForEdit = $this->brandService->repository->getById($id);
 
         return view('admin.brand.edit', compact('brandForEdit'));
     }
@@ -81,13 +78,8 @@ class BrandController extends Controller
      */
     public function update(BrandEditRequest $request, $id)
     {
-        $brandUpdate = Brand::find($id);
-        $brandUpdate->fill($request->all());
-        $brandUpdate->save();
-
-        if ($request->file('image')) {
-            $brandUpdate->addBrandSingleImage($request->file('image'));
-        }
+        $attributes = $request->all();
+        $this->brandService->update($id, $attributes);
 
         return redirect()->route('brand.edit', $id)->with('status', 'Бренд обновлен!');
     }
@@ -100,8 +92,7 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brandDelete = Brand::find($id);
-        $brandDelete->delete();
+        $this->brandService->destroy($id);
 
         return redirect()->route('brand.index')->with('status', 'Бренд удален!');
     }
