@@ -4,6 +4,7 @@ namespace App\Services;
 
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Repositories\Category\CategoryRepository;
 
 class CategoryService
@@ -73,7 +74,10 @@ class CategoryService
     {
         $categoryToDelete = $this->categoryModel->findOrFail($id);
         $categoryToDelete->delete();
-        $categoryToDelete->categories()->detach($id);
+
+        // TODO -> refactor \/
+        $categoryProduct = new Product;
+        $categoryProduct->categories()->detach($id);
 
         return true;
     }
