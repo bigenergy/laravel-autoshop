@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 
@@ -42,7 +43,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryService->repository->getAll();
+        $categories = $this->categoryService->repository->getPaginated();
 
         return view('admin.category.create', compact('categories'));
     }
