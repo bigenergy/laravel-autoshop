@@ -19,6 +19,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     public function __construct(Product $product)
     {
         $this->model = $product;
+        parent::__construct($product);
     }
 
     /**
@@ -39,4 +40,6 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     {
         return $this->model->with($relations)->paginate($perPage);
     }
+
+
 }

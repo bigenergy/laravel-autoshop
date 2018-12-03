@@ -19,6 +19,7 @@ class EloquentBrandRepository extends AbstractRepository implements BrandReposit
     public function __construct(Brand $brand)
     {
         $this->model = $brand;
+        parent::__construct($brand);
     }
 
     /**
