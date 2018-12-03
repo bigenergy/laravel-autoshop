@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\BrandCreateRequest;
 use App\Http\Requests\BrandEditRequest;
-use App\Models\Brand;
 use App\Http\Controllers\Controller;
 use App\Services\BrandService;
 
