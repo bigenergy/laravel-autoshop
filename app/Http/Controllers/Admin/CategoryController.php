@@ -4,19 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
-use App\Http\Traits\HasImages;
 use App\Models\Category;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
 
-    use HasImages;
+    /**
+     * @var CategoryService
+     */
 
-    public function __construct()
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService)
     {
         $this->middleware('auth');
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -27,7 +32,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categoryShowList = Category::paginate(15);
+        $categoryShowList = $this->categoryService->repository->getPaginated();
 
         return view('admin.category.list', ['categoryShowList' => $categoryShowList]);
     }
@@ -46,11 +51,14 @@ class CategoryController extends Controller
 
     public function store(CategoryCreateRequest $request)
     {
-        $createdCategory = new Category;
-        $createdCategory->fill($request->all());
-        $createdCategory->save();
+//        $createdCategory = new Category;
+//        $createdCategory->fill($request->all());
+//        $createdCategory->save();
+//
+//        $createdCategory->addSingleImage($request->file('image'));
 
-        $createdCategory->addSingleImage($request->file('image'));
+        $attributes = $request->all();
+        $this->categoryService->add($attributes);
 
         return redirect()->route('category.create')->with('status', 'Категория добавлена!');
     }
