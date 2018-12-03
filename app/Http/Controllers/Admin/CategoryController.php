@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
-use App\Models\Category;
-use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 
@@ -44,7 +42,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = $this->categoryService->repository->getAll();
 
         return view('admin.category.create', compact('categories'));
     }
@@ -65,7 +63,6 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categoryForEdit = $this->categoryService->repository->getById($id);
-        //$categoryForEdit = Category::where('id', $id)->first();
 
         return view('admin.category.edit', compact('categoryForEdit'));
     }
@@ -79,13 +76,8 @@ class CategoryController extends Controller
      */
     public function update(CategoryEditRequest $request, $id)
     {
-        $categoryUpdate = Category::find($id);
-        $categoryUpdate->fill($request->all());
-        $categoryUpdate->save();
-
-        if ($request->file('image')) {
-            $categoryUpdate->addSingleImage($request->file('image'));
-        }
+        $attributes = $request->all();
+        $this->categoryService->update($id, $attributes);
 
         return redirect()->route('category.edit', $id)->with('status', 'Категория обновлена!');
     }
@@ -98,17 +90,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $categoryDelete = Category::find($id);
-        $categoryDelete->delete();
-
-        $categoryProduct = new Product;
-        $categoryProduct->categories()->detach($id);
+        $this->categoryService->destroy($id);
 
         return redirect()->route('category.index')->with('status', 'Категория удалена!');
     }
 
-    public function show($id)
-    {
-        //
-    }
 }
