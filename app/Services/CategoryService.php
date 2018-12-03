@@ -58,7 +58,7 @@ class CategoryService
         $updatedCategory->fill($attributes);
         $updatedCategory->save();
 
-        if($attributes['image']) {
+        if(isset($attributes['image'])) {
             $updatedCategory->addSingleImage($attributes['image']);
         }
 
