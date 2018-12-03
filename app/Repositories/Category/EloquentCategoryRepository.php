@@ -5,7 +5,7 @@ namespace App\Repositories\Category;
 use App\Models\Category;
 use App\Repositories\AbstractRepository;
 
-class EloquentCategoryRepository extends AbstractRepository implements ProductRepository
+class EloquentCategoryRepository extends AbstractRepository implements CategoryRepository
 {
     /**
      * @var Category
