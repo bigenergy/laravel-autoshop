@@ -40,6 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        // TODO refactor
         $categories = Category::all();
         $brand = Brand::all();
 
