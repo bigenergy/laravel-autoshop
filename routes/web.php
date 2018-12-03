@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,3 +23,5 @@ Route::resource('/admin/brand', 'Admin\BrandController');
 Route::resource('/admin/product', 'Admin\ProductController');
 
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');
+
+Route::get('/', 'Shop\MainController@index')->name('main');
