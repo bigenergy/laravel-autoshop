@@ -41,8 +41,16 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
         return $this->model->with($relations)->paginate($perPage);
     }
 
-    public function getAllFrom($id, $relations = [])
+
+    /**
+     * Get all products from selected category
+     * @param $category
+     * @return mixed
+     */
+    public function getByCategory($category)
     {
-        return $this->model->with($relations)->where($id)->all();
+        return $this->model->whereHas('categories', function($q) use ($category) {
+            $q->where('category_id', '=', $category->id);
+        })->get();
     }
 }

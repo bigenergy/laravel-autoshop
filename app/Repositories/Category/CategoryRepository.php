@@ -22,5 +22,10 @@ interface CategoryRepository
      */
     public function getPaginated($relations =[], $perPage = 15);
 
-    public function getAllFrom($id, $relations = []);
+    /**
+     * Find a category by slug
+     * @param string $slug
+     * @return mixed
+     */
+    public function getBySlug(string $slug);
 }

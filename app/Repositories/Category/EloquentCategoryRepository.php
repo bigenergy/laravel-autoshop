@@ -41,8 +41,8 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
         return $this->model->with($relations)->paginate($perPage);
     }
 
-    public function getAllFrom($id, $relations = [])
+    public function getBySlug(string $slug)
     {
-        return $this->model->with($relations)->where('id',$id)->get();
+        return $this->model->where('slug', '=', $slug)->first();
     }
 }

@@ -22,5 +22,10 @@ interface ProductRepository
      */
     public function getPaginated($relations =[], $perPage = 15);
 
-    public function getAllFrom($id, $relations = []);
+    /**
+     * Get all products from selected category
+     * @param $category
+     * @return mixed
+     */
+    public function getByCategory($category);
 }
