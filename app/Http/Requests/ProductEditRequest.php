@@ -31,7 +31,7 @@ class ProductEditRequest extends FormRequest
             'sort' => 'required',
             'brand_id' => 'required',
             'images' => 'max:5',
-            'slug' => 'required|unique:products'
+            'slug' => 'required'
         ];
     }
 }
