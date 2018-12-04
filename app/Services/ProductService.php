@@ -60,7 +60,7 @@ class ProductService
         $updatedProduct->save();
         $updatedProduct->categories()->sync($attributes['categories']);
 
-        if($attributes['images']) {
+        if(isset($attributes['images'])) {
             $updatedProduct->addImages($attributes['images']);
         }
 
