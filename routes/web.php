@@ -25,3 +25,6 @@ Route::resource('/admin/product', 'Admin\ProductController');
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');
 
 Route::get('/', 'Shop\MainController@index')->name('main');
+Route::get('/category/{id}', 'Shop\MainController@show')->name('mainshow');
+//Route::get('/category/{id}', 'Shop\MainController@index')->name('main');
+

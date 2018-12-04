@@ -21,4 +21,6 @@ interface ProductRepository
      * @return mixed
      */
     public function getPaginated($relations =[], $perPage = 15);
+
+    public function getAllFrom($id, $relations = []);
 }
