@@ -62,7 +62,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            @include('shop.layouts.brands')
             <h6>Продукты</h6>
             <div class="row">
                 @yield('content')
