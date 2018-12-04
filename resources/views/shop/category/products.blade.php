@@ -4,21 +4,23 @@
     @forelse($products as $product)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="@foreach($product->images as $images){{ $images->fullUrl }}@endforeach" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
                         <a href="#">{{ $product->name }}</a>
                     </h4>
-                    <h5>$24.99</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    <h5>{{ $product->price }} $</h5>
+                    <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <a href="" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
                 </div>
             </div>
         </div>
     @empty
-        <a href="#" class="list-group-item">Нет категорий</a>
+            <div class="container alert alert-warning" role="alert">
+               В этой категории нет продуктов
+            </div>
     @endforelse
 
 <div class="container">{{ $products->links() }}</div>
