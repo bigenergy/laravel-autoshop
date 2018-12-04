@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepository;
-use App\Services\CategoryService;
-use App\Services\ProductService;
-
 
 class MainController extends Controller
 {
@@ -26,6 +23,6 @@ class MainController extends Controller
 
         $products = $this->productRepository->getPaginated();
 
-        return view('shop.main', ['products' => $products]);
+        return view('shop.layouts.main_products', ['products' => $products]);
     }
 }

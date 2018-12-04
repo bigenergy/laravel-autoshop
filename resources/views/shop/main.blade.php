@@ -63,6 +63,7 @@
                 </a>
             </div>
             <h6>Продукты</h6>
+
             <div class="row">
                 @yield('content')
             </div>
