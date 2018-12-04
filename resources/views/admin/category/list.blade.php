@@ -27,5 +27,5 @@
         </table>
 
     </div>
-    <center>{{ $categoryShowList->links() }}</center>
+
 @endsection

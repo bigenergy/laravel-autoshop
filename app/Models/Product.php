@@ -12,7 +12,7 @@ class Product extends Model
     private $imagesPath = 'products';
 
     protected $fillable = [
-        'name', 'description', 'disable', 'brand_id', 'sort', 'price'
+        'name', 'description', 'disable', 'brand_id', 'sort', 'price', 'slug'
     ];
 
     public function categories()

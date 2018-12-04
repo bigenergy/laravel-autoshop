@@ -28,7 +28,8 @@ class CategoryCreateRequest extends FormRequest
             'description' => 'required|max:255',
             'disable' => 'required',
             'sort' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'slug' => 'required'
         ];
     }
 }

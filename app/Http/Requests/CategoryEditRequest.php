@@ -28,6 +28,7 @@ class CategoryEditRequest extends FormRequest
             'description' => 'required|max:255',
             'disable' => 'required',
             'sort' => 'required',
+            'slug' => 'required'
         ];
     }
 }

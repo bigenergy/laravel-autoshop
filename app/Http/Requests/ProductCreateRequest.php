@@ -30,7 +30,8 @@ class ProductCreateRequest extends FormRequest
             'disable' => 'required',
             'sort' => 'required',
             'brand_id' => 'required',
-            'images' => 'max:5'
+            'images' => 'max:5',
+            'slug' => 'required|unique:products'
         ];
     }
 }

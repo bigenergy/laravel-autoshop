@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Brand\EloquentBrandRepository;
 use App\Repositories\Category\CategoryRepository;
@@ -9,6 +10,7 @@ use App\Repositories\Category\EloquentCategoryRepository;
 use App\Repositories\Product\EloquentProductRepository;
 use App\Repositories\Product\ProductRepository;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function ($categoryShowList) {
+            $categoryShowList->with('categoryShowList',  Category::all());
+        });
     }
 
     /**

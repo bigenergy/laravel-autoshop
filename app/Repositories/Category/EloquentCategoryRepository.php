@@ -41,6 +41,11 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
         return $this->model->with($relations)->paginate($perPage);
     }
 
+    /**
+     * Get category where slug
+     * @param string $slug
+     * @return mixed
+     */
     public function getBySlug(string $slug)
     {
         return $this->model->where('slug', '=', $slug)->first();

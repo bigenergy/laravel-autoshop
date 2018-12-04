@@ -21,6 +21,6 @@
         <a href="#" class="list-group-item">Нет категорий</a>
     @endforelse
 
-
+<div class="container">{{ $products->links() }}</div>
 
 @endsection
