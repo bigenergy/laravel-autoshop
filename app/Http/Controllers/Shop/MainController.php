@@ -19,6 +19,7 @@ class MainController extends Controller
         $this->productRepository = $productRepository;
     }
 
+
     public function index() {
 
         $products = $this->productRepository->getPaginated();
