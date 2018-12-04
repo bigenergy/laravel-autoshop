@@ -4,7 +4,15 @@
     @forelse($products as $product)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="@foreach($product->images as $images){{ $images->fullUrl }}@endforeach" alt=""></a>
+                <a href="#">
+                    <img class="card-img-top" src="
+                            @foreach ($product->images as $images)
+                                @if($loop->index < 1)
+                                    {{ $images->fullUrl }}
+                                @endif
+                            @endforeach
+                            " alt="{{ $product->name }}">
+                </a>
                 <div class="card-body">
                     <h4 class="card-title">
                         <a href="#">{{ $product->name }}</a>
