@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Repositories\Brand\BrandRepository;
+use App\Repositories\Category\CategoryRepository;
 use App\Services\ProductService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{ ProductEditRequest, ProductCreateRequest };
@@ -14,11 +16,22 @@ class ProductController extends Controller
      * @var ProductService
      */
     private $productService;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
-    public function __construct(ProductService $productService)
+    /**
+     * @var BrandRepository
+     */
+    private $brandRepository;
+
+    public function __construct(ProductService $productService, CategoryRepository $categoryRepository, BrandRepository $brandRepository)
     {
         $this->middleware('auth');
         $this->productService = $productService;
+        $this->categoryRepository = $categoryRepository;
+        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -40,9 +53,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // TODO refactor
-        $categories = Category::all();
-        $brand = Brand::all();
+        $categories = $this->categoryRepository->getPaginated();
+        $brand = $this->brandRepository->getPaginated();
 
         return view('admin.product.create', [
             'categories' => $categories,
