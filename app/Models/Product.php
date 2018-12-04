@@ -29,4 +29,5 @@ class Product extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
 }

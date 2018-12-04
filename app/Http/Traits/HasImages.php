@@ -57,4 +57,11 @@ trait HasImages
             "path" => $path
         ]);
     }
+
+    public function getThumbnailAttribute()
+    {
+        $imageForThumbnail = $this->images->first();
+
+        return ($imageForThumbnail) ? $imageForThumbnail->fullUrl : null;
+    }
 }
