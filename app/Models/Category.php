@@ -10,7 +10,7 @@ class Category extends Model
     use HasImages;
 
     protected $fillable = [
-        'name', 'description', 'disable', 'sort'
+        'name', 'description', 'disable', 'sort', 'slug'
     ];
 
     public function products()
