@@ -15,6 +15,8 @@ class Product extends Model
         'name', 'description', 'disable', 'brand_id', 'sort', 'price', 'slug'
     ];
 
+    protected $guarded = [];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
@@ -30,4 +32,13 @@ class Product extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function cart()
+    {
+        return $this->belongsToMany(Cart::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 }
