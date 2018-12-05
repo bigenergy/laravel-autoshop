@@ -18,15 +18,18 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+// ADMIN PANEL
 Route::resource('/admin/category', 'Admin\CategoryController');
 Route::resource('/admin/brand', 'Admin\BrandController');
 Route::resource('/admin/product', 'Admin\ProductController');
-
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');
 
+//
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
 Route::get('/categories/{slug}', 'Shop\CategoryController@show')->name('shop.category');
 Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.product');
 
-//Route::get('/category/{id}', 'Shop\MainController@index')->name('main');
+// SHOPPING CART
+Route::get('/cart', 'Shop\CartController@show')->name('shop.cart');
+
 

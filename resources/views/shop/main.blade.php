@@ -38,8 +38,6 @@
 
         <div class="col-lg-9">
             <br>
-            <h6>Продукты</h6>
-
             <div class="row">
                 @yield('content')
             </div>
