@@ -33,7 +33,10 @@
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-outline-success btn-block">В корзину</button>
+                    <form method="post" action="{{ route('shop.cart.add', ['id' => $product->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-success btn-block">В корзину</button>
+                    </form>
                 </div>
             </div>
         </div>

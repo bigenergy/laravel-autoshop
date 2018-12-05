@@ -25,4 +25,5 @@ class ProductController extends Controller
 
         return view('shop.product.index', ['products' => $products]);
     }
+
 }
