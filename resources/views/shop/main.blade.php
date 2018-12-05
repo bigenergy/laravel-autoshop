@@ -10,12 +10,8 @@
 
     <title>AutoShop - Каталог</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('assets/shop/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('assets/shop/css/shop-homepage.css') }}" rel="stylesheet">
-
+    <!-- All CSS -->
+    <link href="{{ asset('assets/shop/css/all.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -54,9 +50,9 @@
 
 
 
-<!-- Bootstrap core JavaScript -->
-<script src="{{ asset('assets/shop/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/shop/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- JavaScript -->
+<script src="{{ asset('assets/shop/js/all.js') }}"></script>
+
 
 </body>
 
