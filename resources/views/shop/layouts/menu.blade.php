@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная
+                    <a class="nav-link" href="/">Главная
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#">Личный кабинет</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Корзина <span class="badge badge-danger">4</span></a>
+                    <a class="nav-link" href="{{ route('shop.cart') }}">Корзина <span class="badge badge-pill badge-danger">4</span></a>
                 </li>
 
             </ul>
