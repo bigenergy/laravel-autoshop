@@ -79,10 +79,10 @@
                 <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
                     <div class="row">
                         <div class="col-8">
-                            <input type="text" class="form-control" placeholder="cupone code">
+                            <input type="text" class="form-control" placeholder="Код купона">
                         </div>
                         <div class="col-4">
-                            <input type="submit" class="btn btn-default btn-block" value="Use cupone">
+                            <input type="submit" class="btn btn-default btn-block" value="Применить">
                         </div>
                     </div>
                     <hr>
