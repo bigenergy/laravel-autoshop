@@ -1,4 +1,6 @@
 {
     "/assets/css/all.css": "/assets/css/all.css",
-    "/assets/js/all.js": "/assets/js/all.js"
+    "/assets/shop/css/all.css": "/assets/shop/css/all.css",
+    "/assets/js/all.js": "/assets/js/all.js",
+    "/assets/shop/js/all.js": "/assets/shop/js/all.js"
 }

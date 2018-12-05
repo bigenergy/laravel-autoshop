@@ -20,6 +20,11 @@ mix.styles([
     'resources/assets/css/jquery-confirm.min.css',
 ], 'public/assets/css/all.css');
 
+mix.styles([
+    'resources/assets/shop/css/shop-homepage.css',
+    'resources/assets/shop/vendor/bootstrap/css/bootstrap.min.css',
+], 'public/assets/shop/css/all.css');
+
 mix.scripts([
     'resources/assets/js/jquery.min.js',
     'resources/assets/js/bootstrap.min.js',
@@ -30,3 +35,9 @@ mix.scripts([
     'resources/assets/js/jquery-confirm.min.js',
     'resources/assets/js/images.js',
 ], 'public/assets/js/all.js');
+
+mix.scripts([
+    'resources/assets/shop/vendor/jquery/jquery.min.js',
+    'resources/assets/shop/vendor/bootstrap/js/bootstrap.bundle.min.js',
+    'resources/assets/shop/js/scripts.js',
+], 'public/assets/shop/js/all.js');
