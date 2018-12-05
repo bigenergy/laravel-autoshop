@@ -26,7 +26,7 @@ Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('im
 
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
 Route::get('/categories/{slug}', 'Shop\CategoryController@show')->name('shop.category');
-Route::get('/categories/{slug}/product/{slug}', 'Shop\ProductController@show')->name('shop.product');
+Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.product');
 
 //Route::get('/category/{id}', 'Shop\MainController@index')->name('main');
 

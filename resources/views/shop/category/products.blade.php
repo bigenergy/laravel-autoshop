@@ -5,8 +5,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
                 <a href="#">
-                    <img class="card-img-top" src="{{ $product->thumbnail }}
-                            " alt="{{ $product->name }}">
+                    <img class="card-img-top" src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
@@ -16,7 +15,7 @@
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
+                    <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
                 </div>
             </div>
         </div>

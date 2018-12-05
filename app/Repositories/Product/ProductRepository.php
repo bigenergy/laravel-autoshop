@@ -28,4 +28,6 @@ interface ProductRepository
      * @return mixed
      */
     public function getByCategory($category);
+
+    public function getBySlug(string $slug);
 }
