@@ -15,7 +15,7 @@ class MainController extends Controller
 
     public function __construct(ProductRepository $productRepository)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->productRepository = $productRepository;
     }
 
