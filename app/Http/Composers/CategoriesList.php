@@ -26,7 +26,7 @@ class CategoriesList
     public function __construct(CategoryRepository $categoryRepository, BrandRepository $brandRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->brandRepository = $brandRepository;
+       // $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -37,7 +37,8 @@ class CategoriesList
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categoryRepository->getAll());
-        $view->with('brands', $this->brandRepository->getAll());
+        $view->with('categories', $this->categoryRepository->getPaginated());
+
+       // $view->with('brands', $this->brandRepository->getAll());
     }
 }
