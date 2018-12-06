@@ -21,6 +21,22 @@ $(document).on('click', '.buy-button', function() {
         data: productData,
         success: function(response) {
             console.log(response);
+
+            $.alert({
+                icon: 'fas fa-check-double',
+                type: 'success',
+                title: 'Выполнено',
+                content: 'Товар добавлен в вашу корзину!',
+                theme: 'supervan',
+                autoClose: 'thx|2000',
+                buttons: {
+                    thx: {
+                        text: 'ОК',
+                    }
+                }
+
+
+            });
         },
     });
 

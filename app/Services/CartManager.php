@@ -4,10 +4,8 @@ namespace App\Services;
 
 
 use App\Models\Cart;
-use App\Models\CartItem;
-use App\Repositories\Cart\CartRepository;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cookie;
 
 class CartManager
 {
@@ -15,51 +13,66 @@ class CartManager
      * @var Cart
      */
     private $cartModel;
-    /**
-     * @var CartRepository
-     */
-    private $repository;
-    /**
-     * @var CartItem
-     */
-    private $cartItem;
 
-    public function __construct(Cart $cartModel, CartItem $cartItem, CartRepository $cartRepository)
+    /**
+     * CartManager constructor.
+     * @param Cart $cartModel
+     */
+    public function __construct(Cart $cartModel)
     {
         $this->cartModel = $cartModel;
-        $this->repository = $cartRepository;
-        $this->cartItem = $cartItem;
     }
 
+    /**
+     * Returns current cart
+     *
+     * @return Cart
+     */
     public function getCart()
     {
-        $cookie = Cookie::get('cart_hash');
+        $cartHash = $this->getCurrentCartHash();
 
-        if($cookie) {
-            $getCurrentCart = CartManager::getCartByCookie($cookie);
-            return dd($getCurrentCart);
-        } else {
-            CartManager::writeCookie();
+        return $this->getCartByHash($cartHash);
+    }
+
+    /**
+     * Returns cart hash from cookie
+     *
+     * @return string
+     */
+    private function getCurrentCartHash() : string
+    {
+        $cartHash = Cookie::get('cart_hash');
+
+        if (is_null($cartHash)) {
+            $cartHash = Hash::make(str_random(32));
+            $this->storeHashToCookie($cartHash);
         }
+
+        return $cartHash;
     }
 
-    public function writeCookie()
+    /**
+     * Store cart hash to cookie
+     *
+     * @param string $hash
+     */
+    private function storeHashToCookie(string $hash)
     {
-        // write to cookies
-        $random_hash = Hash::make(str_random(32));
-        Cookie::queue('cart_hash', $random_hash);
-
-        // write to database table
-        $attributes = array('uuid' => $random_hash);
-        $writeHash = $this->cartModel->fill($attributes);
-        $writeHash->save();
-
-        return true;
+        Cookie::queue('cart_hash', $hash);
     }
 
-    public function getCartByCookie($cookie)
+    /**
+     * Returns cart by hash
+     *
+     * @param $cartHash
+     * @return Cart
+     */
+    private function getCartByHash($cartHash)
     {
-        return $this->cartModel->where('uuid', '=', $cookie)->first();
+        return $this->cartModel->firstOrCreate([
+            'uuid' => $cartHash
+        ]);
     }
 
 }

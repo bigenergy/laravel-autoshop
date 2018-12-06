@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    protected $fillable = ['uuid', 'total_price'];
+    protected $fillable = [
+        'uuid',
+        'total_price'
+    ];
 
-
+    /**
+     * Returns cart items relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);

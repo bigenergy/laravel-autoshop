@@ -39,10 +39,12 @@
                         </div>
                         <br>
                         <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить</button>
+                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине</button>
                     </div>
                 </div>
             </div>
         </div>
+
     @empty
         <div class="container">
             <div class="alert alert-danger">Товар не найден</div>

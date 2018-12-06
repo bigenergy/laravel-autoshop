@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-
 use App\Models\Cart;
 use App\Repositories\Cart\CartRepository;
-
+use App\Repositories\Product\ProductRepository;
 
 class CartService
 {
@@ -15,61 +14,40 @@ class CartService
      */
     private $cartManager;
 
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
 
     /**
      * ProductService constructor.
      * @param CartManager $cartManager
+     * @param ProductRepository $productRepository
      */
-    public function __construct(CartManager $cartManager)
+    public function __construct(CartManager $cartManager, ProductRepository $productRepository)
     {
-
         $this->cartManager = $cartManager;
+        $this->productRepository = $productRepository;
     }
 
     /**
-     * Adds new product with relations
-     * @param array $attributes
+     * Add new product to cart
+     *
+     * @param int $productId
+     * @param int $quantity
+     * @return bool
      */
-    public function add(array $attributes)
+    public function add(int $productId, int $quantity)
     {
-//        dd($attributes);
-//        $addToCart = $this->cartModel->fill($attributes);
-//        $addToCart->save();
-//        $addToCart->items()->attach($attributes);
+        $cart = $this->cartManager->getCart();
+        $product = $this->productRepository->getById($productId);
 
-        //$this->cartManager->add($attributes);
-        $this->cartManager->getCart();
-
+        return $cart->cartItems()->firstOrCreate([
+            'product_id' => $productId,
+        ])->fill([
+            'quantity' => $quantity,
+            'price' => $product->price,
+            'total_price' => $product->price * $quantity
+        ])->save();
     }
-
-//    /**
-//     * @param int $id
-//     * @param array $attributes
-//     * @return bool
-//     */
-//    public function update(int $id, array $attributes): bool
-//    {
-//        /** @var Brand $updatedBrand */
-//        $updatedBrand = $this->brandModel->find($id);
-//        $updatedBrand->fill($attributes);
-//        $updatedBrand->save();
-//
-//        if(isset($attributes['image'])) {
-//            $updatedBrand->addSingleImage($attributes['image']);
-//        }
-//
-//        return true;
-//    }
-//
-//    /**
-//     * @param int $id
-//     * @return bool
-//     */
-//    public function destroy(int $id): bool
-//    {
-//        $categoryToDelete = $this->brandModel->findOrFail($id);
-//        $categoryToDelete->delete();
-//
-//        return true;
-//    }
 }

@@ -23,6 +23,7 @@ mix.styles([
 mix.styles([
     'resources/assets/shop/css/shop-homepage.css',
     'resources/assets/shop/vendor/bootstrap/css/bootstrap.min.css',
+    'resources/assets/css/jquery-confirm.min.css',
 ], 'public/assets/shop/css/all.css');
 
 mix.scripts([
@@ -36,8 +37,16 @@ mix.scripts([
     'resources/assets/js/images.js',
 ], 'public/assets/js/all.js');
 
-mix.scripts([
-    'resources/assets/shop/vendor/jquery/jquery.min.js',
-    'resources/assets/shop/vendor/bootstrap/js/bootstrap.bundle.min.js',
-    'resources/assets/shop/js/scripts.js',
-], 'public/assets/shop/js/all.js');
+// mix.scripts([
+//     'resources/assets/shop/vendor/jquery/jquery.min.js',
+//     'resources/assets/shop/vendor/bootstrap/js/bootstrap.bundle.min.js',
+//     'resources/assets/shop/js/scripts.js',
+//     'resources/assets/js/jquery-confirm.min.js',
+// ], 'public/assets/shop/js/all.js');
+
+mix.js([
+    // 'resources/assets/shop/vendor/jquery/jquery.min.js',
+    // 'resources/assets/shop/vendor/bootstrap/js/bootstrap.bundle.min.js',
+    // 'resources/assets/js/jquery-confirm.min.js',
+    'resources/assets/shop/js/common.js',
+], 'public/assets/shop/js/scripts.js');

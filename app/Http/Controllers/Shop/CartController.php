@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
-use App\Services\CartService;
 use Illuminate\Http\Request;
+use App\Services\CartService;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,9 +23,10 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $productAttributes = $request->only('product_id', 'quantity');
+        $quantity = $request->get('quantity');
+        $productId = $request->get('product_id');
 
-        $this->cartService->add($productAttributes);
+        $this->cartService->add($productId, $quantity);
 
 
 //        $random_hash = Hash::make(str_random(32));
