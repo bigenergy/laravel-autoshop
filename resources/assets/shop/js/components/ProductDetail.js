@@ -15,6 +15,7 @@ let ProductDetail = (() => {
 
             $.post($routeAddToCart, productData).then(function (response) {
                 console.log('OK');
+                $('#cartModal').modal('show');
             });
         });
     };

@@ -38,6 +38,7 @@
                             <input type="number" class="product-count" min="1" value="1">
                         </div>
                         <br>
+
                         <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить</button>
                         <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине</button>
                     </div>
@@ -50,4 +51,7 @@
             <div class="alert alert-danger">Товар не найден</div>
         </div>
     @endforelse
+
+    @include('shop.product.modal')
+
 @endsection
