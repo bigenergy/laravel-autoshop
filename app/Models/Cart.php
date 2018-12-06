@@ -8,7 +8,6 @@ class Cart extends Model
 {
     protected $fillable = ['uuid', 'total_price'];
 
-    protected $guarded = [];
 
     public function cartItems()
     {

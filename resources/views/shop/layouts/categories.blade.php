@@ -6,4 +6,3 @@
     <a href="#" class="list-group-item">Нет категорий</a>
 @endforelse
 </div>
-
