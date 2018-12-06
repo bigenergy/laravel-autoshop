@@ -48,8 +48,12 @@
 
 </div>
 <!-- /.container -->
-
-
+<br>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">AutoShop @ 2018</span>
+    </div>
+</footer>
 
 <!-- JavaScript -->
 {{--<script src="{{ asset('assets/shop/js/all.js') }}"></script>--}}
