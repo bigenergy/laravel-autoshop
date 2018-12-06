@@ -2,6 +2,13 @@
 @section('content')
     @forelse($products as $product)
         <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">AutoShop</a></li>
+                    <li class="breadcrumb-item"><a href="#">Продукты</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+                </ol>
+            </nav>
             <div class="card h-100">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
