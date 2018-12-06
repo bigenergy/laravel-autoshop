@@ -36,18 +36,22 @@
                     <h4 class="card-title">
                         {{ $product->name }}
                     </h4>
-                    <h5>{{ $product->price }} $</h5>
+                    <h5>Стоимость: {{ $product->price }} $</h5>
+                    <hr>
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-footer">
                     <div class="detail-product-cart__container">
-                        <div align="center">
-                            <input type="number" class="product-count" min="1" value="1">
-                        </div>
-                        <br>
 
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить</button>
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине</button>
+                        <div class="row">
+                            <div class="col">
+                                <input type="number" class="form-control product-count" min="1" value="1">
+                            </div>
+                            <div class="col">
+                                <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить</button>
+                                <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +59,12 @@
 
     @empty
         <div class="container">
-            <div class="alert alert-danger">Товар не найден</div>
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Произошла ошибка</h4>
+                <p>Данный товар не найден.</p>
+                <hr>
+                <p class="mb-0">Возможно он был перенесен или убран с продажи.</p>
+            </div>
         </div>
     @endforelse
 
