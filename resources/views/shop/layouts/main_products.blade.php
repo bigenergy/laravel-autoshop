@@ -21,7 +21,7 @@
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
+                    <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
                 </div>
             </div>
         </div>

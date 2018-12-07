@@ -36,7 +36,7 @@
                     <h4 class="card-title">
                         {{ $product->name }}
                     </h4>
-                    <h5>Стоимость: {{ $product->price }} $</h5>
+                    <h5>Стоимость: {{ $product->price }} <i class="fas fa-dollar-sign"></i></h5>
                     <hr>
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
@@ -47,8 +47,8 @@
                         </div>
                         <br>
 
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить</button>
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине</button>
+                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
+                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине <i class="fas fa-cart-arrow-down"></i></button>
                     </div>
                 </div>
             </div>
