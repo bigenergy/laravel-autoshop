@@ -46,9 +46,7 @@
                             <input type="number" class="product-count form-control" min="1" value="1">
                         </div>
                         <br>
-
                         <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block" hidden>В корзине <i class="fas fa-cart-arrow-down"></i></button>
                     </div>
                 </div>
             </div>

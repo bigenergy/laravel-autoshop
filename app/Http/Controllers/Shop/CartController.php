@@ -29,4 +29,9 @@ class CartController extends Controller
         $this->cartService->add($productId, $quantity);
 
     }
+
+    public function destroy()
+    {
+        return dd('debug true');
+    }
 }

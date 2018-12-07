@@ -66,15 +66,13 @@
                     <hr>
                     <div class="row">
                         <div class="col-8">
-                            Итоговая сумма: null $
+                            <b>Итого:</b> <b>{{$cart->sum('quantity')}}</b> товаров на сумму <b>{{$cart->sum('total_price')}}</b> <i class="fas fa-dollar-sign"></i></b>
                         </div>
                         <div class="col-4">
                             <a href="" class="btn btn-success btn-block"><i class="far fa-credit-card"></i> Оплатить</a>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
