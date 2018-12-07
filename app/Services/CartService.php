@@ -42,7 +42,7 @@ class CartService
         $cart = $this->cartManager->getCart();
         $product = $this->productRepository->getById($productId);
 
-        return $cart->cartItems()->firstOrCreate([
+        return $cart->cartItems()->firstOrNew([
             'product_id' => $productId,
         ])->fill([
             'quantity' => $quantity,

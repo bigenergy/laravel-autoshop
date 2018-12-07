@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
@@ -18,6 +16,7 @@ class CartController extends Controller
     }
     public function show()
     {
+
         return view('shop.cart.cart');
     }
 
@@ -27,17 +26,6 @@ class CartController extends Controller
         $productId = $request->get('product_id');
 
         $this->cartService->add($productId, $quantity);
-
-
-//        $random_hash = Hash::make(str_random(32));
-//        Cookie::queue('cart_hash', $random_hash);
-//
-//        $value = Cookie::get('cart_hash');
-//        return response($value);
-
-
-
-
 
     }
 }
