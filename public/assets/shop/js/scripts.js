@@ -16991,7 +16991,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var ProductDetail = function () {
     var $buyButton = $('.buy-button');
     var $routeAddToCart = '/cart/add';
-    var $routeToCart = '/cart';
 
     var init = function init() {
         listenClickBuyButton();
@@ -17009,7 +17008,7 @@ var ProductDetail = function () {
                 $('#cartModal').modal('show');
 
                 $buyButton.remove();
-                $('<a href=$routeToCart class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>').appendTo('.card-footer').trigger('create');
+                $('<a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>').appendTo('.card-footer').trigger('create');
             });
         });
     };

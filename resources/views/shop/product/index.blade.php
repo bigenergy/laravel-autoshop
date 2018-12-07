@@ -40,13 +40,18 @@
                     <hr>
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
+
                 <div class="card-footer">
                     <div class="detail-product-cart__container">
                         <div align="center">
                             <input type="number" class="product-count form-control" min="1" value="1">
                         </div>
                         <br>
-                        <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
+                        @if($check)
+                            <a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
+                        @else
+                            <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
+                        @endif
                     </div>
                 </div>
             </div>

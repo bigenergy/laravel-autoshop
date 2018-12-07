@@ -75,4 +75,9 @@ class CartManager
         ]);
     }
 
+    public function getCartFromItem($productId)
+    {
+        return $this->cartModel->where('product_id', '=', $productId);
+    }
+
 }

@@ -56,4 +56,6 @@ class EloquentCartRepository extends AbstractRepository implements CartRepositor
 //            $q->where('cart_id', '=', $category->id);
 //        })->paginate($perPage);
 //    }
+
+
 }
