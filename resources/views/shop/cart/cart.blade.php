@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card shopping-cart">
             <div class="card-header bg-dark text-light">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <i class="fas fa-shopping-cart"></i>
                 Корзина покупок
                 <div class="clearfix"></div>
             </div>

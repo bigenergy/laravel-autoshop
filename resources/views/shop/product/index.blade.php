@@ -43,7 +43,7 @@
                 <div class="card-footer">
                     <div class="detail-product-cart__container">
                         <div align="center">
-                            <input type="number" class="product-count" min="1" value="1">
+                            <input type="number" class="product-count form-control" min="1" value="1">
                         </div>
                         <br>
 

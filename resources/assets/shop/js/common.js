@@ -1,6 +1,8 @@
 window.$ = window.JQuery = require('jquery');
 
 require ('bootstrap');
+
+
 let ProductDetail = require('./components/ProductDetail').default;
 let AjaxSetupHeaders = require('./components/AjaxSetupHeaders').default;
 

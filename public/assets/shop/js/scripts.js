@@ -10438,7 +10438,8 @@ return jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(2);
+__webpack_require__(2);
+module.exports = __webpack_require__(8);
 
 
 /***/ }),
@@ -10448,6 +10449,7 @@ module.exports = __webpack_require__(2);
 window.$ = window.JQuery = __webpack_require__(0);
 
 __webpack_require__(3);
+
 var ProductDetail = __webpack_require__(6).default;
 var AjaxSetupHeaders = __webpack_require__(7).default;
 
@@ -17036,6 +17038,12 @@ var AjaxSetupHeaders = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (AjaxSetupHeaders);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

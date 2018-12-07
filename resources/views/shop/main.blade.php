@@ -13,6 +13,7 @@
 
     <!-- All CSS -->
     <link href="{{ asset('assets/shop/css/all.css') }}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 
 <body>
