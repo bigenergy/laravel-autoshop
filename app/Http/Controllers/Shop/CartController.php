@@ -16,8 +16,9 @@ class CartController extends Controller
     }
     public function show()
     {
+        $cart = $this->cartService->showCart();
 
-        return view('shop.cart.cart');
+        return view('shop.cart.cart', ['cart' => $cart]);
     }
 
     public function add(Request $request)

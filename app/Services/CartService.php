@@ -50,4 +50,12 @@ class CartService
             'total_price' => $product->price * $quantity
         ])->save();
     }
+
+    public function showCart()
+    {
+        $cart = $this->cartManager->getCart();
+
+        return $cart->cartItems()->with('product')->get();
+
+    }
 }
