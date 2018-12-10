@@ -17,6 +17,6 @@ class Image extends Model
 
     public function getFullUrlAttribute()
     {
-        return '/storage/' . $this->path . '/' . $this->name;
+        return '/images/' . $this->path . '/' . $this->name;
     }
 }

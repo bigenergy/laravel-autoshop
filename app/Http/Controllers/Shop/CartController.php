@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Http\Controllers\Controller;
@@ -30,9 +31,11 @@ class CartController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        return dd('debug true');
+        $todo= CartItem::find($id);
+        $todo->delete();
+        //return redirect()->route('product.index')->with('status', 'Продукт удален!');
     }
 
 }

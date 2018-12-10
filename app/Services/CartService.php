@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Cart;
-use App\Repositories\Cart\CartRepository;
 use App\Repositories\Product\ProductRepository;
 
 class CartService

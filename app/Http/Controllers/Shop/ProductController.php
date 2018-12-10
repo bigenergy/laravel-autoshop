@@ -69,7 +69,7 @@ class ProductController extends Controller
          * GOVNOCODE END
          */
 
-        return view('shop.product.index', ['products' => $products, 'check' => $checkCart ?: null]);
+        return view('shop.product.index', ['products' => $products, 'check' => $checkCart ?? null]);
     }
 
 }

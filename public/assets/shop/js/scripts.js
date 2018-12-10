@@ -10439,7 +10439,7 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
-module.exports = __webpack_require__(8);
+module.exports = __webpack_require__(9);
 
 
 /***/ }),
@@ -10452,10 +10452,12 @@ __webpack_require__(3);
 
 var ProductDetail = __webpack_require__(6).default;
 var AjaxSetupHeaders = __webpack_require__(7).default;
+var CartDetail = __webpack_require__(8).default;
 
 $(document).ready(function () {
     AjaxSetupHeaders.init();
     ProductDetail.init();
+    CartDetail.init();
 
     // if ($('#product-page').length) {
     //     ProductDetail.init();
@@ -17044,6 +17046,41 @@ var AjaxSetupHeaders = function () {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var CartDetail = function () {
+    var $deleteProductButton = $('.delete-button');
+    var $routeDeleteProduct = '/cart/destroy';
+
+    var init = function init() {
+        listenClickBuyButton();
+    };
+
+    var listenClickBuyButton = function listenClickBuyButton() {
+        $deleteProductButton.click(function () {
+            var productData = {
+                'id': $(this).data('id')
+                //'quantity': $(this).parent().find('.product-count').val()
+            };
+
+            $.post($routeDeleteProduct, productData).then(function (response) {
+                console.log('OK');
+                $('#cartModal').modal('show');
+            });
+        });
+    };
+
+    return {
+        init: init
+    };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (CartDetail);
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
