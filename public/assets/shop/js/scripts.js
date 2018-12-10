@@ -17069,6 +17069,7 @@ var CartDetail = function () {
             $.post($routeDeleteProduct, productData).then(function (response) {
                 console.log('OK');
                 $(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+                $(".refresh-price").load(window.location + " .refresh-price");
 
                 $(document).find('.card-' + productData.id).remove();
                 // $('#cartModal').modal('show');
