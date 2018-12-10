@@ -17067,7 +17067,10 @@ var CartDetail = function () {
 
             $.post($routeDeleteProduct, productData).then(function (response) {
                 console.log('OK');
-                $('#cartModal').modal('show');
+                $(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+
+                $(document).find('.card-' + productData.id).remove();
+                // $('#cartModal').modal('show');
             });
         });
     };

@@ -4,6 +4,7 @@ namespace App\Services;
 
 
 use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 
@@ -78,6 +79,17 @@ class CartManager
     public function getCartFromItem($productId)
     {
         return $this->cartModel->where('product_id', '=', $productId);
+    }
+
+    public function deleteProductFromCart($productId)
+    {
+       // $itemToDelete = $this->cartModel->with('cartItems')->findOrFail($productId);
+
+
+
+        //$productToDelete = $this->cartModel->cartItems()->findOrFail($productId);
+        //$productToDelete->delete();
+       CartItem::find($productId)->delete();
     }
 
 }

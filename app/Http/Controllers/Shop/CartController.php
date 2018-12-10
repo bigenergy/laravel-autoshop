@@ -31,11 +31,12 @@ class CartController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $todo= CartItem::find($id);
-        $todo->delete();
-        //return redirect()->route('product.index')->with('status', 'Продукт удален!');
+        $productId = $request->get('id');
+        $this->cartService->destroy($productId);
     }
+
+
 
 }

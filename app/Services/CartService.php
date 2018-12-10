@@ -56,4 +56,9 @@ class CartService
         return $cart->cartItems()->with('product')->get();
 
     }
+
+    public function destroy(int $productId)
+    {
+       $this->cartManager->deleteProductFromCart($productId);
+    }
 }
