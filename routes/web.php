@@ -34,5 +34,6 @@ Route::get('/cart', 'Shop\CartController@show')->name('shop.cart');
 
 Route::post('/cart/add', 'Shop\CartController@add')->name('shop.cart.add');
 Route::post('/cart/destroy', 'Shop\CartController@destroy')->name('shop.cart.destroy');
+Route::post('/cart/edit', 'Shop\CartController@edit')->name('shop.cart.edit');
 
 

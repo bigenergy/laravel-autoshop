@@ -36,4 +36,12 @@ class CartController extends Controller
         $productId = $request->get('id');
         $this->cartService->destroy($productId);
     }
+
+    public function edit(Request $request)
+    {
+        $quantity = $request->get('quantity');
+        $productId = $request->get('product_id');
+
+        $this->cartService->add($productId, $quantity);
+    }
 }

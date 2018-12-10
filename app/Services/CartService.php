@@ -61,4 +61,18 @@ class CartService
     {
        $this->cartManager->deleteProductFromCart($productId);
     }
+
+    public function edit(int $productId, int $quantity)
+    {
+        $cart = $this->cartManager->getCart();
+        $product = $this->productRepository->getById($productId);
+
+        return $cart->cartItems()->firstOrNew([
+            'product_id' => $productId,
+        ])->fill([
+            'quantity' => $quantity,
+            'price' => $product->price,
+            'total_price' => $product->price * $quantity
+        ])->save();
+    }
 }

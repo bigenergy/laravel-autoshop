@@ -8,16 +8,16 @@
                 Корзина покупок
                 <div class="clearfix"></div>
             </div>
-
             <div class="card-body">
                 <!-- PRODUCT -->
                 @forelse($cart as $item)
-                    <div class="card-{{ $item->id }}">
+                    <div class="cont "></div>
+                    <div class="card-{{ $item->id }} reload">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="{{ $item->product->thumbnail }}" alt="prewiew" width="120" height="80">
                             </div>
-                            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <div class="col-6 text-sm-center col-sm-6 text-md-left col-md-6">
                                 <h4 class="product-name">
                                     <strong>
                                       <a href="{{ route('shop.product', ['productSlug' => $item->product->slug]) }}">{{ $item->product->name }}</a>
@@ -27,21 +27,20 @@
                                     <small>{{ $item->product->description }}</small>
                                 </h5>
                             </div>
-                            <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                                <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                            <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row ">
+                                <div class="refresh-after-ajax col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                                     <h6><strong>{{ $item->price }} $ <span class="text-muted">x</span></strong></h6>
-                                    Итог: {{ $item->total_price }}
+                                    Итог: <b class="refresh">{{ $item->total_price }} $</b>
                                 </div>
-                                <div class="col-4 col-sm-4 col-md-4">
-                                    <div class="quantity">
-                                        <input type="number" step="1" max="99" min="1" value="{{ $item->quantity }}" size="4">
-                                    </div>
+                                <div class="col-4 col-sm-4 col-md-4 detail-product-cart__container">
+                                    <input data-id={{ $item->product_id }} type="number" class="buy-number product-count form-control input-sm" value="{{ $item->quantity }}">
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
-                                    <button data-id={{ $item->id }} type="button" class="delete-button btn btn-outline-danger btn-sm">
+                                    <button data-id={{ $item->id }} type="button" class="delete-button btn btn-outline-danger">
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                 </div>
+
                             </div>
                         </div>
                         <hr>
