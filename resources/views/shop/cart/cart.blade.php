@@ -52,7 +52,7 @@
                 <!-- END PRODUCT -->
             </div>
                 <div class="card-footer">
-                    <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left refresh-after-ajax">
+                    <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
                         <div class="row">
                             <div class="col-8">
                                 <input type="text" class="form-control" placeholder="Код купона">
@@ -63,7 +63,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-8 refresh-price">
                                 <b>Итого:</b> <b>{{$cart->sum('quantity')}}</b> товаров на сумму <b>{{$cart->sum('total_price')}}</b> <i class="fas fa-dollar-sign"></i></b>
                             </div>
                             <div class="col-4">

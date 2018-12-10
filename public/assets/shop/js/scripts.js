@@ -17085,7 +17085,7 @@ var CartDetail = function () {
 
             $.post('/cart/edit', productData).then(function (response) {
 
-                $(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+                $(".refresh-price").load(window.location + " .refresh-price");
             });
         });
     };
