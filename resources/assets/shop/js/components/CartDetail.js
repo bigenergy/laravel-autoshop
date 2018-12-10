@@ -33,13 +33,7 @@ let CartDetail = (() => {
 
             $.post('/cart/edit', productData).then(function (response) {
 
-                // $('.card-' + productData.product_id).html(response.message['total_price']);
-               // $(".card-" + productData.product_id).load(window.location + " .card" + productData.product_id);
-
-                $(".refresh-after-ajax").refresh(window.location + " .refresh-after-ajax");
-
-
-
+                $(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
 
             });
 

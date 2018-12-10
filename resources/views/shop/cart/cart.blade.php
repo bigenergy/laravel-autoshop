@@ -28,9 +28,8 @@
                                 </h5>
                             </div>
                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row ">
-                                <div class="refresh-after-ajax col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                                     <h6><strong>{{ $item->price }} $ <span class="text-muted">x</span></strong></h6>
-                                    Итог: <b class="refresh">{{ $item->total_price }} $</b>
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-4 detail-product-cart__container">
                                     <input data-id={{ $item->product_id }} type="number" class="buy-number product-count form-control input-sm" value="{{ $item->quantity }}">
@@ -52,8 +51,8 @@
                 @endforelse
                 <!-- END PRODUCT -->
             </div>
-                <div class="card-footer refresh-after-ajax">
-                    <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
+                <div class="card-footer">
+                    <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left refresh-after-ajax">
                         <div class="row">
                             <div class="col-8">
                                 <input type="text" class="form-control" placeholder="Код купона">
