@@ -14,14 +14,20 @@ class CartManager
      * @var Cart
      */
     private $cartModel;
+    /**
+     * @var CartItem
+     */
+    private $cartItem;
 
     /**
      * CartManager constructor.
      * @param Cart $cartModel
+     * @param CartItem $cartItem
      */
-    public function __construct(Cart $cartModel)
+    public function __construct(Cart $cartModel, CartItem $cartItem)
     {
         $this->cartModel = $cartModel;
+        $this->cartItem = $cartItem;
     }
 
     /**
@@ -81,15 +87,14 @@ class CartManager
         return $this->cartModel->where('product_id', '=', $productId);
     }
 
+    /**
+     * Deleting product from cart
+     *
+     * @param $productId
+     */
     public function deleteProductFromCart($productId)
     {
-       // $itemToDelete = $this->cartModel->with('cartItems')->findOrFail($productId);
-
-
-
-        //$productToDelete = $this->cartModel->cartItems()->findOrFail($productId);
-        //$productToDelete->delete();
-       CartItem::find($productId)->delete();
+        $productToDelete = $this->cartItem->findOrFail($productId);
+        $productToDelete->delete();
     }
-
 }
