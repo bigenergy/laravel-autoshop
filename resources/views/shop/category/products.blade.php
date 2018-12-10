@@ -9,10 +9,10 @@
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">{{ $product->name }}</a>
+                        <b>{{ $product->name }}</b>
                     </h4>
                     <h5>{{ $product->price }} $</h5>
-                    <p class="card-text">{{ $product->description }}</p>
+                    <p class="card-text">{{ substr($product->description, 0, 100) }}...</p>
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>

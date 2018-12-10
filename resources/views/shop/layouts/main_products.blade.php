@@ -5,20 +5,14 @@
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
                 <a href="#">
-                    <img class="card-img-top" src="
-                            @foreach ($product->images as $images)
-                    @if($loop->index < 1)
-                    {{ $images->fullUrl }}
-                    @endif
-                    @endforeach
-                            " alt="{{ $product->name }}">
+                    <img class="card-img-top" src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">{{ $product->name }}</a>
+                        <b>{{ $product->name }}</b>
                     </h4>
                     <h5>{{ $product->price }} $</h5>
-                    <p class="card-text">{{ $product->description }}</p>
+                    <p class="card-text">{{ substr($product->description, 0, 100) }}...</p>
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
@@ -27,7 +21,7 @@
         </div>
     @empty
         <div class="container alert alert-warning" role="alert">
-            В магазине нет продуктов
+            В магазине нет продуктов.
         </div>
     @endforelse
 

@@ -48,7 +48,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      * @param int $perPage
      * @return mixed
      */
-    public function getByCategory($category, $perPage = 1)
+    public function getByCategory($category, $perPage = 15)
     {
         return $this->model->whereHas('categories', function($q) use ($category) {
             $q->where('category_id', '=', $category->id);
