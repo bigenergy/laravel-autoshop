@@ -22,9 +22,8 @@
                     <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Личный кабинет</a>
                 </li>
                 <li class="nav-item {{ Request::is('cart') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('shop.cart') }}"><i class="fas fa-shopping-cart"></i> Корзина <span class="badge badge-pill badge-danger">4</span></a>
+                    <a class="nav-link text-success" href="{{ route('shop.cart') }}"><i class="fas fa-shopping-cart"></i> Корзина</a>
                 </li>
-
             </ul>
         </div>
     </div>
