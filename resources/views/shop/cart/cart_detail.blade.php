@@ -40,6 +40,12 @@
                             <input type="email" class="form-control" id="inputEmail3" placeholder="На него будет прислана вся информация о вашем заказе">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Телефон</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Номер мобильного телефона для связи" value="+7">
+                        </div>
+                    </div>
                     <h5>Доставка</h5>
                     <hr>
                     <div class="form-row">
@@ -73,10 +79,10 @@
                 <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
 
                     <div class="row">
-                        <div class="col-8">
-                            {{--<p class="refresh-price"><b class="text-success">Итого:</b> <b>{{$cart->sum('quantity')}}</b> товаров на сумму <b>{{$cart->sum('total_price')}}</b> <i class="fas fa-dollar-sign"></i></b></p>--}}
+                        <div class="col-6">
+                            <a href="{{ route('shop.cart') }}" class="btn btn-outline-primary btn-block">Назад в корзину</a>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <a href="{{ route('shop.cart.detail') }}" class="btn btn-outline-success btn-block">Далее</a>
                         </div>
                     </div>
