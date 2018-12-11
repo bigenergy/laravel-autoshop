@@ -44,4 +44,9 @@ class CartController extends Controller
 
         $this->cartService->add($productId, $quantity);
     }
+
+    public function showDetail()
+    {
+        return view('shop.cart.cart_detail');
+    }
 }

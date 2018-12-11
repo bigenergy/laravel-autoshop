@@ -55,10 +55,10 @@
                     <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
                         <div class="row">
                             <div class="col-8">
-                                <input type="text" class="form-control" placeholder="Код купона">
+                                <input type="text" class="form-control" placeholder="Код купона" disabled>
                             </div>
                             <div class="col-4">
-                                <input type="submit" class="btn btn-default btn-block" value="Применить">
+                                <input type="submit" class="btn btn-default btn-block" value="Применить" disabled>
                             </div>
                         </div>
                         <hr>
@@ -67,7 +67,7 @@
                                 <p class="refresh-price"><b class="text-success">Итого:</b> <b>{{$cart->sum('quantity')}}</b> товаров на сумму <b>{{$cart->sum('total_price')}}</b> <i class="fas fa-dollar-sign"></i></b></p>
                             </div>
                             <div class="col-4">
-                                <a href="" class="btn btn-success btn-block"><i class="far fa-credit-card"></i> Оплатить</a>
+                                <a href="{{ route('shop.cart.detail') }}" class="btn btn-outline-success btn-block">Далее</a>
                             </div>
                         </div>
                     </div>
