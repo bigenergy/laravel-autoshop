@@ -1,5 +1,4 @@
-<form>
-    <h5><i class="fas fa-user-secret"></i> Личные данные</h5>
+ <h5><i class="fas fa-user-secret"></i> Личные данные</h5>
     <hr>
     <div class="form-group row">
         {{ Form::label('name', 'Имя', ['class' => 'col-sm-2 col-form-label']) }}
@@ -57,5 +56,3 @@
             {{ Form::text('apartment', null, ['class' => 'form-control', 'placeholder' => '1', 'required']) }}
         </div>
     </div>
-
-</form>

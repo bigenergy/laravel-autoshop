@@ -13,7 +13,12 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-body">
-                @include('shop.cart.cart_detail_form')
+                {!! Form::open([
+                     'route' => 'shop.cart.detail.write',
+                     'method' => 'POST'
+                   ]
+                ) !!}
+                    @include('shop.cart.cart_detail_form')
             </div>
             <div class="card-footer">
                 <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
@@ -23,10 +28,11 @@
                             <a href="{{ route('shop.cart') }}" class="btn btn-outline-primary btn-block">Назад в корзину</a>
                         </div>
                         <div class="col-6">
-                            <a href="{{ route('shop.cart.detail') }}" class="btn btn-outline-success btn-block">Далее</a>
+                            <button type="submit" class="btn btn-outline-success btn-block">Далее</button>
                         </div>
                     </div>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

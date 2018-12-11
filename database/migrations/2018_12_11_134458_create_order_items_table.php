@@ -16,9 +16,9 @@ class CreateOrderItemsTable extends Migration
         Schema::create('order_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned()->index()->nullable();
-            $table->foreign('order_id')->references('id')->on('orders')->nullable();
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('product_id')->unsigned()->index()->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->nullable();
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Models\CartItem;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 
 class CartController extends Controller
 {
@@ -48,5 +49,13 @@ class CartController extends Controller
     public function showDetail()
     {
         return view('shop.cart.cart_detail');
+    }
+
+    public function writeDetail(Request $request)
+    {
+        $inputs = $request->all();
+        $this->cartService->write($inputs);
+
+        return redirect()->route('shop.main');
     }
 }

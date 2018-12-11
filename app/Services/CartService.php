@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Order;
 use App\Repositories\Product\ProductRepository;
 
 class CartService
@@ -16,16 +17,21 @@ class CartService
      * @var ProductRepository
      */
     private $productRepository;
+    /**
+     * @var Order
+     */
+    private $orderModel;
 
     /**
      * ProductService constructor.
      * @param CartManager $cartManager
      * @param ProductRepository $productRepository
      */
-    public function __construct(CartManager $cartManager, ProductRepository $productRepository)
+    public function __construct(CartManager $cartManager, ProductRepository $productRepository, Order $orderModel)
     {
         $this->cartManager = $cartManager;
         $this->productRepository = $productRepository;
+        $this->orderModel = $orderModel;
     }
 
     /**
@@ -49,6 +55,11 @@ class CartService
         ])->save();
     }
 
+    /**
+     * Show cart by cart_hash cookies
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function showCart()
     {
         $cart = $this->cartManager->getCart();
@@ -57,11 +68,20 @@ class CartService
 
     }
 
+    /**
+     * Delete cart item in cart
+     *
+     * @param int $productId
+     */
     public function destroy(int $productId)
     {
        $this->cartManager->deleteProductFromCart($productId);
     }
 
+    /**
+     * Edit quantity form cart
+     *
+     */
     public function edit(int $productId, int $quantity)
     {
         $cart = $this->cartManager->getCart();
@@ -74,5 +94,25 @@ class CartService
             'price' => $product->price,
             'total_price' => $product->price * $quantity
         ])->save();
+    }
+
+    /**
+     * Write user information
+     *
+     * @param array $request
+     */
+    public function write(array $request)
+    {
+        $createdProduct = $this->orderModel->fill($request);
+        $createdProduct->save();
+
+        $cart = $this->showCart();
+
+        foreach ($cart as $item) {
+            $createdProduct->orderItems()->create()->fill([
+                'product_id' => $item->product->id
+            ])->save();
+        }
+        // TODO: Очистить корзину юзера при успешн. заполнении
     }
 }

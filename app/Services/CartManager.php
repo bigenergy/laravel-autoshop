@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 
@@ -18,16 +19,22 @@ class CartManager
      * @var CartItem
      */
     private $cartItem;
+    /**
+     * @var Order
+     */
+    private $orderModel;
 
     /**
      * CartManager constructor.
      * @param Cart $cartModel
      * @param CartItem $cartItem
+     * @param Order $orderModel
      */
-    public function __construct(Cart $cartModel, CartItem $cartItem)
+    public function __construct(Cart $cartModel, CartItem $cartItem, Order $orderModel)
     {
         $this->cartModel = $cartModel;
         $this->cartItem = $cartItem;
+        $this->orderModel = $orderModel;
     }
 
     /**
@@ -97,4 +104,6 @@ class CartManager
         $productToDelete = $this->cartItem->findOrFail($productId);
         $productToDelete->delete();
     }
+
+
 }
