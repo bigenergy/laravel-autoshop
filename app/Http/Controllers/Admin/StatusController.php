@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\BrandCreateRequest;
-use App\Http\Requests\BrandEditRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StatusCreateRequest;
 use App\Http\Requests\StatusEditRequest;
-use App\Services\BrandService;
 use App\Services\StatusService;
 
 class StatusController extends Controller
@@ -78,7 +75,7 @@ class StatusController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param BrandEditRequest $request
+     * @param StatusEditRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
