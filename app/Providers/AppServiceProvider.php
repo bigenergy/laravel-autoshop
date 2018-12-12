@@ -9,6 +9,8 @@ use App\Repositories\Cart\CartRepository;
 use App\Repositories\Cart\EloquentCartRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Category\EloquentCategoryRepository;
+use App\Repositories\Order\EloquentOrderRepository;
+use App\Repositories\Order\OrderRepository;
 use App\Repositories\Product\EloquentProductRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Status\EloquentStatusRepository;
@@ -60,6 +62,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             StatusRepository::class,
             EloquentStatusRepository::class
+        );
+
+        $this->app->bind(
+            OrderRepository::class,
+            EloquentOrderRepository::class
         );
     }
 }
