@@ -128,7 +128,8 @@ class CartService
                 'product_id' => $item->product->id
             ])->save();
         }
-        // TODO: Очистить корзину юзера при успешн. заполнении
+
+        $this->cartManager->deleteCart();
     }
 
 }

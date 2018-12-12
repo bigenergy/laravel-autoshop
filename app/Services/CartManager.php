@@ -105,4 +105,14 @@ class CartManager
         $productToDelete->delete();
     }
 
+    /**
+     * Deleting cart
+     *
+     * @throws \Exception
+     */
+    public function deleteCart()
+    {
+        $cartToDelete = $this->getCart();
+        $cartToDelete->delete();
+    }
 }

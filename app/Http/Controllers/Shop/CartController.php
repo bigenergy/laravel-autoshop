@@ -95,6 +95,11 @@ class CartController extends Controller
         $inputs = $request->all();
         $this->cartService->write($inputs);
 
-        return redirect()->route('shop.main');
+        return redirect()->route('shop.cart.complete');
+    }
+
+    public function showComplete()
+    {
+        return view('shop.cart.cart_complete');
     }
 }
