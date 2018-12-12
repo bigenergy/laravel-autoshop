@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\BrandCreateRequest;
-use App\Http\Requests\BrandEditRequest;
+use App\Http\Requests\Brand\BrandCreateRequest;
+use App\Http\Requests\Brand\BrandEditRequest;
 use App\Http\Controllers\Controller;
 use App\Services\Brand\BrandService;
 

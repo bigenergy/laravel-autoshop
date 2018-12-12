@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StatusCreateRequest;
-use App\Http\Requests\StatusEditRequest;
+use App\Http\Requests\Status\StatusCreateRequest;
+use App\Http\Requests\Status\StatusEditRequest;
 use App\Services\Status\StatusService;
 
 class StatusController extends Controller

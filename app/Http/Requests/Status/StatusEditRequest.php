@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Status;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryEditRequest extends FormRequest
+class StatusEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class CategoryEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'description' => 'required|max:255',
-            'disable' => 'required',
-            'sort' => 'required',
-            'slug' => 'required'
+            'name' => 'required|max:100',
+            'sort' => 'required|max:255',
         ];
     }
 }

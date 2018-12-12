@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryCreateRequest;
-use App\Http\Requests\CategoryEditRequest;
+use App\Http\Requests\Category\CategoryCreateRequest;
+use App\Http\Requests\Category\CategoryEditRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Services\Category\CategoryService;

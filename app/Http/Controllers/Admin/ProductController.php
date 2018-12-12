@@ -8,7 +8,7 @@ use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Services\Product\ProductService;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\{ ProductEditRequest, ProductCreateRequest };
+use App\Http\Requests\Product\{ ProductEditRequest, ProductCreateRequest };
 
 class ProductController extends Controller
 {
