@@ -16,14 +16,14 @@ class CartController extends Controller
     {
         $this->cartService = $cartService;
     }
-    public function show()
+    public function showCart()
     {
         $cart = $this->cartService->showCart();
 
         return view('shop.cart.cart', ['cart' => $cart]);
     }
 
-    public function add(Request $request)
+    public function addToCart(Request $request)
     {
         $quantity = $request->get('quantity');
         $productId = $request->get('product_id');
@@ -32,13 +32,13 @@ class CartController extends Controller
 
     }
 
-    public function destroy(Request $request)
+    public function destroyInCart(Request $request)
     {
         $productId = $request->get('id');
         $this->cartService->destroy($productId);
     }
 
-    public function edit(Request $request)
+    public function editCart(Request $request)
     {
         $quantity = $request->get('quantity');
         $productId = $request->get('product_id');
