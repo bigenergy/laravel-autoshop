@@ -13,8 +13,7 @@ class CreateStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('status', function (Blueprint $table) {
-            //$table->increments('id');
+        Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
             //$table->foreign('id')->references('status_id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
@@ -30,6 +29,6 @@ class CreateStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('statuses');
     }
 }
