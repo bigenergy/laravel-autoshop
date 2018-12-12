@@ -3,10 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Order\OrderService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
+    /**
+     * @var OrderService
+     */
+    private $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->middleware('admin');
+        $this->orderService = $orderService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +27,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orderShowList = $this->orderService->orderRepository->getPaginated(['status']);
+
+        return view('admin.order.list', ['orderShowList' => $orderShowList]);
     }
 
     /**

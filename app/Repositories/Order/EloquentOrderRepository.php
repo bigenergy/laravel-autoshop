@@ -2,24 +2,25 @@
 
 namespace App\Repositories\Order;
 
+use App\Models\Order;
 use App\Models\Status;
 use App\Repositories\AbstractRepository;
 
 class EloquentOrderRepository extends AbstractRepository implements OrderRepository
 {
     /**
-     * @var Status
+     * @var Order
      */
     private $model;
 
     /**
      * EloquentProductRepository constructor.
-     * @param Status $status
+     * @param Order $order
      */
-    public function __construct(Status $status)
+    public function __construct(Order $order)
     {
-        $this->model = $status;
-        parent::__construct($status);
+        $this->model = $order;
+        parent::__construct($order);
     }
 
     /**

@@ -4,9 +4,7 @@ namespace App\Services\Order;
 
 
 use App\Models\Order;
-use App\Models\Status;
 use App\Repositories\Order\OrderRepository;
-use App\Repositories\Status\StatusRepository;
 
 class OrderService
 {
@@ -15,14 +13,11 @@ class OrderService
      */
     private $orderModel;
 
-    /**
-     * @var StatusRepository
-     */
-    public $statusRepository;
+
     /**
      * @var OrderRepository
      */
-    private $orderRepository;
+    public $orderRepository;
 
     /**
      * ProductService constructor.
