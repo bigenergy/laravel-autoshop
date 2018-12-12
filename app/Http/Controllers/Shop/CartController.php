@@ -89,6 +89,7 @@ class CartController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function writeDetail(Request $request)
     {
