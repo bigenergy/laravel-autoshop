@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
+            $table->string('number');
             $table->integer('status_id')->unsigned()->index()->nullable();
             $table->foreign('status_id')->references('id')->on('status')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->string('name');

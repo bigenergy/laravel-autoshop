@@ -115,10 +115,13 @@ class CartService
      * Write user information
      *
      * @param array $request
+     * @throws \Exception
      */
     public function write(array $request)
     {
         $createdProduct = $this->orderModel->fill($request);
+        $createdProduct->save();
+        $createdProduct->fill(['number' => uniqid()]);
         $createdProduct->save();
 
         $cart = $this->showCart();
