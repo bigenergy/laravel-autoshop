@@ -67,6 +67,13 @@ class CartService
         return $cart->cartItems()->with('product')->get();
     }
 
+
+    /**
+     * Check if product in the cart
+     *
+     * @param $products
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function checkInCart($products)
     {
         $cart = $this->cartManager->getCart();
@@ -86,7 +93,9 @@ class CartService
 
     /**
      * Edit quantity form cart
-     *
+     * @param int $productId
+     * @param int $quantity
+     * @return bool
      */
     public function edit(int $productId, int $quantity)
     {
