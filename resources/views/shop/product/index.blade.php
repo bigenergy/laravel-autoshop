@@ -47,7 +47,7 @@
                             <input type="number" class="product-count form-control" min="1" value="1">
                         </div>
                         <br>
-                        @if($check)
+                        @if(count($check))
                             <a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
                         @else
                             <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>

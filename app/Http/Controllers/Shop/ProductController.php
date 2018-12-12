@@ -50,26 +50,13 @@ class ProductController extends Controller
     {
         $products = $this->productService->repository->getBySlug($productSlug);
 
-        /**
-         * GOVNOCODE START
-         * TODO refactor
-         */
-
         foreach ($products as $product) {
             $checkProductInCart = $product->id;
         }
 
-        $check = CartItem::where('product_id', '=', $checkProductInCart)->get();
+        $check = $this->cartService->checkInCart($checkProductInCart);
 
-        if (!$check->isEmpty()) {
-            $checkCart = $check->first();
-        }
-
-        /**
-         * GOVNOCODE END
-         */
-
-        return view('shop.product.index', ['products' => $products, 'check' => $checkCart ?? null]);
+        return view('shop.product.index', ['products' => $products, 'check' => $check]);
     }
 
 }

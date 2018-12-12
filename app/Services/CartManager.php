@@ -105,5 +105,4 @@ class CartManager
         $productToDelete->delete();
     }
 
-
 }

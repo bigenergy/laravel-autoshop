@@ -65,7 +65,13 @@ class CartService
         $cart = $this->cartManager->getCart();
 
         return $cart->cartItems()->with('product')->get();
+    }
 
+    public function checkInCart($products)
+    {
+        $cart = $this->cartManager->getCart();
+
+        return $cart->cartItems()->with('product')->where('product_id', '=', $products)->get();
     }
 
     /**
@@ -115,4 +121,5 @@ class CartService
         }
         // TODO: Очистить корзину юзера при успешн. заполнении
     }
+
 }
