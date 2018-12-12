@@ -48,7 +48,14 @@ class CartController extends Controller
 
     public function showDetail()
     {
-        return view('shop.cart.cart_detail');
+        $cart = $this->cartService->showCart();
+
+        if(count($cart)) {
+            return view('shop.cart.cart_detail');
+        }
+
+        return redirect()->route('shop.main');
+
     }
 
     public function writeDetail(Request $request)
