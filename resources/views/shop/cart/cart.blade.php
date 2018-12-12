@@ -58,7 +58,7 @@
                 <!-- END PRODUCT -->
             </div>
             @if(count($cart))
-                <div class="card-footer">
+                <div class="card-footer refresh-after-ajax">
                     <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
                         <div class="row">
                             <div class="col-8">
