@@ -23,6 +23,8 @@ Route::resource('/admin/category', 'Admin\CategoryController');
 Route::resource('/admin/brand', 'Admin\BrandController');
 Route::resource('/admin/product', 'Admin\ProductController');
 Route::resource('/admin/order', 'Admin\OrderController');
+Route::resource('/admin/status', 'Admin\StatusController');
+
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');
 
 //
