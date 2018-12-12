@@ -12,7 +12,7 @@
             @forelse($statusShowList as $status)
                 <tr>
                     <td>{{ $status->id }}</td>
-                    <td>{{ $status->name }}</td>
+                    <td><span class="label label-{{ $status->color }}">{{ $status->name }}</span></td>
                     <td>{{ $status->sort }}</td>
                     <td>@include('admin.status.list_actions')</td>
                 </tr>

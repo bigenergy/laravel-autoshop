@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->number }}</td>
-                    <td><span class="label label-primary">{{ $order->status->name }}</span></td>
+                    <td><span class="label label-{{ $order->status->color }}">{{ $order->status->name }}</span></td>
                     <td>{{ $order->name }} {{ $order->surname }} {{ $order->patronymic }}</td>
                     <td>{{ $order->tel }}</td>
                     <td>@include('admin.order.list_actions')</td>
