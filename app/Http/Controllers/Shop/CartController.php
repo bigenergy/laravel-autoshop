@@ -16,6 +16,12 @@ class CartController extends Controller
     {
         $this->cartService = $cartService;
     }
+
+    /**
+     * Show cart page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCart()
     {
         $cart = $this->cartService->showCart();
@@ -23,6 +29,11 @@ class CartController extends Controller
         return view('shop.cart.cart', ['cart' => $cart]);
     }
 
+    /**
+     * Add product to cart
+     *
+     * @param Request $request
+     */
     public function addToCart(Request $request)
     {
         $quantity = $request->get('quantity');
@@ -32,12 +43,22 @@ class CartController extends Controller
 
     }
 
+    /**
+     * Delete product from cart
+     *
+     * @param Request $request
+     */
     public function destroyInCart(Request $request)
     {
         $productId = $request->get('id');
         $this->cartService->destroy($productId);
     }
 
+    /**
+     * Edit product in cart (change quantity)
+     *
+     * @param Request $request
+     */
     public function editCart(Request $request)
     {
         $quantity = $request->get('quantity');
@@ -46,6 +67,11 @@ class CartController extends Controller
         $this->cartService->add($productId, $quantity);
     }
 
+    /**
+     * Show cart detail, filling in user data or address for delivery
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function showDetail()
     {
         $cart = $this->cartService->showCart();
@@ -58,6 +84,12 @@ class CartController extends Controller
 
     }
 
+    /**
+     * Write user details from database
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function writeDetail(Request $request)
     {
         $inputs = $request->all();
