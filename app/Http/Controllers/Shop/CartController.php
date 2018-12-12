@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Models\CartItem;
 use Illuminate\Http\Request;
-use App\Services\CartService;
+use App\Services\Cart\CartService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 

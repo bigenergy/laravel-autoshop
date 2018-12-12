@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Repositories\Cart\CartRepository;
-use App\Services\CartManager;
-use App\Services\CartService;
-use App\Services\ProductService;
+use App\Services\Cart\CartManager;
+use App\Services\Cart\CartService;
+use App\Services\Product\ProductService;
 
 class ProductController extends Controller
 {

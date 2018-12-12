@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Brand;
 
 
 use App\Models\Brand;
-use App\Models\Product;
 use App\Repositories\Brand\BrandRepository;
 
 class BrandService

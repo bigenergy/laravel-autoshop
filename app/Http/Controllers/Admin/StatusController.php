@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StatusCreateRequest;
 use App\Http\Requests\StatusEditRequest;
-use App\Services\StatusService;
+use App\Services\Status\StatusService;
 
 class StatusController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Services\CategoryService;
+use App\Services\Category\CategoryService;
 
 class CategoryController extends Controller
 {

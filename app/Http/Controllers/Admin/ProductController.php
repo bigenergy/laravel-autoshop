@@ -6,7 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
-use App\Services\ProductService;
+use App\Services\Product\ProductService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{ ProductEditRequest, ProductCreateRequest };
 
