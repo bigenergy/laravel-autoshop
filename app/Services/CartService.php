@@ -121,7 +121,7 @@ class CartService
     {
         $createdProduct = $this->orderModel->fill($request);
         $createdProduct->save();
-        $createdProduct->fill(['number' => uniqid()]);
+        $createdProduct->fill(['number' => uniqid() . time()]);
         $createdProduct->save();
 
         $cart = $this->showCart();
