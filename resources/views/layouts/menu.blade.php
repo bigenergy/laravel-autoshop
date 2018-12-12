@@ -61,8 +61,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('brand.index') }}"><i class="fa fa-list-ol"></i> Список</a></li>
-                    <li><a href="{{ route('brand.create') }}"><i class="fa fa-plus-circle"></i> Создать</a></li>
+                    <li><a href="{{ route('status.index') }}"><i class="fa fa-list-ol"></i> Список</a></li>
+                    <li><a href="{{ route('status.create') }}"><i class="fa fa-plus-circle"></i> Создать</a></li>
                 </ul>
             </li>
         </ul>

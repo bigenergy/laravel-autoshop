@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\BrandCreateRequest;
+use App\Http\Requests\BrandEditRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StatusCreateRequest;
+use App\Http\Requests\StatusEditRequest;
+use App\Services\BrandService;
+use App\Services\StatusService;
 
 class StatusController extends Controller
 {
+
+    private $statusService;
+
+    /**
+     * StatusController constructor.
+     * @param StatusService $statusService
+     */
+    public function __construct(StatusService $statusService)
+    {
+        $this->middleware('admin');
+        $this->statusService = $statusService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $statusShowList = $this->statusService->statusRepository->getPaginated();
+
+        return view('admin.status.list', ['statusShowList' => $statusShowList]);
     }
 
     /**
@@ -24,30 +44,23 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.status.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StatusCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StatusCreateRequest $request)
     {
-        //
+        $attributes = $request->all();
+        $this->statusService->add($attributes);
+
+        return redirect()->route('status.create')->with('status', 'Статус добавлен!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,19 +70,24 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $statusForEdit = $this->statusService->statusRepository->getById($id);
+
+        return view('admin.status.edit', compact('statusForEdit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param BrandEditRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StatusEditRequest $request, $id)
     {
-        //
+        $attributes = $request->all();
+        $this->statusService->update($id, $attributes);
+
+        return redirect()->route('status.edit', $id)->with('status', 'Статус обновлен!');
     }
 
     /**
@@ -80,6 +98,8 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->statusService->destroy($id);
+
+        return redirect()->route('status.index')->with('status', 'Статус удален!');
     }
 }

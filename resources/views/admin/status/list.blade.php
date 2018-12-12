@@ -18,7 +18,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет брендов для отображения, <a href="{{ route('brand.create') }}">создать новый</a> </h3></td>
+                    <td colspan="4" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет статусов для отображения, <a href="{{ route('status.create') }}">создать новый</a> </h3></td>
                 </tr>
             @endforelse
         </table>

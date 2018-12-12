@@ -29,10 +29,29 @@ class StatusService
         $this->statusRepository = $statusRepository;
     }
 
-    /**
-     * Adds new product with relations
-     * @param array $attributes
-     * @return bool
-     */
+    public function add(array $attributes): bool
+    {
+        $createdStatus = $this->statusModel->fill($attributes);
+        $createdStatus->save();
 
+        return true;
+    }
+
+    public function update(int $id, array $attributes): bool
+    {
+        /** @var Status $updatedStatus */
+        $updatedStatus = $this->statusModel->find($id);
+        $updatedStatus->fill($attributes);
+        $updatedStatus->save();
+
+        return true;
+    }
+
+    public function destroy(int $id): bool
+    {
+        $statusToDelete = $this->statusModel->findOrFail($id);
+        $statusToDelete->delete();
+
+        return true;
+    }
 }
