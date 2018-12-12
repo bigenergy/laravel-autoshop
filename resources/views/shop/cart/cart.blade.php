@@ -46,11 +46,18 @@
                     </div>
                 @empty
                     <div class="refresh-after-ajax">
-                        <div class="alert alert-danger">Ваша корзина пуста</div>
+                        <div class="jumbotron">
+                            <h1>Корзина пуста</h1>
+                            <p class="lead">В вашей корзине пусто :(</p>
+                            <hr class="my-4">
+                            <p>Скорее за покупками!</p>
+                            <a class="btn btn-primary" href="/" role="button">Каталог товаров</a>
+                        </div>
                     </div>
                 @endforelse
                 <!-- END PRODUCT -->
             </div>
+            @if(count($cart))
                 <div class="card-footer">
                     <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
                         <div class="row">
@@ -72,6 +79,7 @@
                         </div>
                     </div>
                 </div>
+            @endif
         </div>
     </div>
 
