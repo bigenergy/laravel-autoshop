@@ -34,12 +34,14 @@ Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.
 
 // SHOPPING CART
 Route::get('/cart', 'Shop\CartController@showCart')->name('shop.cart');
-Route::get('/cart/detail', 'Shop\CartController@showDetail')->name('shop.cart.detail');
-Route::get('/cart/complete', 'Shop\CartController@showComplete')->name('shop.cart.complete');
+
+Route::get('/order/detail', 'Shop\OrderController@showDetail')->name('shop.order.detail');
+Route::get('/order/complete', 'Shop\OrderController@showComplete')->name('shop.order.complete');
 
 Route::post('/cart/add', 'Shop\CartController@addToCart')->name('shop.cart.add');
 Route::post('/cart/destroy', 'Shop\CartController@destroyInCart')->name('shop.cart.destroy');
 Route::post('/cart/edit', 'Shop\CartController@editCart')->name('shop.cart.edit');
-Route::post('/cart/detail/write', 'Shop\CartController@writeDetail')->name('shop.cart.detail.write');
+
+Route::post('/order/detail/write', 'Shop\OrderController@writeDetail')->name('shop.order.detail.write');
 
 

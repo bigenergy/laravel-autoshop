@@ -14,11 +14,11 @@
             </div>
             <div class="card-body">
                 {!! Form::open([
-                     'route' => 'shop.cart.detail.write',
+                     'route' => 'shop.order.detail.write',
                      'method' => 'POST'
                    ]
                 ) !!}
-                    @include('shop.cart.cart_detail_form')
+                    @include('shop.order.order_detail_form')
             </div>
             <div class="card-footer">
                 <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">

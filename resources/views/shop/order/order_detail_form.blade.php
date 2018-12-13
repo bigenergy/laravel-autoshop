@@ -21,13 +21,13 @@
     <div class="form-group row">
         {{ Form::label('email', 'Email', ['class' => 'col-sm-2 col-form-label']) }}
         <div class="col-sm-10">
-            {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'На него будет прислана вся информация о заказе', 'required']) }}
+            {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'На него будет прислана вся информация о заказе', 'required']) }}
         </div>
     </div>
     <div class="form-group row">
         {{ Form::label('tel', 'Телефон', ['class' => 'col-sm-2 col-form-label']) }}
         <div class="col-sm-10">
-            {{ Form::text('tel', null, ['class' => 'form-control', 'placeholder' => '+7', 'required']) }}
+            {{ Form::number('tel', null, ['class' => 'form-control', 'placeholder' => '+7', 'required']) }}
         </div>
     </div>
     <h5><i class="fas fa-truck"></i> Доставка</h5>
@@ -49,10 +49,10 @@
         </div>
         <div class="form-group col-md-4">
             {{ Form::label('house', 'Дом') }}
-            {{ Form::text('house', null, ['class' => 'form-control', 'placeholder' => '1', 'required']) }}
+            {{ Form::number('house', null, ['class' => 'form-control', 'placeholder' => '1', 'required']) }}
         </div>
         <div class="form-group col-md-2">
             {{ Form::label('apartment', 'Квартира') }}
-            {{ Form::text('apartment', null, ['class' => 'form-control', 'placeholder' => '1', 'required']) }}
+            {{ Form::number('apartment', null, ['class' => 'form-control', 'placeholder' => '1', 'required']) }}
         </div>
     </div>

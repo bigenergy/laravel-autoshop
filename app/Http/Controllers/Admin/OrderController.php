@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
+use App\Models\Status;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Status\StatusRepository;
 use App\Services\Order\OrderService;
 use Illuminate\Http\Request;
 
@@ -13,11 +17,21 @@ class OrderController extends Controller
      * @var OrderService
      */
     private $orderService;
+    /**
+     * @var OrderRepository
+     */
+    private $orderRepository;
+    /**
+     * @var StatusRepository
+     */
+    private $statusRepository;
 
-    public function __construct(OrderService $orderService)
+    public function __construct(OrderService $orderService, OrderRepository $orderRepository, StatusRepository $statusRepository)
     {
         $this->middleware('admin');
         $this->orderService = $orderService;
+        $this->orderRepository = $orderRepository;
+        $this->statusRepository = $statusRepository;
     }
 
     /**
@@ -39,7 +53,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -72,7 +86,15 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orderForEdit = $this->orderService->orderRepository->getById($id);
+        $status = Status::all();
+        $orderItem = OrderItem::all();
+
+        return view('admin.order.edit', [
+            'orderForEdit' => $orderForEdit,
+            'status' => $status,
+            'orderItem' => $orderItem
+        ]);
     }
 
     /**
