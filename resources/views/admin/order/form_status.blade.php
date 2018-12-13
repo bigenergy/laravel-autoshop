@@ -9,6 +9,6 @@
 <div class="form-group row">
     {{ Form::label('status_id', 'Изменить статус', ['class' => 'col-sm-2 col-form-label']) }}
     <div class="col-sm-10">
-        {{ Form::select('status_id', $status->pluck('name', 'id'), null, array('class' => 'form-control', 'required')) }}
+        {{ Form::select('status_id', $orderForEdit->status->pluck('name', 'id'), null, array('class' => 'form-control', 'required')) }}
     </div>
 </div>
