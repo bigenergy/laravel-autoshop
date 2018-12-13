@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Models\CartItem;
 use Illuminate\Http\Request;
 use App\Services\Cart\CartService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cookie;
 
 class CartController extends Controller
 {
@@ -65,42 +63,5 @@ class CartController extends Controller
         $productId = $request->get('product_id');
 
         $this->cartService->add($productId, $quantity);
-    }
-
-    /**
-     * Show cart detail, filling in user data or address for delivery
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
-     */
-    public function showDetail()
-    {
-        $cart = $this->cartService->showCart();
-
-        if(count($cart)) {
-            return view('shop.cart.cart_detail');
-        }
-
-        return redirect()->route('shop.main');
-
-    }
-
-    /**
-     * Write user details from database
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function writeDetail(Request $request)
-    {
-        $inputs = $request->all();
-        $this->cartService->write($inputs);
-
-        return redirect()->route('shop.cart.complete');
-    }
-
-    public function showComplete()
-    {
-        return view('shop.cart.cart_complete');
     }
 }
