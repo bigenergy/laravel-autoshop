@@ -131,7 +131,11 @@ class CartService
         $cart = $this->showCart();
 
         foreach ($cart as $item) {
-            $createdProduct->orderItems()->create()->fill([
+            $createdProduct->orderItems()->create([
+                'price' => $item->price,
+                'quantity' => $item->quantity,
+                'total_price' => $item->price * $item->quantity
+            ])->fill([
                 'product_id' => $item->product->id
             ])->save();
         }
