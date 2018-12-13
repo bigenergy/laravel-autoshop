@@ -50,7 +50,7 @@
         </div>
 
         <!-- nav-tabs-custom -->
-
+    </div>
     <!-- /.row -->
     <!-- END CUSTOM TABS -->
 
