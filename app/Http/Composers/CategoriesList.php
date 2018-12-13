@@ -2,9 +2,8 @@
 
 namespace App\Http\View\Composers;
 
-use App\Repositories\Brand\BrandRepository;
-use App\Repositories\Category\CategoryRepository;
 use Illuminate\View\View;
+use App\Repositories\Category\CategoryRepository;
 
 class CategoriesList
 {
@@ -13,20 +12,14 @@ class CategoriesList
      */
     private $categoryRepository;
 
-    /**
-     * @var BrandRepository
-     */
-    private $brandRepository;
 
     /**
      * CategoriesList constructor.
      * @param CategoryRepository $categoryRepository
-     * @param BrandRepository $brandRepository
      */
-    public function __construct(CategoryRepository $categoryRepository, BrandRepository $brandRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-       // $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -37,8 +30,6 @@ class CategoriesList
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categoryRepository->getPaginated());
-
-       // $view->with('brands', $this->brandRepository->getAll());
+        $view->with('categoryShowList', $this->categoryRepository->getPaginated());
     }
 }
