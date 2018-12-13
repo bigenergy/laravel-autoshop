@@ -5,6 +5,11 @@ namespace App\Models;
 use App\Http\Traits\HasImages;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Product
+ * @package App\Models
+ * @property int $id
+ */
 class Product extends Model
 {
     use HasImages;
