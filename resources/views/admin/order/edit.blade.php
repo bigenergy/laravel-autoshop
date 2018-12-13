@@ -8,11 +8,11 @@
     ]) !!}
 
     <div class="nav-tabs-custom">
-        <div class="alert alert-warning"><b>Заказ #{{ $orderForEdit->number }}</b></div>
+        <div class="alert alert-{{ $orderForEdit->status->color }}"><b>Заказ #{{ $orderForEdit->number }}</b></div>
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab_1" data-toggle="tab">Личные данные</a></li>
             <li><a href="#tab_2" data-toggle="tab">Доставка</a></li>
-            <li><a href="#tab_3" data-toggle="tab">Статус</a></li>
+            <li><a href="#tab_3" data-toggle="tab">Статус  <span class="label label-{{ $orderForEdit->status->color }}">{{ $orderForEdit->status->name }}</span></a></li>
             <li><a href="#tab_4" data-toggle="tab">Содержимое заказа</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -54,12 +54,13 @@
     <!-- /.row -->
     <!-- END CUSTOM TABS -->
 
-
-
     <div class="box-footer">
         <button type="submit" class="btn btn-info pull-right">Сохранить</button>
     </div>
     {!! Form::close() !!}
+
+    @include('admin.order.form_add_products')
+
 @endsection
 
 
