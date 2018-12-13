@@ -41,4 +41,9 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
     {
         return $this->model->with($relations)->paginate($perPage);
     }
+
+    public function getById2($relations = [], int $id)
+    {
+        return $this->model->with($relations)->find($id);
+    }
 }
