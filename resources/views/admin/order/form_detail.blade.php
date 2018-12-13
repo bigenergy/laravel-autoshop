@@ -21,13 +21,13 @@
     <div class="form-group row">
         {{ Form::label('email', 'Email', ['class' => 'col-sm-2 col-form-label']) }}
         <div class="col-sm-10">
-            {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'На него будет прислана вся информация о заказе', 'required']) }}
+            {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'На него будет прислана вся информация о заказе', 'required']) }}
         </div>
     </div>
     <div class="form-group row">
         {{ Form::label('tel', 'Телефон', ['class' => 'col-sm-2 col-form-label']) }}
         <div class="col-sm-10">
-            {{ Form::text('tel', null, ['class' => 'form-control', 'placeholder' => '+7', 'required']) }}
+            {{ Form::number('tel', null, ['class' => 'form-control', 'placeholder' => '+7', 'required']) }}
         </div>
     </div>
 
