@@ -17,7 +17,8 @@ class Order extends Model
         'city',
         'street',
         'house',
-        'apartment'
+        'apartment',
+        'email'
     ];
 
     /**
