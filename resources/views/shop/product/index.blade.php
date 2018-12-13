@@ -1,6 +1,5 @@
 @extends('shop.main')
 @section('content')
-    @forelse($products as $product)
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -47,7 +46,7 @@
                             <input type="number" class="product-count form-control" min="1" value="1">
                         </div>
                         <br>
-                        @if(count($check))
+                        @if($isInCart)
                             <a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
                         @else
                             <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
@@ -56,17 +55,6 @@
                 </div>
             </div>
         </div>
-
-    @empty
-        <div class="container">
-            <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">Произошла ошибка</h4>
-                <p>Данный товар не найден.</p>
-                <hr>
-                <p class="mb-0">Возможно он был перенесен или убран с продажи.</p>
-            </div>
-        </div>
-    @endforelse
 
     @include('shop.product.modal')
 

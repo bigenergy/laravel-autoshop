@@ -41,7 +41,6 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
         return $this->model->with($relations)->paginate($perPage);
     }
 
-
     /**
      * Get all products from selected category
      * @param $category
@@ -53,5 +52,14 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
         return $this->model->whereHas('categories', function($q) use ($category) {
             $q->where('category_id', '=', $category->id);
         })->paginate($perPage);
+    }
+
+    /**
+     * @param string $slug
+     * @return mixed
+     */
+    public function getBySlug(string $slug)
+    {
+        return $this->model->where('slug', '=', $slug)->first();
     }
 }

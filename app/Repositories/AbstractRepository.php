@@ -24,8 +24,5 @@ abstract class AbstractRepository
         return $this->model->find($id);
     }
 
-    public function getBySlug(string $slug)
-    {
-        return $this->model->where('slug', '=', $slug)->get();
-    }
+
 }

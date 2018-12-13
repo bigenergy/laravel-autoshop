@@ -3,6 +3,7 @@
 namespace App\Services\Cart;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Repositories\Product\ProductRepository;
 
 class CartService
@@ -71,14 +72,17 @@ class CartService
     /**
      * Check if product in the cart
      *
-     * @param $products
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param Product $product
+     * @return bool
      */
-    public function checkInCart($products)
+    public function checkInCart(Product $product)
     {
         $cart = $this->cartManager->getCart();
 
-        return $cart->cartItems()->with('product')->where('product_id', '=', $products)->get();
+        return $cart
+            ->cartItems()
+            ->where('product_id', '=', $product->id)
+            ->exists();
     }
 
     /**
