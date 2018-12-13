@@ -10,10 +10,11 @@ interface OrderRepository
     public function getAll();
 
     /**
+     * @param array $relations
      * @param int $id
      * @return mixed
      */
-    public function getById(int $id);
+    public function getById2($relations = [], int $id);
 
     /**
      * @param array $relations

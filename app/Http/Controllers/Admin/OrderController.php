@@ -8,6 +8,7 @@ use App\Models\Status;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\Status\StatusRepository;
 use App\Services\Order\OrderService;
+use App\Services\Product\ProductService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -25,13 +26,18 @@ class OrderController extends Controller
      * @var StatusRepository
      */
     private $statusRepository;
+    /**
+     * @var ProductService
+     */
+    private $productService;
 
-    public function __construct(OrderService $orderService, OrderRepository $orderRepository, StatusRepository $statusRepository)
+    public function __construct(OrderService $orderService, OrderRepository $orderRepository, StatusRepository $statusRepository, ProductService $productService)
     {
         $this->middleware('admin');
         $this->orderService = $orderService;
         $this->orderRepository = $orderRepository;
         $this->statusRepository = $statusRepository;
+        $this->productService = $productService;
     }
 
     /**
@@ -86,14 +92,17 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $orderForEdit = $this->orderService->orderRepository->getById($id);
+        $orderForEdit = $this->orderService->orderRepository->getById2('orderItems',$id);
+        $products = $this->productService->repository->getPaginated(['categories', 'brand']);
         $status = Status::all();
-        $orderItem = OrderItem::all();
+        //$orderItem = OrderItem::all();
+       // $orderItem = $this->orderService->orderRepository->getPaginated('orderItems');
 
         return view('admin.order.edit', [
             'orderForEdit' => $orderForEdit,
             'status' => $status,
-            'orderItem' => $orderItem
+            'products' => $products
+            //'orderItem' => $orderItem
         ]);
     }
 
@@ -106,7 +115,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = $request->all();
+        $this->orderService->update($id, $attributes);
+
+        return redirect()->route('order.edit', $id)->with('status', 'Заказ сохранен!');
     }
 
     /**
