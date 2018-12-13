@@ -18,10 +18,7 @@ class ProductController extends Controller
      * @var CartService
      */
     private $cartService;
-    /**
-     * @var CartRepository
-     */
-    private $cartRepository;
+
     /**
      * @var CartRepository
      */
@@ -36,27 +33,34 @@ class ProductController extends Controller
      * ProductController constructor.
      * @param ProductService $productService
      * @param CartService $cartService
+     * @param CartManager $cartManager
      */
-    public function __construct(ProductService $productService, CartService $cartService, CartManager $cartManager)
-    {
+    public function __construct(
+        ProductService $productService,
+        CartService $cartService,
+        CartManager $cartManager
+    ) {
         $this->productService = $productService;
-
         $this->cartService = $cartService;
-
         $this->cartManager = $cartManager;
     }
 
-    public function show($productSlug)
+    /**
+     * Show detail product
+     * @param string $productSlug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(string $productSlug)
     {
-        $products = $this->productService->repository->getBySlug($productSlug);
+        $product = $this->productService->repository->getBySlug($productSlug);
 
-        foreach ($products as $product) {
-            $checkProductInCart = $product->id;
+        if (is_null($product)) {
+            abort(404, "product not found");
         }
 
-        $check = $this->cartService->checkInCart($checkProductInCart);
+        $isInCart = $this->cartService->checkInCart($product);
 
-        return view('shop.product.index', ['products' => $products, 'check' => $check]);
+        return view('shop.product.index', compact('product', 'isInCart'));
     }
 
 }

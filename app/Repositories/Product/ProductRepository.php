@@ -2,26 +2,10 @@
 
 namespace App\Repositories\Product;
 
-interface ProductRepository
+use App\Repositories\Repository;
+
+interface ProductRepository extends Repository
 {
-    /**
-     * @return mixed
-     */
-    public function getAll();
-
-    /**
-     * @param int $id
-     * @return mixed
-     */
-    public function getById(int $id);
-
-    /**
-     * @param array $relations
-     * @param int $perPage
-     * @return mixed
-     */
-    public function getPaginated($relations =[], $perPage = 15);
-
     /**
      * Get all products from selected category
      * @param $category
@@ -29,5 +13,9 @@ interface ProductRepository
      */
     public function getByCategory($category);
 
+    /**
+     * @param string $slug
+     * @return mixed
+     */
     public function getBySlug(string $slug);
 }
