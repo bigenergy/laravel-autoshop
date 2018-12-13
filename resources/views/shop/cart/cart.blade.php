@@ -74,7 +74,7 @@
                                 <p class="refresh-price"><b class="text-success">Итого:</b> <b>{{$cart->sum('quantity')}}</b> товаров на сумму <b>{{$cart->sum('total_price')}}</b> <i class="fas fa-dollar-sign"></i></b></p>
                             </div>
                             <div class="col-4">
-                                <a href="{{ route('shop.cart.detail') }}" class="btn btn-outline-success btn-block">Далее</a>
+                                <a href="{{ route('shop.order.detail') }}" class="btn btn-outline-success btn-block">Далее</a>
                             </div>
                         </div>
                     </div>
