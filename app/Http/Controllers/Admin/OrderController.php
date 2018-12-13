@@ -76,10 +76,11 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param  int $id
+     * @return void
      */
-    public function show($id)
+    public function addProduct(Request $request, $id)
     {
         //
     }
@@ -92,18 +93,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $orderForEdit = $this->orderService->orderRepository->getById2('orderItems',$id);
+        $orderForEdit = $this->orderService->orderRepository->getById2(['orderItems'],$id);
         $products = $this->productService->repository->getPaginated(['categories', 'brand']);
-        $status = Status::all();
-        //$orderItem = OrderItem::all();
-       // $orderItem = $this->orderService->orderRepository->getPaginated('orderItems');
 
-        return view('admin.order.edit', [
-            'orderForEdit' => $orderForEdit,
-            'status' => $status,
-            'products' => $products
-            //'orderItem' => $orderItem
-        ]);
+        return view('admin.order.edit',compact('orderForEdit', 'products'));
     }
 
     /**
