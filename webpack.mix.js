@@ -14,24 +14,28 @@ const mix = require('laravel-mix');
 /* FOR ADMIN PANEL */
 
 mix.styles([
-    'resources/assets/css/bootstrap.min.css',
-    'resources/assets/css/ionicons.min.css',
-    'resources/assets/css/jquery-jvectormap.css',
-    'resources/assets/css/AdminLTE.min.css',
-    'resources/assets/css/_all-skins.min.css',
-    'resources/assets/css/jquery-confirm.min.css',
+    'resources/assets/admin/css/bootstrap.min.css',
+    'resources/assets/admin/css/ionicons.min.css',
+    'resources/assets/admin/css/jquery-jvectormap.css',
+    'resources/assets/admin/css/AdminLTE.min.css',
+    'resources/assets/admin/css/_all-skins.min.css',
+    'resources/assets/admin/css/jquery-confirm.min.css',
 ], 'public/assets/css/all.css');
 
+mix.js([
+    'resources/assets/admin/js/common.js',
+], 'public/assets/admin/js/scripts.js');
+
 mix.scripts([
-    'resources/assets/js/jquery.min.js',
-    'resources/assets/js/bootstrap.min.js',
-    'resources/assets/js/fastclick.js',
-    'resources/assets/js/adminlte.min.js',
-    'resources/assets/js/jquery.sparkline.min.js',
-    'resources/assets/js/jquery.slimscroll.min.js',
-    'resources/assets/js/jquery-confirm.min.js',
-    'resources/assets/js/images.js',
-], 'public/assets/js/all.js');
+    'resources/assets/admin/vendor/js/jquery.min.js',
+    'resources/assets/admin/vendor/js/bootstrap.min.js',
+    'resources/assets/admin/vendor/js/fastclick.js',
+    'resources/assets/admin/vendor/js/adminlte.min.js',
+    'resources/assets/admin/vendor/js/jquery.sparkline.min.js',
+    'resources/assets/admin/vendor/js/jquery.slimscroll.min.js',
+    'resources/assets/admin/vendor/js/jquery-confirm.min.js',
+    'resources/assets/admin/js/images.js',
+], 'public/assets/admin/js/all.js');
 
 /* FOR SHOP CLIENT INTERFACE */
 

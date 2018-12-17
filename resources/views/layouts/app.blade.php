@@ -133,7 +133,9 @@
     </footer>
 </div>
 
-<script src="{{ asset('assets/js/all.js') }}"></script>
+<script src="{{ asset('assets/admin/js/scripts.js') }}"></script>
+<script src="{{ asset('assets/admin/js/all.js') }}"></script>
+
 
 </body>
 </html>

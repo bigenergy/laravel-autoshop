@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 $(document).on('click', '.image-delete__button', function() {
     var image = $(this);
     var imageId = image.data('id');
