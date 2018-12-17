@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Простой интернет магазин автомобилей - AutoShop">
     <meta name="author" content="AUzhegov">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -25,18 +25,12 @@
 
 <!-- Page Content -->
 <div class="container">
-
     <div class="row">
-
         <div class="col-lg-3">
-
             <h1 class="my-4">AutoShop</h1>
             @include('shop.layouts.categories')
-            {{--@include('shop.layouts.brands')--}}
-
         </div>
         <!-- /.col-lg-3 -->
-
         <div class="col-lg-9">
             <br>
             <div class="row">
@@ -52,10 +46,8 @@
             <br>
         </div>
         <!-- /.col-lg-9 -->
-
     </div>
     <!-- /.row -->
-
 </div>
 <!-- /.container -->
 <br>
@@ -64,7 +56,6 @@
         <span class="text-muted">AutoShop @ 2018</span>
     </div>
 </footer>
-
 <!-- JavaScript -->
 {{--<script src="{{ asset('assets/shop/js/all.js') }}"></script>--}}
 <script src="{{ asset('assets/shop/js/scripts.js') }}"></script>
