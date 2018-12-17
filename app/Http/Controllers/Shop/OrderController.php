@@ -43,9 +43,9 @@ class OrderController extends Controller
     public function writeDetail(Request $request)
     {
         $inputs = $request->all();
-        $this->cartService->write($inputs);
+        $writing = $this->cartService->write($inputs);
 
-        return redirect()->route('shop.order.complete');
+        return redirect()->route('shop.order.complete')->with('status', $writing);
     }
 
     public function showComplete()

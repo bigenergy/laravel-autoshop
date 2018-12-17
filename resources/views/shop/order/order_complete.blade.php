@@ -13,7 +13,15 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-body">
-                Спасибо за покупку! Ваш заказ принят в обработку, мы вышлем Вам письмо на указанный вами адрес электронной почты.
+                @if (session('status'))
+                    Номер вашего заказа: <b>{{ session('status') }}</b>
+                    <br>
+                    Спасибо за покупку! Ваш заказ принят в обработку, мы вышлем Вам письмо на указанный вами адрес электронной почты.
+                @else
+                    <div class="alert alert-danger" role="alert">
+                        <b>Ошибка!</b> Вы ничего не заказывали, чтобы завершить покупку.
+                    </div>
+                @endif
             </div>
             <div class="card-footer">
                 <div class="coupon col-md-12 col-sm-12 no-padding-left pull-left">
