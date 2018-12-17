@@ -31,10 +31,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-//        $categoryShowList = $this->categoryService->repository->getPaginated();
-//
-//        return view('admin.category.list', ['categoryShowList' => $categoryShowList]);
-        return view('admin.category.list');
+        $categoryShowList = $this->categoryService->repository->getPaginated();
+
+        return view('admin.category.list', compact('categoryShowList'));
     }
 
     /**
