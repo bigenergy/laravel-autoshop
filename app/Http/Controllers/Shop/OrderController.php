@@ -50,6 +50,10 @@ class OrderController extends Controller
 
     public function showComplete()
     {
-        return view('shop.order.order_complete');
+        if (session('status')) {
+            return view('shop.order.order_complete');
+        }
+
+        return redirect()->back();
     }
 }
