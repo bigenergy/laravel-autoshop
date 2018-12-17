@@ -70,9 +70,11 @@ class ProductService
     /**
      * @param int $id
      * @return bool
+     * @throws \Exception
      */
     public function destroy(int $id): bool
     {
+        /** @var Product $productToDelete */
         $productToDelete = $this->productModel->findOrFail($id);
         $productToDelete->delete();
         $productToDelete->categories()->detach($id);
