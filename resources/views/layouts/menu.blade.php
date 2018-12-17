@@ -52,7 +52,7 @@
                 </ul>
             </li>
             <li class="header">ЗАКАЗЫ</li>
-            <li><a href="/"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Заказы</span></a></li>
+            <li><a href="{{ route('order.index') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Заказы</span></a></li>
             <li class="active treeview">
                 <a href="#">
                     <i class="fa fa-list-ol" aria-hidden="true"></i> <span>Статусы заказов</span>
