@@ -119,13 +119,15 @@ class CartService
      * Write user information
      *
      * @param array $request
+     * @return string
      * @throws \Exception
      */
     public function write(array $request)
     {
+        $number = uniqid() . time();
         $createdProduct = $this->orderModel->fill($request);
         $createdProduct->save();
-        $createdProduct->fill(['number' => uniqid() . time()]);
+        $createdProduct->fill(['number' => $number]);
         $createdProduct->save();
 
         $cart = $this->showCart();
@@ -141,6 +143,8 @@ class CartService
         }
 
         $this->cartManager->deleteCart();
+
+        return $number;
     }
 
 }

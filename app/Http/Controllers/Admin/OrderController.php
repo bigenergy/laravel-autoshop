@@ -9,6 +9,7 @@ use App\Repositories\Order\OrderRepository;
 use App\Repositories\Status\StatusRepository;
 use App\Services\Order\OrderService;
 use App\Services\Product\ProductService;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -77,12 +78,15 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param Request $request
-     * @param  int $id
+     * @param $id
      * @return void
      */
     public function addProduct(Request $request, $id)
     {
-        //
+        $attributes = $request->all();
+        $this->orderService->add($id, $attributes);
+
+        return redirect()->route('order.edit', $id)->with('status', 'Заказ сохранен!');
     }
 
     /**

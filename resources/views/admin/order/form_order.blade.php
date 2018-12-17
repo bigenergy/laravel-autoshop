@@ -14,20 +14,20 @@
         <tr>
             <td>{{ $item->id }}</td>
             <td><a href="{{ route('shop.main') }}/product/{{ $item->product->slug }}" target="_blank">{{ $item->product->name }}</a></td>
-            <td>{{ $item->quantity }}</td>
+            <td><input type="number" class="quantity" name="quantity" id="quantity" min="1" value="{{ $item->quantity }}"></td>
             <td>{{ $item->price }} $</td>
             <td>{{ $item->total_price }} $</td>
             <td><button class="btn btn-danger btn-xs">Удалить из заказа</button></td>
         </tr>
-
     @empty
-        <tr>Заказ пуст.</tr>
+        <tr>
+            <td rowspan="6">Заказ пуст</td>
+        </tr>
     @endforelse
 </table>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-    Добавить к заказу
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+    Добавить товары к заказу
 </button>
 
 <hr>
 <h4>Итоговая стоимость заказа клиента: {{ $orderForEdit->orderItems->sum('total_price') }} $</h4>
-@include('admin.order.form_add_products')

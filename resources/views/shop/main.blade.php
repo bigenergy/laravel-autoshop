@@ -60,7 +60,5 @@
 {{--<script src="{{ asset('assets/shop/js/all.js') }}"></script>--}}
 <script src="{{ asset('assets/shop/js/scripts.js') }}"></script>
 
-
 </body>
-
 </html>

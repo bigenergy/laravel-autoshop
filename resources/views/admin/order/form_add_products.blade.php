@@ -6,6 +6,10 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Добавление товаров</h4>
             </div>
+            {!! Form::open([
+                  'route' => ['order.update.products', $orderForEdit->id],
+                  'method' => 'POST',
+              ]) !!}
             <div class="modal-body">
                 <p>Добавить товары к заказу #{{ $orderForEdit->number }}</p>
                 <hr>
@@ -15,8 +19,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Отмена</button>
-                <button type="button" class="btn btn-primary">Добавить выбранные товары к заказу</button>
+                <button type="submit" class="btn btn-primary">Добавить выбранные товары к заказу</button>
             </div>
+            {!! Form::close() !!}
         </div>
         <!-- /.modal-content -->
     </div>
