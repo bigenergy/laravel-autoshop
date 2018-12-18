@@ -46,6 +46,6 @@ Route::post('/cart/add', 'Shop\CartController@addToCart')->name('shop.cart.add')
 Route::post('/cart/destroy', 'Shop\CartController@destroyInCart')->name('shop.cart.destroy');
 Route::post('/cart/edit', 'Shop\CartController@editCart')->name('shop.cart.edit');
 
-Route::post('/order/detail/write', 'Shop\OrderController@writeDetail')->name('shop.order.detail.write');
+Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('shop.order.detail.write');
 
 

@@ -40,7 +40,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function writeDetail(Request $request)
+    public function storeDetail(Request $request)
     {
         $inputs = $request->all();
         $writing = $this->cartService->write($inputs);

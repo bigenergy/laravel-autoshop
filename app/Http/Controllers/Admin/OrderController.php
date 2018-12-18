@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Cart;
+use App\Services\Cart\CartService;
 use Illuminate\Http\Request;
 use App\Services\Order\OrderService;
 use App\Http\Controllers\Controller;
@@ -37,6 +39,10 @@ class OrderController extends Controller
      * @var OrderItemService
      */
     private $orderItemService;
+    /**
+     * @var CartService
+     */
+    private $cartService;
 
     /**
      * OrderController constructor.
@@ -45,13 +51,15 @@ class OrderController extends Controller
      * @param StatusRepository $statusRepository
      * @param OrderItemService $orderItemService
      * @param ProductService $productService
+     * @param CartService $cartService
      */
     public function __construct(
         OrderService $orderService,
         OrderRepository $orderRepository,
         StatusRepository $statusRepository,
         OrderItemService $orderItemService,
-        ProductService $productService
+        ProductService $productService,
+        CartService $cartService
     ) {
         $this->middleware('admin');
         $this->orderService = $orderService;
@@ -59,6 +67,7 @@ class OrderController extends Controller
         $this->statusRepository = $statusRepository;
         $this->productService = $productService;
         $this->orderItemService = $orderItemService;
+        $this->cartService = $cartService;
     }
 
     /**
@@ -80,18 +89,24 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $products = $this->productService->repository->getPaginated(['categories', 'brand']);
+        $statuses = $this->statusRepository->getPaginated();
+
+        return view('admin.order.create',compact('statuses', 'products'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return void
+     * @throws \Exception
      */
     public function store(Request $request)
     {
-        //
+        $this->cartService->write($request->all());
+
+        return view('admin.order.create');
     }
 
     /**
