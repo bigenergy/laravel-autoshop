@@ -104,7 +104,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $this->cartService->write($request->all());
+        $this->cartService->store($request->all());
 
         return view('admin.order.create');
     }

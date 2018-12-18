@@ -43,7 +43,7 @@ class OrderController extends Controller
     public function storeDetail(Request $request)
     {
         $inputs = $request->all();
-        $writing = $this->cartService->write($inputs);
+        $writing = $this->cartService->store($inputs);
 
         return redirect()->route('shop.order.complete')->with('status', $writing);
     }

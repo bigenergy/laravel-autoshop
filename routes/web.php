@@ -30,7 +30,6 @@ Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('im
 Route::post('admin/orders/get_info', 'Admin\OrderController@orderInfo');
 Route::post('admin/orders/destroy', 'Admin\OrderController@destroy');
 
-
 //
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
 Route::get('/categories/{slug}', 'Shop\CategoryController@show')->name('shop.category');

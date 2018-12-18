@@ -14,7 +14,7 @@
             <li><a href="#tab_3" data-toggle="tab">Статус заказа</a></li>
             <li><a href="#tab_4" data-toggle="tab">Содержимое заказа</a></li>
             <li class="pull-right">
-                <a class="btn btn-danger btn-xs" href="{{ route('order.index') }}" type="button">Отменить создание заказа</a>
+                <a class="btn btn-danger" href="{{ route('order.index') }}">Отменить создание заказа</a>
             </li>
         </ul>
         <div class="tab-content">

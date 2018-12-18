@@ -122,7 +122,7 @@ class CartService
      * @return string
      * @throws \Exception
      */
-    public function write(array $request)
+    public function store(array $request)
     {
         $number = uniqid() . time();
         $createdProduct = $this->orderModel->fill($request);
