@@ -80,7 +80,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -126,12 +126,13 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return bool
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $this->orderService->destroy($request->get('id'));
+        return redirect()->route('order.index')->with('status', 'Заказ удален');
     }
 
     /**

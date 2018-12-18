@@ -1,22 +1,31 @@
 let OrderDetail = (() => {
     const route = '/admin/orders/get_info';
+    const routeDestroy = '/admin/orders/destroy';
     const orderItemTr = $('.order_items_tr');
     const productsListSelect = $('#products_list_select');
     const modalApplyButton = $('#apply_selected_products');
     const orderItemsContainer = $('#order_items_container');
+    const totalPriceUpdate = $(".total_price-ajax-update");
+    const destroyOrderButton = $('.destroy_order');
 
     let init = () => {
         listenApplyProductsButton();
+        totalPriceUpdate.hide();
     };
 
     let listenApplyProductsButton = () => {
         modalApplyButton.click(function () {
             updateOrderInfo();
         });
+        destroyOrderButton.click(function () {
+            destroyOrder();
+        });
     };
 
     let updateOrderInfo = () => {
         let productsData = $.merge(currentProducts(), selectedProducts()).toArray();
+
+        totalPriceUpdate.show();
 
         $.post(route, {
             products: productsData
@@ -44,6 +53,21 @@ let OrderDetail = (() => {
                 product_id: $(this).val()
             };
         });
+    };
+
+    let destroyOrder = () => {
+
+
+        let productData = {
+            'id' : destroyOrderButton.data('id'),
+        };
+
+        $.post(routeDestroy, productData).then(function (response) {
+            console.log('OK');
+            window.location.href = "/admin/order";
+        });
+
+
     };
 
     return {

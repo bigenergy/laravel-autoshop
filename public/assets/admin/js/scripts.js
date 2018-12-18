@@ -10486,23 +10486,32 @@ var AjaxSetupHeaders = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var OrderDetail = function () {
     var route = '/admin/orders/get_info';
+    var routeDestroy = '/admin/orders/destroy';
     var orderItemTr = $('.order_items_tr');
     var productsListSelect = $('#products_list_select');
     var modalApplyButton = $('#apply_selected_products');
     var orderItemsContainer = $('#order_items_container');
+    var totalPriceUpdate = $(".total_price-ajax-update");
+    var destroyOrderButton = $('.destroy_order');
 
     var init = function init() {
         listenApplyProductsButton();
+        totalPriceUpdate.hide();
     };
 
     var listenApplyProductsButton = function listenApplyProductsButton() {
         modalApplyButton.click(function () {
             updateOrderInfo();
         });
+        destroyOrderButton.click(function () {
+            destroyOrder();
+        });
     };
 
     var updateOrderInfo = function updateOrderInfo() {
         var productsData = $.merge(currentProducts(), selectedProducts()).toArray();
+
+        totalPriceUpdate.show();
 
         $.post(route, {
             products: productsData
@@ -10529,6 +10538,18 @@ var OrderDetail = function () {
                 quantity: 1,
                 product_id: $(this).val()
             };
+        });
+    };
+
+    var destroyOrder = function destroyOrder() {
+
+        var productData = {
+            'id': destroyOrderButton.data('id')
+        };
+
+        $.post(routeDestroy, productData).then(function (response) {
+            console.log('OK');
+            window.location.href = "/admin/order";
         });
     };
 

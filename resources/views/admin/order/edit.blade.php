@@ -14,20 +14,8 @@
             <li><a href="#tab_2" data-toggle="tab">Доставка</a></li>
             <li><a href="#tab_3" data-toggle="tab">Статус  <span class="label label-{{ $orderForEdit->status->color }}">{{ $orderForEdit->status->name }}</span></a></li>
             <li><a href="#tab_4" data-toggle="tab">Содержимое заказа</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    Dropdown <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
-            </li>
             <li class="pull-right">
-                <button class="btn btn-danger btn-xs">Удалить заказ </button>
+                <button data-id='{{ $orderForEdit->id }}' class="btn btn-danger btn-xs destroy_order" type="button">Удалить заказ </button>
             </li>
         </ul>
         <div class="tab-content">

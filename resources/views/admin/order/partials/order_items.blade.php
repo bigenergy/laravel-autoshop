@@ -4,7 +4,7 @@
             <th>ID</th>
             <th>Товар</th>
             <th>Количество</th>
-            <th>Стоимость</th>
+            <th>Стоимость за ед.</th>
             <th>Итоговая стоимость товара</th>
             <th>Действия</th>
         </tr>
@@ -31,3 +31,5 @@
         <td rowspan="6">Заказ пуст</td>
     </tr>
 @endif
+<h4 class="total_price-ajax-update">Новая стоимость заказа клиента: <b>{{ $orderItems->sum('total_price') }}</b> $</h4>
+

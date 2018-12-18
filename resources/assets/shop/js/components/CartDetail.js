@@ -20,7 +20,6 @@ let CartDetail = (() => {
                 $(".refresh-price").load(window.location + " .refresh-price");
 
                 $(document).find('.card-' + productData.id).remove();
-               // $('#cartModal').modal('show');
             });
         });
     };

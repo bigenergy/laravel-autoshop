@@ -10,4 +10,4 @@
 </button>
 
 <hr>
-<h4>Итоговая стоимость заказа клиента: {{ $orderForEdit->orderItems->sum('total_price') }} $</h4>
+<h4>Текущая стоимость заказа клиента: <b>{{ $orderForEdit->orderItems->sum('total_price') }}</b> $</h4>

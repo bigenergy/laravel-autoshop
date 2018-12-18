@@ -2,7 +2,7 @@
 @section('title', 'Список заказов')
 @section('content')
     <div class="box-body table-responsive no-padding">
-        <table class="table table-hover">
+        <table class="table table-hover refresh-after-ajax">
             <tr>
                 <th>ID</th>
                 <th>Номер заказа</th>
@@ -22,7 +22,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет заказов </h3></td>
+                    <td colspan="6" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет заказов </h3></td>
                 </tr>
             @endforelse
         </table>

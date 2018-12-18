@@ -39,7 +39,7 @@ class OrderService
         return true;
     }
 
-    public function destroy(int $id): bool
+    public function destroy(int $id)
     {
         $orderToDelete = $this->orderModel->findOrFail($id);
         $orderToDelete->delete();
