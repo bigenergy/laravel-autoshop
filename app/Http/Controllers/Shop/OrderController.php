@@ -30,7 +30,6 @@ class OrderController extends Controller
         }
 
         return redirect()->route('shop.main');
-
     }
 
     /**

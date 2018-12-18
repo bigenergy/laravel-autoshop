@@ -54,7 +54,6 @@ class BrandController extends Controller
         return redirect()->route('brand.create')->with('status', 'Бренд добавлен!');
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
