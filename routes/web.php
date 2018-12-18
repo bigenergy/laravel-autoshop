@@ -26,7 +26,7 @@ Route::resource('/admin/order', 'Admin\OrderController');
 Route::resource('/admin/status', 'Admin\StatusController');
 
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');
-Route::post('/admin/order/add/product/{id}', 'Admin\OrderController@addProduct')->name('order.update.products');
+Route::post('admin/orders/get_info', 'Admin\OrderController@orderInfo');
 
 
 //

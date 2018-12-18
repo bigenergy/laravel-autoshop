@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
+use App\Services\Order\OrderService;
 use App\Http\Controllers\Controller;
-use App\Models\OrderItem;
-use App\Models\Status;
+use App\Services\Order\OrderItemService;
+use App\Services\Product\ProductService;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\Status\StatusRepository;
-use App\Services\Order\OrderService;
-use App\Services\Product\ProductService;
-use function GuzzleHttp\Promise\all;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -19,26 +17,48 @@ class OrderController extends Controller
      * @var OrderService
      */
     private $orderService;
+
     /**
      * @var OrderRepository
      */
     private $orderRepository;
+
     /**
      * @var StatusRepository
      */
     private $statusRepository;
+
     /**
      * @var ProductService
      */
     private $productService;
 
-    public function __construct(OrderService $orderService, OrderRepository $orderRepository, StatusRepository $statusRepository, ProductService $productService)
-    {
+    /**
+     * @var OrderItemService
+     */
+    private $orderItemService;
+
+    /**
+     * OrderController constructor.
+     * @param OrderService $orderService
+     * @param OrderRepository $orderRepository
+     * @param StatusRepository $statusRepository
+     * @param OrderItemService $orderItemService
+     * @param ProductService $productService
+     */
+    public function __construct(
+        OrderService $orderService,
+        OrderRepository $orderRepository,
+        StatusRepository $statusRepository,
+        OrderItemService $orderItemService,
+        ProductService $productService
+    ) {
         $this->middleware('admin');
         $this->orderService = $orderService;
         $this->orderRepository = $orderRepository;
         $this->statusRepository = $statusRepository;
         $this->productService = $productService;
+        $this->orderItemService = $orderItemService;
     }
 
     /**
@@ -72,21 +92,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request
-     * @param $id
-     * @return void
-     */
-    public function addProduct(Request $request, $id)
-    {
-        $attributes = $request->all();
-        $this->orderService->add($id, $attributes);
-
-        return redirect()->route('order.edit', $id)->with('status', 'Заказ сохранен!');
     }
 
     /**
@@ -127,5 +132,21 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Returns order info
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Throwable
+     */
+    public function orderInfo(Request $request)
+    {
+        $orderItems = $this->orderItemService->generate($request->get('products'));
+
+        return response()->json([
+            'order_items' => view('admin.order.partials.order_items', compact('orderItems'))->render()
+        ]);
     }
 }

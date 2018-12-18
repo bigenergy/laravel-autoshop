@@ -10485,9 +10485,51 @@ var AjaxSetupHeaders = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var OrderDetail = function () {
+    var route = '/admin/orders/get_info';
+    var orderItemTr = $('.order_items_tr');
+    var productsListSelect = $('#products_list_select');
+    var modalApplyButton = $('#apply_selected_products');
+    var orderItemsContainer = $('#order_items_container');
 
     var init = function init() {
-        console.log('Hello');
+        listenApplyProductsButton();
+    };
+
+    var listenApplyProductsButton = function listenApplyProductsButton() {
+        modalApplyButton.click(function () {
+            updateOrderInfo();
+        });
+    };
+
+    var updateOrderInfo = function updateOrderInfo() {
+        var productsData = $.merge(currentProducts(), selectedProducts()).toArray();
+
+        $.post(route, {
+            products: productsData
+        }).then(function (response) {
+            orderItemsContainer.html(response.order_items);
+        });
+    };
+
+    var currentProducts = function currentProducts() {
+        return orderItemTr.map(function () {
+            var quantity = $(this).find('.quantity').val();
+            var productId = $(this).find('.product_id').val();
+
+            return {
+                quantity: quantity,
+                product_id: productId
+            };
+        });
+    };
+
+    var selectedProducts = function selectedProducts() {
+        return productsListSelect.find('option:selected').map(function () {
+            return {
+                quantity: 1,
+                product_id: $(this).val()
+            };
+        });
     };
 
     return {
