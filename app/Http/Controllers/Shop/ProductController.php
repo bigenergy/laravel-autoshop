@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cart;
-use App\Models\CartItem;
-use App\Repositories\Cart\CartRepository;
-use App\Services\Cart\CartManager;
 use App\Services\Cart\CartService;
+use App\Services\Cart\CartManager;
+use App\Http\Controllers\Controller;
 use App\Services\Product\ProductService;
+use App\Repositories\Cart\CartRepository;
 
 class ProductController extends Controller
 {

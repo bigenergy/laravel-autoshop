@@ -1,12 +1,12 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\Repositories\Order\OrderRepository;
-use App\Repositories\Product\ProductRepository;
-use App\Repositories\Status\StatusRepository;
 use Illuminate\Http\Request;
 use App\Services\Order\OrderService;
 use App\Http\Controllers\Controller;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Status\StatusRepository;
+use App\Repositories\Product\ProductRepository;
 
 class OrderController extends Controller
 {

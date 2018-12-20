@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Brand\BrandCreateRequest;
-use App\Http\Requests\Brand\BrandEditRequest;
-use App\Http\Controllers\Controller;
 use App\Services\Brand\BrandService;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Brand\BrandEditRequest;
+use App\Http\Requests\Brand\BrandCreateRequest;
 
 class BrandController extends Controller
 {

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed cartItems
+ */
 class Cart extends Model
 {
     protected $fillable = [

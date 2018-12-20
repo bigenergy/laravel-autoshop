@@ -5,8 +5,8 @@ namespace App\Services\Order;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderItem;
-use App\Repositories\Product\ProductRepository;
 use Illuminate\Support\Collection;
+use App\Repositories\Product\ProductRepository;
 
 class OrderItemService
 {
@@ -29,12 +29,10 @@ class OrderItemService
     (
         OrderItem $orderItemModel,
         ProductRepository $productRepository
-        //OrderItemRepository $orderItemRepository
     )
     {
         $this->orderItemModel = $orderItemModel;
         $this->productRepository = $productRepository;
-        //$this->orderItemRepository = $orderItemRepository;
     }
 
     /**
@@ -64,7 +62,7 @@ class OrderItemService
 
     /**
      * @param Collection $items
-     * @return |null
+     * @return bool |null
      */
     public function destroyItems(Collection $items)
     {

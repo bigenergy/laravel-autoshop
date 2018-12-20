@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Category\CategoryCreateRequest;
-use App\Http\Requests\Category\CategoryEditRequest;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Services\Category\CategoryService;
+use App\Http\Requests\Category\CategoryEditRequest;
+use App\Http\Requests\Category\CategoryCreateRequest;
 
 class CategoryController extends Controller
 {
@@ -71,8 +70,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param CategoryEditRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryEditRequest $request, $id)

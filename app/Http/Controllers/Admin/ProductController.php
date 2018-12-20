@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Services\Product\ProductService;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
-use App\Services\Product\ProductService;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\{ ProductEditRequest, ProductCreateRequest };
 
 class ProductController extends Controller
