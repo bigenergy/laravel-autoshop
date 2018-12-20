@@ -1,73 +1,91 @@
 let OrderDetail = (() => {
-    const route = '/admin/orders/get_info';
-    const routeDestroy = '/admin/orders/destroy';
-    const orderItemTr = $('.order_items_tr');
-    const productsListSelect = $('#products_list_select');
-    const modalApplyButton = $('#apply_selected_products');
-    const orderItemsContainer = $('#order_items_container');
-    const totalPriceUpdate = $(".total_price-ajax-update");
-    const destroyOrderButton = $('.destroy_order');
+    const addButtonSelector = '.add-product';
+    const path = '/admin/order/order_items';
+    const delButtonSelector = '.orderItem-delete__button';
 
     let init = () => {
-        listenApplyProductsButton();
-        totalPriceUpdate.hide();
+        listenAddProduct();
+        listenUpdateProduct();
+        listenDeleteProduct();
     };
 
-    let listenApplyProductsButton = () => {
-        modalApplyButton.click(function () {
-            updateOrderInfo();
-        });
-        destroyOrderButton.click(function () {
-            destroyOrder();
+    // Добавление
+
+    let listenAddProduct = () => {
+        $(document).on('click', addButtonSelector, function() {
+            let selectedProductsIds = $("#product_selector").val();
+            let SelectedProducts = [];
+
+            $.each(selectedProductsIds, function (key, value) {
+                let selectedItem = {
+                    'product_id' : value,
+                    'quantity': 1
+                };
+
+                SelectedProducts.push(selectedItem);
+            });
+
+            reloadOrderItems(SelectedProducts);
+
+            selectedProductsIds.forEach(function(item) {
+                $("#product_selector option[value=\'" + item + "\']").remove();
+            });
         });
     };
 
-    let updateOrderInfo = () => {
-        let productsData = $.merge(currentProducts(), selectedProducts()).toArray();
+    // Изменение
 
-        totalPriceUpdate.show();
+    let listenUpdateProduct = () => {
 
-        $.post(route, {
-            products: productsData
-        }).then(function (response) {
-            orderItemsContainer.html(response.order_items);
+        $("#order_products_list").on('change', "input", function() {
+            reloadOrderItems();
         });
     };
 
-    let currentProducts = () => {
-        return orderItemTr.map(function () {
-            let quantity = $(this).find('.quantity').val();
-            let productId = $(this).find('.product_id').val();
+    // Удаление
 
-            return {
-                quantity: quantity,
-                product_id: productId,
+    let listenDeleteProduct = () => {
+        $(document).on('click', delButtonSelector, function() {
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+
+            $("#orderItem-"+id).remove();
+            reloadOrderItems();
+
+            $("#product_selector").append('<option value="' + id + '">' + name + '</option>');
+        });
+    };
+
+    // Заполнить информацию о заказае
+    let insertOrderInformation = function(data) {
+        $("#order_information").html(data);
+    };
+
+    // Заполнить информацию о товарах по заказу
+    let insertOrderItems = function(data) {
+        $("#order_products_list").html(data);
+    };
+
+    // Обновить информацию о товарах
+    let reloadOrderItems = function(selectedProducts = []) {
+
+        let orderId = $("#my_order").data('id');
+        $("#order_products_list").find('input').each(function() {
+            let selectedItem = {
+                'product_id' : $(this).data('id'),
+                'quantity': $(this).val()
             };
-        });
-    };
-
-    let selectedProducts = () => {
-        return productsListSelect.find('option:selected').map(function () {
-            return {
-                quantity: 1,
-                product_id: $(this).val()
-            };
-        });
-    };
-
-    let destroyOrder = () => {
-
-
-        let productData = {
-            'id' : destroyOrderButton.data('id'),
-        };
-
-        $.post(routeDestroy, productData).then(function (response) {
-            console.log('OK');
-            window.location.href = "/admin/order";
+            selectedProducts.push(selectedItem);
         });
 
+        if(selectedProducts.length > 0) {
+            $.post(path, {'products': selectedProducts, 'order_id': orderId}).then(function (response) {
+                insertOrderItems(response.order_items);
+                insertOrderInformation(response.order);
 
+                return true;
+            });
+        }
     };
 
     return {

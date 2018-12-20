@@ -22,4 +22,6 @@ interface OrderRepository
      * @return mixed
      */
     public function getPaginated($relations =[], $perPage = 15);
+
+    public function getOrderItems($id);
 }

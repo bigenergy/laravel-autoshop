@@ -11,7 +11,7 @@
                 <th>Номер телефона</th>
                 <th>Действия</th>
             </tr>
-            @forelse($orderShowList as $order)
+            @forelse($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->number }}</td>
@@ -27,7 +27,7 @@
             @endforelse
         </table>
     </div>
-    <center>{{ $orderShowList->links() }}</center>
+    <center>{{ $orders->links() }}</center>
 @endsection
 
 

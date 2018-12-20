@@ -10485,72 +10485,95 @@ var AjaxSetupHeaders = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var OrderDetail = function () {
-    var route = '/admin/orders/get_info';
-    var routeDestroy = '/admin/orders/destroy';
-    var orderItemTr = $('.order_items_tr');
-    var productsListSelect = $('#products_list_select');
-    var modalApplyButton = $('#apply_selected_products');
-    var orderItemsContainer = $('#order_items_container');
-    var totalPriceUpdate = $(".total_price-ajax-update");
-    var destroyOrderButton = $('.destroy_order');
+    var addButtonSelector = '.add-product';
+    var path = '/admin/order/order_items';
+    var delButtonSelector = '.orderItem-delete__button';
 
     var init = function init() {
-        listenApplyProductsButton();
-        totalPriceUpdate.hide();
+        listenAddProduct();
+        listenUpdateProduct();
+        listenDeleteProduct();
     };
 
-    var listenApplyProductsButton = function listenApplyProductsButton() {
-        modalApplyButton.click(function () {
-            updateOrderInfo();
-        });
-        destroyOrderButton.click(function () {
-            destroyOrder();
+    // Добавление
+
+    var listenAddProduct = function listenAddProduct() {
+        $(document).on('click', addButtonSelector, function () {
+            var selectedProductsIds = $("#product_selector").val();
+            var SelectedProducts = [];
+
+            $.each(selectedProductsIds, function (key, value) {
+                var selectedItem = {
+                    'product_id': value,
+                    'quantity': 1
+                };
+
+                SelectedProducts.push(selectedItem);
+            });
+
+            reloadOrderItems(SelectedProducts);
+
+            selectedProductsIds.forEach(function (item) {
+                $("#product_selector option[value=\'" + item + "\']").remove();
+            });
         });
     };
 
-    var updateOrderInfo = function updateOrderInfo() {
-        var productsData = $.merge(currentProducts(), selectedProducts()).toArray();
+    // Изменение
 
-        totalPriceUpdate.show();
+    var listenUpdateProduct = function listenUpdateProduct() {
 
-        $.post(route, {
-            products: productsData
-        }).then(function (response) {
-            orderItemsContainer.html(response.order_items);
+        $("#order_products_list").on('change', "input", function () {
+            reloadOrderItems();
         });
     };
 
-    var currentProducts = function currentProducts() {
-        return orderItemTr.map(function () {
-            var quantity = $(this).find('.quantity').val();
-            var productId = $(this).find('.product_id').val();
+    // Удаление
 
-            return {
-                quantity: quantity,
-                product_id: productId
+    var listenDeleteProduct = function listenDeleteProduct() {
+        $(document).on('click', delButtonSelector, function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+
+            $("#orderItem-" + id).remove();
+            reloadOrderItems();
+
+            $("#product_selector").append('<option value="' + id + '">' + name + '</option>');
+        });
+    };
+
+    // Заполнить информацию о заказае
+    var insertOrderInformation = function insertOrderInformation(data) {
+        $("#order_information").html(data);
+    };
+
+    // Заполнить информацию о товарах по заказу
+    var insertOrderItems = function insertOrderItems(data) {
+        $("#order_products_list").html(data);
+    };
+
+    // Обновить информацию о товарах
+    var reloadOrderItems = function reloadOrderItems() {
+        var selectedProducts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+
+        var orderId = $("#my_order").data('id');
+        $("#order_products_list").find('input').each(function () {
+            var selectedItem = {
+                'product_id': $(this).data('id'),
+                'quantity': $(this).val()
             };
+            selectedProducts.push(selectedItem);
         });
-    };
 
-    var selectedProducts = function selectedProducts() {
-        return productsListSelect.find('option:selected').map(function () {
-            return {
-                quantity: 1,
-                product_id: $(this).val()
-            };
-        });
-    };
+        if (selectedProducts.length > 0) {
+            $.post(path, { 'products': selectedProducts, 'order_id': orderId }).then(function (response) {
+                insertOrderItems(response.order_items);
+                insertOrderInformation(response.order);
 
-    var destroyOrder = function destroyOrder() {
-
-        var productData = {
-            'id': destroyOrderButton.data('id')
-        };
-
-        $.post(routeDestroy, productData).then(function (response) {
-            console.log('OK');
-            window.location.href = "/admin/order";
-        });
+                return true;
+            });
+        }
     };
 
     return {

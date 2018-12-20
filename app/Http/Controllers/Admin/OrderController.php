@@ -1,74 +1,44 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Cart;
-use App\Services\Cart\CartService;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Product\ProductRepository;
+use App\Repositories\Status\StatusRepository;
 use Illuminate\Http\Request;
 use App\Services\Order\OrderService;
 use App\Http\Controllers\Controller;
-use App\Services\Order\OrderItemService;
-use App\Services\Product\ProductService;
-use App\Repositories\Order\OrderRepository;
-use App\Repositories\Status\StatusRepository;
 
 class OrderController extends Controller
 {
 
-    /**
-     * @var OrderService
-     */
     private $orderService;
 
-    /**
-     * @var OrderRepository
-     */
     private $orderRepository;
 
-    /**
-     * @var StatusRepository
-     */
+    private $orderItemRepository;
+
     private $statusRepository;
 
-    /**
-     * @var ProductService
-     */
-    private $productService;
+    private $productRepository;
 
-    /**
-     * @var OrderItemService
-     */
-    private $orderItemService;
-    /**
-     * @var CartService
-     */
-    private $cartService;
+    //private $userRepository;
 
-    /**
-     * OrderController constructor.
-     * @param OrderService $orderService
-     * @param OrderRepository $orderRepository
-     * @param StatusRepository $statusRepository
-     * @param OrderItemService $orderItemService
-     * @param ProductService $productService
-     * @param CartService $cartService
-     */
     public function __construct(
         OrderService $orderService,
         OrderRepository $orderRepository,
+        //OrderItemRepository $orderItemRepository,
         StatusRepository $statusRepository,
-        OrderItemService $orderItemService,
-        ProductService $productService,
-        CartService $cartService
+        ProductRepository $productRepository
+        //UserRepository $userRepository
     ) {
-        $this->middleware('admin');
         $this->orderService = $orderService;
         $this->orderRepository = $orderRepository;
+        //$this->orderItemRepository = $orderItemRepository;
         $this->statusRepository = $statusRepository;
-        $this->productService = $productService;
-        $this->orderItemService = $orderItemService;
-        $this->cartService = $cartService;
+        $this->productRepository = $productRepository;
+        //$this->userRepository = $userRepository;
     }
+
 
     /**
      * Display a listing of the resource.
@@ -77,9 +47,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orderShowList = $this->orderService->orderRepository->getPaginated(['status']);
+        $orders = $this->orderRepository->getPaginated();
+        $products = $this->productRepository
+            ->getPaginated()
+            ->pluck('name', 'id');
 
-        return view('admin.order.list', ['orderShowList' => $orderShowList]);
+        return view('admin.order.list', [
+            'orders' => $orders,
+            'products' => $products
+        ]);
     }
 
     /**
@@ -89,24 +65,34 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = $this->productService->repository->getPaginated(['categories', 'brand']);
-        $statuses = $this->statusRepository->getPaginated();
+        $statuses = $this->statusRepository
+            ->getPaginated()
+            ->pluck('name', 'id');
+        $products = $this->productRepository
+            ->getPaginated()
+            ->pluck('name', 'id');
+//        $users = $this->userRepository
+//            ->getAll()
+//            ->pluck('name', 'id');
 
-        return view('admin.order.create',compact('statuses', 'products'));
+        return view('admin/orders/add',
+            [
+                'statuses' => $statuses,
+                'products' => $products,
+                //'users' => $users
+            ]
+        );
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return void
-     * @throws \Exception
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        $this->cartService->store($request->all());
-
-        return view('admin.order.create');
+        $this->orderService->addByAdmin($request->all());
+        return redirect('/admin/order');
     }
 
     /**
@@ -117,52 +103,81 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $orderForEdit = $this->orderService->orderRepository->getById2(['orderItems'],$id);
-        $products = $this->productService->repository->getPaginated(['categories', 'brand']);
+        $order = $this->orderRepository->getById($id);
+        //$address = $order->address;
+        $orderItems = $this->orderRepository->getOrderItems($id);
 
-        return view('admin.order.edit',compact('orderForEdit', 'products'));
+        $statuses = $this->statusRepository
+            ->getPaginated()
+            ->pluck('name', 'id');
+        $products = $this->productRepository
+            ->getPaginated()
+            ->whereNotIn('id', $orderItems->pluck('product_id'))
+            ->pluck('name', 'id');
+
+        return view('admin.order.edit',
+            compact("order", "orderItems", "statuses", "products")
+        );
     }
+
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        $attributes = $request->all();
-        $this->orderService->update($id, $attributes);
-
-        return redirect()->route('order.edit', $id)->with('status', 'Заказ сохранен!');
+        $this->orderService->update($id, $request->all());
+        return redirect('/admin/order');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Request $request
-     * @return bool
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $this->orderService->destroy($request->get('id'));
-        return redirect()->route('order.index')->with('status', 'Заказ удален');
+        $this->orderService->destroy($id);
+        return redirect('/admin/order');
     }
 
     /**
-     * Returns order info
-     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Throwable
      */
-    public function orderInfo(Request $request)
+    public function orderItemsList(Request $request)
     {
-        $orderItems = $this->orderItemService->generate($request->get('products'));
+        $orderId = $request["order_id"] ?? null;
 
-        return response()->json([
-            'order_items' => view('admin.order.partials.order_items', compact('orderItems'))->render()
-        ]);
+        $preparedProductsList = $this->prepareProductList($request);
+        $order = $this->orderService->make($orderId, $preparedProductsList);
+
+        $dataToResponse = [
+            'order_items' => view('admin.order.template', ['orderItems' => $order->orderItems])->render(),
+            'order' => view('admin.order.order_information', ['order' => $order])->render()
+        ];
+
+        return response()->json($dataToResponse);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function prepareProductList(Request $request): array
+    {
+        $preparedProductsList = [];
+
+        foreach ($request->get('products') as $product) {
+            $productId = $product["product_id"];
+            $quantity = $product["quantity"];
+            $preparedProductsList[$productId] = $quantity;
+        }
+        return $preparedProductsList;
     }
 }

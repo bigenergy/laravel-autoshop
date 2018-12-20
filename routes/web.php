@@ -47,4 +47,6 @@ Route::post('/cart/edit', 'Shop\CartController@editCart')->name('shop.cart.edit'
 
 Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('shop.order.detail.write');
 
+Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
+
 

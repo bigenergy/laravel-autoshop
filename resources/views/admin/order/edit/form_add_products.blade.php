@@ -8,19 +8,18 @@
             </div>
 
             <div class="modal-body">
-                <p>Добавить товары к заказу #{{ $orderForEdit->number }}</p>
+                <p>Добавить товары к заказу #{{ $order->number }}</p>
                 <hr>
-                {{ Form::label('products[]', 'Выберите товары') }}
-                {{ Form::select('products[]', $products->pluck('name', 'id'), null, [
-                    'id' => 'products_list_select',
-                    'class' => 'form-control',
-                    'multiple', 'required'
-                ]) }}
+                <div class="detail-product-orderItem__container">
+                    {{ Form::label('products[]', 'Добавьте продукты к заказу') }}
+                    {{ Form::select('products[]', $products, null, ["class" => "form-control", "id" => "product_selector", "multiple"]) }}
+                    <medium class="text-danger">{{ $errors->first('products') }}</medium>
+                </div>
                 <small>Мультивыбор на CTRL</small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Отмена</button>
-                <button type="submit" id="apply_selected_products" class="btn btn-primary">Добавить выбранные товары к заказу</button>
+                <button type="submit" class="btn btn-primary add-product">Добавить выбранные товары к заказу</button>
             </div>
         </div>
         <!-- /.modal-content -->

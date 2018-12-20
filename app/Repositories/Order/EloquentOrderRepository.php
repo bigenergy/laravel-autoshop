@@ -46,4 +46,12 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
     {
         return $this->model->with($relations)->find($id);
     }
+
+    public function getOrderItems($id)
+    {
+        return $this->model
+            ->where('id', $id)
+            ->firstOrFail()
+            ->orderItems;
+    }
 }
