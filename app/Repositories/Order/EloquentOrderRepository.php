@@ -3,8 +3,8 @@
 namespace App\Repositories\Order;
 
 use App\Models\Order;
-use App\Models\Status;
 use App\Repositories\AbstractRepository;
+use Illuminate\Support\Collection;
 
 class EloquentOrderRepository extends AbstractRepository implements OrderRepository
 {
@@ -51,7 +51,7 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
      * @param $id
      * @return mixed
      */
-    public function getOrderItems($id)
+    public function getOrderItems(int $id): Collection
     {
         return $this->model
             ->where('id', $id)

@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Order;
 
+use Illuminate\Support\Collection;
+
 interface OrderRepository
 {
     /**
@@ -28,5 +30,5 @@ interface OrderRepository
      * @param $id
      * @return mixed
      */
-    public function getOrderItems($id);
+    public function getOrderItems(int $id): Collection;
 }
