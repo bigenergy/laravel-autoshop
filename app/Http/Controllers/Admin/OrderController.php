@@ -15,28 +15,20 @@ class OrderController extends Controller
 
     private $orderRepository;
 
-    private $orderItemRepository;
-
     private $statusRepository;
 
     private $productRepository;
 
-    //private $userRepository;
-
     public function __construct(
         OrderService $orderService,
         OrderRepository $orderRepository,
-        //OrderItemRepository $orderItemRepository,
         StatusRepository $statusRepository,
         ProductRepository $productRepository
-        //UserRepository $userRepository
     ) {
         $this->orderService = $orderService;
         $this->orderRepository = $orderRepository;
-        //$this->orderItemRepository = $orderItemRepository;
         $this->statusRepository = $statusRepository;
         $this->productRepository = $productRepository;
-        //$this->userRepository = $userRepository;
     }
 
 
@@ -71,19 +63,14 @@ class OrderController extends Controller
         $products = $this->productRepository
             ->getPaginated()
             ->pluck('name', 'id');
-//        $users = $this->userRepository
-//            ->getAll()
-//            ->pluck('name', 'id');
 
-        return view('admin/orders/add',
+        return view('admin.order.create',
             [
                 'statuses' => $statuses,
-                'products' => $products,
-                //'users' => $users
+                'products' => $products
             ]
         );
     }
-
 
     /**
      * @param Request $request
@@ -104,7 +91,6 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = $this->orderRepository->getById($id);
-        //$address = $order->address;
         $orderItems = $this->orderRepository->getOrderItems($id);
 
         $statuses = $this->statusRepository
@@ -158,7 +144,7 @@ class OrderController extends Controller
         $order = $this->orderService->make($orderId, $preparedProductsList);
 
         $dataToResponse = [
-            'order_items' => view('admin.order.template', ['orderItems' => $order->orderItems])->render(),
+            'order_items' => view('admin.order.edit.form_order', ['orderItems' => $order->orderItems])->render(),
             'order' => view('admin.order.order_information', ['order' => $order])->render()
         ];
 

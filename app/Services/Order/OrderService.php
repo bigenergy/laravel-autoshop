@@ -3,55 +3,15 @@
 namespace App\Services\Order;
 
 use App\Models\Cart;
-use App\Models\CartItem;
 use App\Models\Order;
+use App\Models\CartItem;
 use App\Models\OrderItem;
-use App\Repositories\Order\OrderRepository;
 use App\Services\Cart\CartManager;
 use Illuminate\Support\Collection;
+use App\Repositories\Order\OrderRepository;
 
 class OrderService
 {
-//    /**
-//     * @var Order
-//     */
-//    private $orderModel;
-//
-//    /**
-//     * @var OrderRepository
-//     */
-//    public $orderRepository;
-//
-//    /**
-//     * ProductService constructor.
-//     * @param Order $orderModel
-//     * @param OrderRepository $orderRepository
-//     */
-//    public function __construct(Order $orderModel, OrderRepository $orderRepository)
-//    {
-//
-//        $this->orderModel = $orderModel;
-//        $this->orderRepository = $orderRepository;
-//    }
-//
-//    public function update(int $id, array $attributes): bool
-//    {
-//        /** @var Order $updatedOrder */
-//        $updatedOrder = $this->orderModel->find($id);
-//        $updatedOrder->fill($attributes);
-//        $updatedOrder->save();
-//
-//        return true;
-//    }
-//
-//    public function destroy(int $id)
-//    {
-//        $orderToDelete = $this->orderModel->findOrFail($id);
-//        $orderToDelete->delete();
-//
-//        return true;
-//    }
-
     public $orderModel;
 
     public $userManager;
@@ -64,7 +24,6 @@ class OrderService
 
     public $orderItemService;
 
-
     /**
      * OrderService constructor.
      * @param Order $orderModel
@@ -74,17 +33,13 @@ class OrderService
      */
     public function __construct(
         Order $orderModel,
-        //UserManager $userManager,
         CartManager $cartManager,
         OrderItemService $orderItemService,
-        //AddressService $addressService,
         OrderRepository $orderRepository
     ) {
         $this->orderModel = $orderModel;
-        //$this->userManager = $userManager;
         $this->cartManager = $cartManager;
         $this->orderItemService = $orderItemService;
-        //$this->addressService = $addressService;
         $this->orderRepository = $orderRepository;
     }
 
@@ -98,7 +53,6 @@ class OrderService
         $orderAttributes = $this->prepareOrderAttributes($orderAttributes);
         /** @var Order $createdOrder */
         $createdOrder = $this->add($orderAttributes);
-
         $this->addItemsFromCart($createdOrder, $cart);
 
         return $createdOrder;
@@ -151,6 +105,7 @@ class OrderService
 
             $ordersItems->push($newOrderItem);
         }
+
         return $ordersItems;
     }
 
@@ -174,8 +129,7 @@ class OrderService
     public function add(array $orderAttributes): Order
     {
         $createdOrder = $this->orderModel->fill($orderAttributes);
-        //$createdAddress = $this->addressService->add($orderAttributes);
-        //$createdOrder->addAddress($createdAddress);
+        $createdOrder->fill(['number' => uniqid() . time()]);
         $createdOrder->save();
 
         return $createdOrder;
@@ -193,8 +147,6 @@ class OrderService
         $updatedOrder = $this->orderRepository->getById($id);
         $existingItems = $updatedOrder->orderItems;
         $updatedOrder->fill($attributes);
-       // $this->addressService->update($updatedOrder->address_id, $attributes);
-
         $this->addItemsFromArray($updatedOrder, $attributes);
         $this->orderItemService->destroyItems($existingItems);
 
@@ -246,6 +198,5 @@ class OrderService
 
         return $order;
     }
-
 
 }

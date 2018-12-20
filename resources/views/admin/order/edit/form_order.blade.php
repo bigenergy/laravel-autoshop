@@ -1,6 +1,3 @@
-<h4>Содержимое заказа</h4>
-<hr>
-
 @foreach ($orderItems as $orderItem)
     <div class="col-md-12" id="{{"orderItem-".$orderItem->product_id}}">
         <div class="order-products__item">
@@ -16,7 +13,7 @@
                         </a>
                     @endif
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <a href="{{"/client/product/".$orderItem->product->slug}}">{{ $orderItem->product->name }}</a>
                 </div>
                 <div class="col-md-1">{{ $orderItem->price }} руб</div>
@@ -31,20 +28,23 @@
                             name="order_items[{{$orderItem->product_id}}]"
                             value="{{ $orderItem->quantity }}">
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <div class="btn btn-sm btn-danger orderItem-delete__button"
                          data-id="{{$orderItem->product_id}}"
                          data-name="{{$orderItem->product->name}}"
                     >Удалить</div>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
-
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-    Добавить товары к заказу
-</button>
-
-<hr>
-<h4>Текущая стоимость заказа клиента: <b>{{ $order->orderItems->sum('total_price') }}</b> $</h4>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

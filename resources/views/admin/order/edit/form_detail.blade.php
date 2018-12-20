@@ -1,4 +1,4 @@
-<h4>Личные данные</h4>
+<div class="order-customer__header"><h4>Личные данные</h4></div>
     <hr>
     <div class="form-group row">
         {{ Form::label('name', 'Имя', ['class' => 'col-sm-2 col-form-label']) }}
