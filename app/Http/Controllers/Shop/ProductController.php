@@ -28,7 +28,6 @@ class ProductController extends Controller
      */
     private $cartManager;
 
-
     /**
      * ProductController constructor.
      * @param ProductService $productService
