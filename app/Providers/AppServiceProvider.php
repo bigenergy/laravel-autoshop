@@ -13,6 +13,8 @@ use App\Repositories\Order\EloquentOrderRepository;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\Product\EloquentProductRepository;
 use App\Repositories\Product\ProductRepository;
+use App\Repositories\ProductType\EloquentProductTypeRepository;
+use App\Repositories\ProductType\ProductTypeRepository;
 use App\Repositories\Status\EloquentStatusRepository;
 use App\Repositories\Status\StatusRepository;
 use Illuminate\Support\ServiceProvider;
@@ -65,6 +67,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderRepository::class,
             EloquentOrderRepository::class
+        );
+
+        $this->app->bind(
+            ProductTypeRepository::class,
+            EloquentProductTypeRepository::class
         );
     }
 }

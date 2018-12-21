@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Создание статуса')
+@section('title', 'Создание типа продукта')
 @section('content')
     {!! Form::open([
-        'route' => 'status.store',
+        'route' => 'type.store',
         'class' => 'form-horizontal',
         'method' => 'post'
     ]) !!}
-    @include('admin.status.form')
+    @include('admin.product_type.form')
     <div class="box-footer">
         <button type="submit" class="btn btn-info pull-right">Сохранить</button>
     </div>

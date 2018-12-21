@@ -15,7 +15,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">УПРАВЛЕНИЕ СИСТЕМОЙ</li>
             <li><a href="/"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-            <li class="active treeview menu-open">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-list"></i> <span>Продукты</span>
                     <span class="pull-right-container">
@@ -27,7 +27,19 @@
                     <li><a href="{{ route('product.create') }}"><i class="fa fa-plus-circle"></i> Добавить</a></li>
                 </ul>
             </li>
-            <li class="active treeview">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cubes" aria-hidden="true"></i> <span>Типы продуктов</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('type.index') }}"><i class="fa fa-list-ol"></i> Список</a></li>
+                    <li><a href="{{ route('type.create') }}"><i class="fa fa-plus-circle"></i> Добавить</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-list"></i> <span>Категории</span>
                     <span class="pull-right-container">
@@ -39,7 +51,7 @@
                     <li><a href="{{ route('category.create') }}"><i class="fa fa-plus-circle"></i> Добавить</a></li>
                 </ul>
             </li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-list"></i> <span>Бренды</span>
                     <span class="pull-right-container">
@@ -52,11 +64,11 @@
                 </ul>
             </li>
             <li class="header">ЗАКАЗЫ</li>
-            <li><a href="{{ route('order.index') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Заказы</span></a></li>
-            <li><a href="{{ route('order.create') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Новый заказ</span></a></li>
-            <li class="active treeview">
+            <li class="{{ Request::is('admin/order') ? 'active' : '' }}"><a href="{{ route('order.index') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Список заказов</span></a></li>
+            <li class="{{ Request::is('admin/order/create') ? 'active' : '' }}"><a href="{{ route('order.create') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Новый заказ</span></a></li>
+            <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-list-ol" aria-hidden="true"></i> <span>Статусы заказов</span>
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> <span>Статусы заказов</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

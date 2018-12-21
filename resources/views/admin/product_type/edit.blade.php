@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Редактрировать статус')
+@section('title', 'Редактрировать тип продукта')
 @section('content')
-    {!! Form::model($statusForEdit, [
-        'route' => ['status.update', $statusForEdit->id],
+    {!! Form::model($productTypeEdit, [
+        'route' => ['type.update', $productTypeEdit->id],
         'method' => 'PUT',
         'class' => 'form-horizontal'
     ]) !!}
-    @include('admin.status.form')
+    @include('admin.product_type.form')
     <div class="box-footer">
         <button type="submit" class="btn btn-info pull-right">Сохранить</button>
     </div>
