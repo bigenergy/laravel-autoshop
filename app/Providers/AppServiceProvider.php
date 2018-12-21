@@ -15,6 +15,8 @@ use App\Repositories\Product\EloquentProductRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\ProductType\EloquentProductTypeRepository;
 use App\Repositories\ProductType\ProductTypeRepository;
+use App\Repositories\Props\EloquentPropsRepository;
+use App\Repositories\Props\PropsRepository;
 use App\Repositories\Status\EloquentStatusRepository;
 use App\Repositories\Status\StatusRepository;
 use Illuminate\Support\ServiceProvider;
@@ -72,6 +74,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductTypeRepository::class,
             EloquentProductTypeRepository::class
+        );
+
+        $this->app->bind(
+            PropsRepository::class,
+            EloquentPropsRepository::class
         );
     }
 }

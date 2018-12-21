@@ -41,6 +41,18 @@
             </li>
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-id-card-o" aria-hidden="true"></i> <span>Поля продуктов</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('props.index') }}"><i class="fa fa-list-ol"></i> Список</a></li>
+                    <li><a href="{{ route('props.create') }}"><i class="fa fa-plus-circle"></i> Добавить</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-list"></i> <span>Категории</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
