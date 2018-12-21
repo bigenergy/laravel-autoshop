@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Repositories\ProductType\ProductTypeRepository;
 use App\Services\Product\ProductService;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
@@ -25,13 +26,22 @@ class ProductController extends Controller
      * @var BrandRepository
      */
     private $brandRepository;
+    /**
+     * @var ProductTypeRepository
+     */
+    private $productTypeRepository;
 
-    public function __construct(ProductService $productService, CategoryRepository $categoryRepository, BrandRepository $brandRepository)
-    {
+    public function __construct(
+        ProductService $productService,
+        CategoryRepository $categoryRepository,
+        BrandRepository $brandRepository,
+        ProductTypeRepository $productTypeRepository
+    ) {
         $this->middleware('auth');
         $this->productService = $productService;
         $this->categoryRepository = $categoryRepository;
         $this->brandRepository = $brandRepository;
+        $this->productTypeRepository = $productTypeRepository;
     }
 
     /**
@@ -55,11 +65,9 @@ class ProductController extends Controller
     {
         $categories = $this->categoryRepository->getPaginated();
         $brand = $this->brandRepository->getPaginated();
+        $type = $this->productTypeRepository->getPaginated();
 
-        return view('admin.product.create', [
-            'categories' => $categories,
-            'brand' => $brand
-        ]);
+        return view('admin.product.create', compact('categories', 'brand', 'type'));
     }
 
     /**
@@ -87,12 +95,9 @@ class ProductController extends Controller
         $productForEdit = $this->productService->repository->getById($id);
         $categories = Category::all();
         $brand = Brand::all();
+        $type = $this->productTypeRepository->getPaginated();
 
-        return view('admin.product.edit', [
-            'productForEdit' => $productForEdit,
-            'categories' => $categories,
-            'brand' => $brand
-        ]);
+        return view('admin.product.edit', compact('productForEdit', 'categories', 'brand', 'type'));
     }
 
     /**

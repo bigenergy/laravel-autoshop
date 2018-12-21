@@ -62,4 +62,9 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     {
         return $this->model->where('slug', '=', $slug)->first();
     }
+
+    public function getByIdRelation($relations = [], int $id)
+    {
+
+    }
 }
