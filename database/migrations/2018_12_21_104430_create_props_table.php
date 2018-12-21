@@ -15,6 +15,8 @@ class CreatePropsTable extends Migration
     {
         Schema::create('props', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('product_type_id');
             $table->timestamps();
         });
     }
@@ -27,5 +29,6 @@ class CreatePropsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('props');
+
     }
 }
