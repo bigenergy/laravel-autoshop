@@ -51,4 +51,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductType::class);
     }
+
+    public function props()
+    {
+        return $this->belongsTo(Props::class);
+    }
 }
