@@ -49,7 +49,7 @@ class Product extends Model
 
     public function productType()
     {
-        return $this->belongsTo(ProductType::class);
+        return $this->belongsTo(ProductType::class, 'type_id', 'id');
     }
 
     public function props()

@@ -8,6 +8,7 @@
                 <th>Название</th>
                 <th>Категория</th>
                 <th>Бренд</th>
+                <th>Тип</th>
                 <th>Сортировка</th>
                 <th>Активность</th>
                 <th>Действия</th>
@@ -23,6 +24,9 @@
                     </td>
                     <td>
                         {{ $product->brand->name }}
+                    </td>
+                    <td>
+                       {{ $product->productType->name }}
                     </td>
                     <td>{{ $product->sort }}</td>
                     <td>@if(!$product->disable)<span class="label label-success">Активно</span> @else <span class="label label-danger">Неактивно</span>@endif</td>

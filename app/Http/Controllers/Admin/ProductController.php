@@ -51,7 +51,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->productService->repository->getPaginated(['categories', 'brand']);
+        $products = $this->productService->repository->getPaginated(['categories', 'brand', 'productType']);
 
         return view('admin.product.list', ['products' => $products]);
     }
