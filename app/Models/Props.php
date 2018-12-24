@@ -12,6 +12,6 @@ class Props extends Model
 
     public function product()
     {
-        return $this->hasMany(ProductType::class, 'id');
+        return $this->hasMany(ProductType::class, 'id', 'product_type_id');
     }
 }

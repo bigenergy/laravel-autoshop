@@ -14,4 +14,9 @@ class ProductType extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function productProps()
+    {
+        return $this->belongsTo(Props::class);
+    }
 }

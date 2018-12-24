@@ -16,7 +16,7 @@
                     <td>{{ $prop->name }}</td>
                     <td>
                         @foreach($prop->product as $type)
-                            <span>{{ $type->name }}</span>@if(!$loop->last),@endif
+                            <span>{{ $type->name }}</span>
                         @endforeach
                     </td>
                     <td>@include('admin.props.list_actions')</td>
