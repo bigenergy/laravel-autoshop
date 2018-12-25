@@ -31,7 +31,7 @@
                     </div>
                 </div>
             @else
-                {!! Form::file('images[]', ['multiple'=>true,'class'=>'btn btn-primary']) !!}
+                {!! Form::file('images[]', ['multiple' => true, 'class' => 'btn btn-primary']) !!}
                 <small>Мультивыбор на CTRL, максимальное количество изображений для продукта: <b>5</b></small>
             @endif
         </div>
