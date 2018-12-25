@@ -37,16 +37,28 @@ class Product extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    /**
+     * Product Cart relation
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function cart()
     {
         return $this->belongsToMany(Cart::class);
     }
 
+    /**
+     * Product Cart Items relation
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);
     }
 
+    /**
+     * Product type relation to ProductType
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function productType()
     {
         return $this->belongsTo(ProductType::class, 'type_id', 'id');

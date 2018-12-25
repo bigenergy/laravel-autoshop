@@ -55,6 +55,6 @@
     <div class="form-group">
         {{ Form::label('type_id', 'Тип продукта', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
-            {{ Form::select('type_id', $type->pluck('name', 'id'), null, array('class' => 'form-control', 'required')) }}
+            {{ Form::select('type_id', $type->pluck('name', 'id'), null, array('class' => 'form-control type_selector', 'required')) }}
         </div>
     </div>

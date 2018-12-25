@@ -10439,7 +10439,7 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
-module.exports = __webpack_require__(5);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
@@ -10450,10 +10450,12 @@ window.$ = window.JQuery = __webpack_require__(0);
 
 var AjaxSetupHeaders = __webpack_require__(3).default;
 var OrderDetail = __webpack_require__(4).default;
+var ProductType = __webpack_require__(5).default;
 
 $(document).ready(function () {
     AjaxSetupHeaders.init();
     OrderDetail.init();
+    ProductType.init();
 });
 
 /***/ }),
@@ -10585,6 +10587,41 @@ var OrderDetail = function () {
 
 /***/ }),
 /* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var ProductType = function () {
+    var $typeSelector = $('.type_selector');
+    var $routeAddToCart = '/getprops';
+
+    var init = function init() {
+        listenClickBuyButton();
+    };
+
+    var listenClickBuyButton = function listenClickBuyButton() {
+        $typeSelector.click(function () {
+            var productData = {
+                'id': $(this).parent().find('.type_selector').val()
+            };
+
+            $.get($routeAddToCart, productData).then(function (response) {
+                console.log(response);
+
+                $(".box-body").append(response);
+            });
+        });
+    };
+
+    return {
+        init: init
+    };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (ProductType);
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

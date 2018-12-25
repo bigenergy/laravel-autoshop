@@ -41,4 +41,13 @@ class EloquentPropsRepository extends AbstractRepository implements PropsReposit
     {
         return $this->model->with($relations)->paginate($perPage);
     }
+
+    /**
+     * @param int $id
+     * @return Props|\Illuminate\Database\Eloquent\Builder|mixed
+     */
+    public function getByTypeId(int $id)
+    {
+        return $this->model->with([])->where('product_type_id', '=', $id)->get();
+    }
 }

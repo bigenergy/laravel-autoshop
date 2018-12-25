@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Image
+ * @package App\Models
+ */
 class Image extends Model
 {
     protected $fillable = [

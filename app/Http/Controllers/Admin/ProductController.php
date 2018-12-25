@@ -10,6 +10,7 @@ use App\Services\Product\ProductService;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Http\Requests\Product\{ ProductEditRequest, ProductCreateRequest };
+use App\Services\Props\PropsService;
 
 class ProductController extends Controller
 {
@@ -30,9 +31,14 @@ class ProductController extends Controller
      * @var ProductTypeRepository
      */
     private $productTypeRepository;
+    /**
+     * @var PropsService
+     */
+    private $propsService;
 
     public function __construct(
         ProductService $productService,
+        PropsService $propsService,
         CategoryRepository $categoryRepository,
         BrandRepository $brandRepository,
         ProductTypeRepository $productTypeRepository
@@ -42,6 +48,7 @@ class ProductController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->brandRepository = $brandRepository;
         $this->productTypeRepository = $productTypeRepository;
+        $this->propsService = $propsService;
     }
 
     /**
@@ -53,7 +60,7 @@ class ProductController extends Controller
     {
         $products = $this->productService->repository->getPaginated(['categories', 'brand', 'productType']);
 
-        return view('admin.product.list', ['products' => $products]);
+        return view('admin.product.list', compact('products'));
     }
 
     /**
@@ -66,8 +73,9 @@ class ProductController extends Controller
         $categories = $this->categoryRepository->getPaginated();
         $brand = $this->brandRepository->getPaginated();
         $type = $this->productTypeRepository->getPaginated();
+        $list = $this->propsService->propsRepository->getPaginated([]);
 
-        return view('admin.product.create', compact('categories', 'brand', 'type'));
+        return view('admin.product.create', compact('categories', 'brand', 'type', 'list'));
     }
 
     /**
@@ -118,8 +126,9 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy($id)
     {

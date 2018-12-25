@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Props
+ * @package App\Models
+ */
 class Props extends Model
 {
     protected $fillable = [

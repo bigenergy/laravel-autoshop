@@ -52,3 +52,6 @@ Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('sh
 Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
 
 
+Route::get('/getprops', 'Admin\PropsController@getProps');
+
+

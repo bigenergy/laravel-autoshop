@@ -21,4 +21,10 @@ interface PropsRepository
      * @return mixed
      */
     public function getPaginated($relations =[], $perPage = 15);
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getByTypeId(int $id);
 }
