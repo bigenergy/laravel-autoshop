@@ -70,12 +70,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryRepository->getPaginated();
-        $brand = $this->brandRepository->getPaginated();
-        $type = $this->productTypeRepository->getPaginated();
-        $list = $this->propsService->propsRepository->getPaginated([]);
+        $brands = $this->brandRepository->getAll();
+        $categories = $this->categoryRepository->getAll();
+        $productTypes = $this->productTypeRepository->getAll();
 
-        return view('admin.product.create', compact('categories', 'brand', 'type', 'list'));
+        return view('admin.product.create', compact('categories', 'brands', 'productTypes'));
     }
 
     /**
@@ -100,12 +99,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $productForEdit = $this->productService->repository->getById($id);
+        $brands = Brand::all();
         $categories = Category::all();
-        $brand = Brand::all();
-        $type = $this->productTypeRepository->getPaginated();
+        $productTypes = $this->productTypeRepository->getPaginated();
+        $productForEdit = $this->productService->repository->getById($id);
 
-        return view('admin.product.edit', compact('productForEdit', 'categories', 'brand', 'type'));
+        return view('admin.product.edit', compact('productForEdit', 'categories', 'brands', 'productTypes'));
     }
 
     /**

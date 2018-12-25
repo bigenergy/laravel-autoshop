@@ -2,10 +2,20 @@
 
 namespace App\Http\Traits;
 
+use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
 trait HasImages
 {
+    /**
+     * Product Images relation
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
     public function addImages(array $images)
     {
         /** @var UploadedFile $image */

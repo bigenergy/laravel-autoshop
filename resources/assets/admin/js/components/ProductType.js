@@ -1,21 +1,17 @@
 let ProductType = (() => {
-    const $typeSelector = $('.type_selector');
-    const $routeAddToCart = '/getprops';
+    const $typeSelect = $('.type_selector');
+    const attributesContainer = $('#attributes-container');
 
     let init = () => {
-        listenClickBuyButton();
+        listenTypeChanged();
     };
 
-    let listenClickBuyButton = () => {
-        $typeSelector.click(function () {
-            let productData = {
-                'id': $(this).parent().find('.type_selector').val()
-            };
+    let listenTypeChanged = () => {
+        $typeSelect.change(function () {
+            let productTypeId = $(this).val();
 
-            $.get($routeAddToCart, productData).then(function (response) {
-                console.log(response);
-
-                $(".box-body").append(response);
+            $.get(`/admin/type/${productTypeId}/attributes`).then(function (response) {
+                attributesContainer.html(response);
             });
         });
     };

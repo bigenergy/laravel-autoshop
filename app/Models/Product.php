@@ -22,6 +22,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    /*
+    |------------------------------------------------------------------------—
+    | RELATIONS
+    |------------------------------------------------------------------------—
+    */
     /**
      * Product Category relation
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -41,33 +46,6 @@ class Product extends Model
     }
 
     /**
-     * Product Images relation
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function images()
-    {
-        return $this->morphMany(Image::class, 'imageable');
-    }
-
-    /**
-     * Product Cart relation
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function cart()
-    {
-        return $this->belongsToMany(Cart::class);
-    }
-
-    /**
-     * Product Cart Items relation
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function cartItems()
-    {
-        return $this->hasMany(CartItem::class);
-    }
-
-    /**
      * Product type relation to ProductType
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -78,10 +56,39 @@ class Product extends Model
 
     /**
      * Product properties relation
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function props()
     {
-        return $this->belongsTo(Props::class);
+        return $this
+            ->belongsToMany(Props::class, 'props_products', 'product_id', 'prop_id')
+            ->withPivot('value');
+    }
+
+    /*
+    |------------------------------------------------------------------------—
+    | FUNCTIONS
+    |------------------------------------------------------------------------—
+    */
+    /**
+     * Sync product categories
+     *
+     * @param array $categories
+     * @return array
+     */
+    public function syncCategories(array $categories)
+    {
+       return $this->categories()->sync($categories);
+    }
+
+    /**
+     * Sync product props
+     *
+     * @param array $props
+     * @return array
+     */
+    public function syncProps(array $props)
+    {
+        return $this->props()->sync($props);
     }
 }

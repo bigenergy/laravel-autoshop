@@ -28,7 +28,7 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->all();
+        return $this->model->with($relations)->get();
     }
 
     /**

@@ -24,14 +24,14 @@ class ProductCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:products|max:255',
+            'name' => 'required|max:255',
             'categories' => 'required|max:255',
             'description' => 'required|max:255',
             'disable' => 'required',
             'sort' => 'required',
             'brand_id' => 'required',
             'images' => 'max:5',
-            'slug' => 'required'
+            'slug' => 'required|unique:products'
         ];
     }
 }

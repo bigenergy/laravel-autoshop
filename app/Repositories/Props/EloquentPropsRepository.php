@@ -48,6 +48,9 @@ class EloquentPropsRepository extends AbstractRepository implements PropsReposit
      */
     public function getByTypeId(int $id)
     {
-        return $this->model->with([])->where('product_type_id', '=', $id)->get();
+        return $this->model
+            ->newQuery()
+            ->where('product_type_id', $id)
+            ->get();
     }
 }

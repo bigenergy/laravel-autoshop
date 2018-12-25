@@ -35,7 +35,7 @@
     <div class="form-group">
         {{ Form::label('brand_id', 'Бренд', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
-            {{ Form::select('brand_id', $brand->pluck('name', 'id'), null, ['class' => 'form-control', 'required']) }}
+            {{ Form::select('brand_id', $brands->pluck('name', 'id'), null, ['class' => 'form-control', 'required']) }}
         </div>
     </div>
     <div class="form-group">
@@ -55,6 +55,13 @@
     <div class="form-group">
         {{ Form::label('type_id', 'Тип продукта', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
-            {{ Form::select('type_id', $type->pluck('name', 'id'), null, ['class' => 'form-control type_selector', 'required']) }}
+            {{ Form::select('type_id', $productTypes->pluck('name', 'id')->prepend('Выберите тип продукта', ''), null, [
+                'class' => 'form-control type_selector', 'required'
+            ])}}
         </div>
+    </div>
+    <div id="attributes-container">
+        @if(isset($productForEdit))
+            @include('admin.product.attributes_list',['attributes' => $productForEdit->props])
+        @endif
     </div>

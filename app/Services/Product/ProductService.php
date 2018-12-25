@@ -36,13 +36,18 @@ class ProductService
      */
     public function add(array $attributes): bool
     {
-        $createdProduct = $this->productModel->fill($attributes);
-        $createdProduct->save();
-        $createdProduct->categories()->attach($attributes['categories']);
+        \DB::beginTransaction();
+        /** @var Product $createdProduct */
+        $createdProduct = $this->productModel->create($attributes);
 
-        if(isset($attributes['images'])) {
+        $createdProduct->syncCategories($attributes['categories']);
+        $createdProduct->syncProps($attributes['attributes']);
+
+        if (isset($attributes['images'])) {
             $createdProduct->addImages($attributes['images']);
         }
+
+        \DB::commit();
 
         return true;
     }
@@ -56,11 +61,11 @@ class ProductService
     {
         /** @var Product $updatedProduct */
         $updatedProduct = $this->productModel->find($id);
-        $updatedProduct->fill($attributes);
-        $updatedProduct->save();
-        $updatedProduct->categories()->sync($attributes['categories']);
+        $updatedProduct->fill($attributes)->save();
+        $updatedProduct->syncCategories($attributes['categories']);
+        $updatedProduct->syncProps($attributes['attributes']);
 
-        if(isset($attributes['images'])) {
+        if (isset($attributes['images'])) {
             $updatedProduct->addImages($attributes['images']);
         }
 

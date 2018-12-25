@@ -10592,23 +10592,19 @@ var OrderDetail = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var ProductType = function () {
-    var $typeSelector = $('.type_selector');
-    var $routeAddToCart = '/getprops';
+    var $typeSelect = $('.type_selector');
+    var attributesContainer = $('#attributes-container');
 
     var init = function init() {
-        listenClickBuyButton();
+        listenTypeChanged();
     };
 
-    var listenClickBuyButton = function listenClickBuyButton() {
-        $typeSelector.click(function () {
-            var productData = {
-                'id': $(this).parent().find('.type_selector').val()
-            };
+    var listenTypeChanged = function listenTypeChanged() {
+        $typeSelect.change(function () {
+            var productTypeId = $(this).val();
 
-            $.get($routeAddToCart, productData).then(function (response) {
-                console.log(response);
-
-                $(".box-body").append(response);
+            $.get('/admin/type/' + productTypeId + '/attributes').then(function (response) {
+                attributesContainer.html(response);
             });
         });
     };

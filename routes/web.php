@@ -24,7 +24,12 @@ Route::resource('/admin/brand', 'Admin\BrandController');
 Route::resource('/admin/product', 'Admin\ProductController');
 Route::resource('/admin/order', 'Admin\OrderController');
 Route::resource('/admin/status', 'Admin\StatusController');
+
+// Product types
+Route::get('admin/type/{type_id}/attributes', 'Admin\ProductTypeController@getAttributes');
 Route::resource('/admin/type', 'Admin\ProductTypeController');
+
+// Props
 Route::resource('/admin/props', 'Admin\PropsController');
 
 Route::post('/admin/image/destroy/', 'Admin\ImagesController@destroy')->name('image.destroy');

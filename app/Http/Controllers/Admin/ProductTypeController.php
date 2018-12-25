@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Services\ProductType\ProductTypeService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Props\PropsService;
+use App\Services\ProductType\ProductTypeService;
 
 class ProductTypeController extends Controller
 {
+    /**
+     * @var PropsService
+     */
+    private $propsService;
+
     /**
      * @var ProductTypeService
      */
@@ -15,11 +21,14 @@ class ProductTypeController extends Controller
 
     /**
      * ProductTypeController constructor.
+     * @param PropsService $propsService
      * @param ProductTypeService $productTypeService
      */
-    public function __construct(ProductTypeService $productTypeService)
+    public function __construct(PropsService $propsService, ProductTypeService $productTypeService)
     {
         $this->middleware('admin');
+
+        $this->propsService = $propsService;
         $this->productTypeService = $productTypeService;
     }
 
@@ -98,5 +107,21 @@ class ProductTypeController extends Controller
         $this->productTypeService->destroy($id);
 
         return redirect()->route('type.index')->with('status', 'Тип товаров удалён!');
+    }
+
+    /**
+     * Returns view of attributes by product type id
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Throwable
+     */
+    public function getAttributes($id)
+    {
+        $attributes = $this->propsService->propsRepository->getByTypeId($id);
+
+        return response()->json(
+            view('admin.product.attributes_list', compact('attributes'))->render()
+        );
     }
 }
