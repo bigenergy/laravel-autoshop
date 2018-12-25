@@ -22,16 +22,28 @@ class Product extends Model
 
     protected $guarded = [];
 
+    /**
+     * Product Category relation
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
 
+    /**
+     * Product Brand relation
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function brand()
     {
         return $this->belongsTo(Brand::class);
     }
 
+    /**
+     * Product Images relation
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
@@ -64,6 +76,10 @@ class Product extends Model
         return $this->belongsTo(ProductType::class, 'type_id', 'id');
     }
 
+    /**
+     * Product properties relation
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function props()
     {
         return $this->belongsTo(Props::class);
