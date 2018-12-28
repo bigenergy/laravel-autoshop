@@ -99,9 +99,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $brands = Brand::all();
-        $categories = Category::all();
-        $productTypes = $this->productTypeRepository->getPaginated();
+        $brands = $this->brandRepository->getAll();
+        $categories = $this->categoryRepository->getAll();
+        $productTypes = $this->productTypeRepository->getAll();
         $productForEdit = $this->productService->repository->getById($id);
 
         return view('admin.product.edit', compact('productForEdit', 'categories', 'brands', 'productTypes'));
