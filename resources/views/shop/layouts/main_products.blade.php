@@ -24,7 +24,5 @@
             В магазине нет продуктов.
         </div>
     @endforelse
-
     <div class="container">{{ $products->links() }}</div>
-
 @endsection
