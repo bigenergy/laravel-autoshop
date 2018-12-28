@@ -28,7 +28,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->orderBy('sort', 'desc')->all();
+        return $this->model->with($relations)->orderBy('sort')->get();
     }
 
     /**
@@ -38,7 +38,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getPaginated($relations = [], $perPage = 15)
     {
-        return $this->model->with($relations)->orderBy('sort', 'desc')->paginate($perPage);
+        return $this->model->with($relations)->orderBy('sort')->paginate($perPage);
     }
 
     /**

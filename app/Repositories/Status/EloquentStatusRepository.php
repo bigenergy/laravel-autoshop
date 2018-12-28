@@ -28,7 +28,7 @@ class EloquentStatusRepository extends AbstractRepository implements StatusRepos
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->all();
+        return $this->model->with($relations)->get();
     }
 
     /**

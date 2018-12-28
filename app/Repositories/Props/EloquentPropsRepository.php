@@ -29,7 +29,7 @@ class EloquentPropsRepository extends AbstractRepository implements PropsReposit
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->all();
+        return $this->model->with($relations)->get();
     }
 
     /**

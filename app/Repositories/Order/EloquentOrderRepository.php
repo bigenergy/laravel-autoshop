@@ -29,7 +29,7 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->orderBy('created_at', 'desc')->all();
+        return $this->model->with($relations)->orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -42,6 +42,11 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
         return $this->model->with($relations)->orderBy('created_at', 'desc')->paginate($perPage);
     }
 
+    /**
+     * @param array $relations
+     * @param int $id
+     * @return Order|Order[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed|null
+     */
     public function getById2($relations = [], int $id)
     {
         return $this->model->with($relations)->find($id);

@@ -28,7 +28,7 @@ class EloquentCartRepository extends AbstractRepository implements CartRepositor
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->all();
+        return $this->model->with($relations)->get();
     }
 
     /**
