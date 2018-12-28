@@ -42,7 +42,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryService->repository->getPaginated();
+        $categories = $this->categoryService->repository->getAll();
 
         return view('admin.category.create', compact('categories'));
     }

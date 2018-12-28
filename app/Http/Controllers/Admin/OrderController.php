@@ -41,7 +41,7 @@ class OrderController extends Controller
     {
         $orders = $this->orderRepository->getPaginated();
         $products = $this->productRepository
-            ->getPaginated()
+            ->getAll()
             ->pluck('name', 'id');
 
         return view('admin.order.list', [
@@ -58,10 +58,10 @@ class OrderController extends Controller
     public function create()
     {
         $statuses = $this->statusRepository
-            ->getPaginated()
+            ->getAll()
             ->pluck('name', 'id');
         $products = $this->productRepository
-            ->getPaginated()
+            ->getAll()
             ->pluck('name', 'id');
 
         return view('admin.order.create',
@@ -94,10 +94,10 @@ class OrderController extends Controller
         $orderItems = $this->orderRepository->getOrderItems($id);
 
         $statuses = $this->statusRepository
-            ->getPaginated()
+            ->getAll()
             ->pluck('name', 'id');
         $products = $this->productRepository
-            ->getPaginated()
+            ->getAll()
             ->whereNotIn('id', $orderItems->pluck('product_id'))
             ->pluck('name', 'id');
 

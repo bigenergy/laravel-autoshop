@@ -48,7 +48,7 @@ class PropsController extends Controller
      */
     public function create()
     {
-        $type = $this->productTypeService->productTypeRepository->getPaginated();
+        $type = $this->productTypeService->productTypeRepository->getAll();
 
         return view('admin.props.create', compact('type'));
     }
@@ -76,7 +76,7 @@ class PropsController extends Controller
     public function edit($id)
     {
         $propsEdit= $this->propsService->propsRepository->getById($id);
-        $type = $this->productTypeService->productTypeRepository->getPaginated();
+        $type = $this->productTypeService->productTypeRepository->getAll();
 
         return view('admin.props.edit', compact('propsEdit', 'type'));
     }
