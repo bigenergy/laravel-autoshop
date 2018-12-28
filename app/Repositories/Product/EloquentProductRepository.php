@@ -28,7 +28,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getAll($relations = [])
     {
-        return $this->model->with($relations)->all();
+        return $this->model->with($relations)->orderBy('sort', 'desc')->all();
     }
 
     /**
@@ -38,7 +38,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getPaginated($relations = [], $perPage = 15)
     {
-        return $this->model->with($relations)->paginate($perPage);
+        return $this->model->with($relations)->orderBy('sort', 'desc')->paginate($perPage);
     }
 
     /**
@@ -51,7 +51,7 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     {
         return $this->model->whereHas('categories', function($q) use ($category) {
             $q->where('category_id', '=', $category->id);
-        })->paginate($perPage);
+        })->orderBy('sort', 'desc')->paginate($perPage);
     }
 
     /**
