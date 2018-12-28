@@ -43,16 +43,6 @@ class EloquentOrderRepository extends AbstractRepository implements OrderReposit
     }
 
     /**
-     * @param array $relations
-     * @param int $id
-     * @return Order|Order[]|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed|null
-     */
-    public function getById2($relations = [], int $id)
-    {
-        return $this->model->with($relations)->find($id);
-    }
-
-    /**
      * @param $id
      * @return mixed
      */
