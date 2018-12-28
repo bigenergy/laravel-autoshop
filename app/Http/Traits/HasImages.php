@@ -20,7 +20,7 @@ trait HasImages
     {
         /** @var UploadedFile $image */
         foreach ($images as $image) {
-            $path  = "products";
+            $path  = "images/products";
             $imageName = md5($image->getClientOriginalName()) . time() . '.' . $image->getClientOriginalExtension();
 
             $this->saveToRelations($imageName, $path);
@@ -30,7 +30,7 @@ trait HasImages
 
     public function addSingleImage($image)
     {
-        $path  = "categories";
+        $path  = "images/categories";
         $imageName = md5($image->getClientOriginalName()) . time() . '.' . $image->getClientOriginalExtension();
 
         $this->saveToRelations($imageName, $path);
@@ -39,7 +39,7 @@ trait HasImages
 
     public function addBrandSingleImage($image)
     {
-        $path  = "brands";
+        $path  = "images/brands";
         $imageName = md5($image->getClientOriginalName()) . time() . '.' . $image->getClientOriginalExtension();
 
         $this->saveToRelations($imageName, $path);

@@ -39,7 +39,16 @@
                     <hr>
                     <p class="card-text">{{ $product->description }}</p>
                 </div>
-
+                <table class="table table-hover">
+                    <tbody>
+                    @foreach($product->props as $prop)
+                        <tr>
+                            <td><b>{{ $prop->name }}</b></td>
+                            <td>{{ $prop->pivot->value }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
                 <div class="card-footer">
                     <div class="detail-product-cart__container">
                         @if($isInCart)
@@ -49,7 +58,7 @@
                                 <input type="number" class="product-count form-control" min="1" value="1">
                             </div>
                             <br>
-                            <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">Купить <i class="fas fa-cart-plus"></i></button>
+                            <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">В корзину <i class="fas fa-cart-plus"></i></button>
                         @endif
                     </div>
                 </div>

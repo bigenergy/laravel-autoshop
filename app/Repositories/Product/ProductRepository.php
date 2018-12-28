@@ -14,8 +14,9 @@ interface ProductRepository extends Repository
     public function getByCategory($category);
 
     /**
+     * @param array $relations
      * @param string $slug
      * @return mixed
      */
-    public function getBySlug(string $slug);
+    public function getBySlug($relations = [], string $slug);
 }

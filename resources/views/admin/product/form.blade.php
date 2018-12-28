@@ -52,6 +52,7 @@
             <small>Slug URL</small>
         </div>
     </div>
+    <hr>
     <div class="form-group">
         {{ Form::label('type_id', 'Тип продукта', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
@@ -65,3 +66,5 @@
             @include('admin.product.attributes_list',['attributes' => $productForEdit->props])
         @endif
     </div>
+    <hr>
+</div>

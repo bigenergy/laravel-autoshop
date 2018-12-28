@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function show(string $productSlug)
     {
-        $product = $this->productService->repository->getBySlug($productSlug);
+        $product = $this->productService->repository->getBySlug('props', $productSlug);
 
         if (is_null($product)) {
             abort(404, "product not found");

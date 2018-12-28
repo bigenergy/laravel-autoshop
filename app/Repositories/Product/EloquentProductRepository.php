@@ -55,12 +55,13 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     }
 
     /**
+     * @param array $relations
      * @param string $slug
      * @return mixed
      */
-    public function getBySlug(string $slug)
+    public function getBySlug($relations = [], string $slug)
     {
-        return $this->model->where('slug', '=', $slug)->first();
+        return $this->model->with($relations)->where('slug', '=', $slug)->first();
     }
 
     public function getByIdRelation($relations = [], int $id)
