@@ -32,7 +32,7 @@
                                     <h6><strong>{{ $item->price }} $ <span class="text-muted">x</span></strong></h6>
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-4 detail-product-cart__container">
-                                    <input data-id={{ $item->product_id }} type="number" class="buy-number product-count form-control input-sm" value="{{ $item->quantity }}">
+                                    <input data-id={{ $item->product_id }} type="number" class="buy-number product-count form-control input-sm" value="{{ $item->quantity }}" min="1">
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
                                     <button data-id={{ $item->id }} type="button" class="delete-button btn btn-outline-danger">
