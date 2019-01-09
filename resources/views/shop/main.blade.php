@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Простой интернет магазин автомобилей - AutoShop">
+    <meta name="description" content="AutoShop CMS - Простой интернет магазин автомобилей">
     <meta name="author" content="AUzhegov">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
