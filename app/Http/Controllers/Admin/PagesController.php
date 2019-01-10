@@ -3,10 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Pages\PagesService;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    /**
+     * @var PagesService
+     */
+    private $pagesService;
+
+    /**
+     * PagesController constructor.
+     * @param PagesService $pagesService
+     */
+    public function __construct(PagesService $pagesService)
+    {
+        $this->middleware('admin');
+        $this->pagesService = $pagesService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,9 @@ class PagesController extends Controller
      */
     public function index()
     {
+        $pages = $this->pagesService->pagesRepository->getPaginated();
 
+        return view('admin.pages.list', compact('pages'));
     }
 
     /**
@@ -24,7 +42,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -35,19 +53,12 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->all();
+        $this->pagesService->add($attributes);
+
+        return redirect()->route('pages.create')->with('status', 'Страница добавлена!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +68,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pageForEdit = $this->pagesService->pagesRepository->getById($id);
+
+        return view('admin.pages.edit', compact('pageForEdit'));
     }
 
     /**
@@ -69,7 +82,10 @@ class PagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = $request->all();
+        $this->pagesService->update($id, $attributes);
+
+        return redirect()->route('pages.edit', $id)->with('status', 'Статическая сраница обновлена!');
     }
 
     /**
@@ -80,6 +96,8 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->pagesService->destroy($id);
+
+        return redirect()->route('pages.index')->with('status', 'Статическая страница удалена!');
     }
 }

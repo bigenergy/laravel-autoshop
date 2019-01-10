@@ -35,6 +35,7 @@ mix.scripts([
     'resources/assets/admin/vendor/js/jquery.slimscroll.min.js',
     'resources/assets/admin/vendor/js/jquery-confirm.min.js',
     'resources/assets/admin/js/images.js',
+    'resources/assets/admin/vendor/js/ckeditor.js',
 ], 'public/assets/admin/js/all.js');
 
 /* FOR SHOP CLIENT INTERFACE */

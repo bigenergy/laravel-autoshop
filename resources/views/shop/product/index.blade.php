@@ -18,17 +18,17 @@
                     <div class="carousel-inner">
                         @foreach($product->images as $image)
                             <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                                <img class="d-block img-fluid" src="{{ $image->fullUrl }}" alt="Second slide">
+                                <img class="d-block img-fluid" src="{{ $image->fullUrl }}" alt="Изображение товара {{ $product->name }}">
                             </div>
                         @endforeach
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                        <span class="sr-only">Предыдущий</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">Следующий</span>
                     </a>
                 </div>
                 <div class="card-body">
@@ -42,7 +42,7 @@
                 <div class="card-footer">
                     <div class="detail-product-cart__container">
                         @if($isInCart)
-                            <a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
+                            <a href="{{ route('shop.cart') }}" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
                         @else
                             <div align="center">
                                 <input type="number" class="product-count form-control" min="1" value="1">
