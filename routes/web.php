@@ -24,6 +24,7 @@ Route::resource('/admin/brand', 'Admin\BrandController');
 Route::resource('/admin/product', 'Admin\ProductController');
 Route::resource('/admin/order', 'Admin\OrderController');
 Route::resource('/admin/status', 'Admin\StatusController');
+Route::resource('/admin/pages', 'Admin\PagesController');
 
 // Product types
 Route::get('admin/type/{type_id}/attributes', 'Admin\ProductTypeController@getAttributes');
