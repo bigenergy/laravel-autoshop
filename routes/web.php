@@ -61,3 +61,11 @@ Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
 Route::get('/getprops', 'Admin\PropsController@getProps');
 
 
+
+
+// Catch all page controller (place at the very bottom)
+Route::get('page/{slug}', [
+    'uses' => 'Shop\PagesController@getPage'
+])->where('slug', '([A-Za-z0-9\-\/]+)')->name('page.view');
+
+

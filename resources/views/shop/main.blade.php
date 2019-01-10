@@ -26,12 +26,12 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
-            <h1 class="my-4">AutoShop</h1>
-            @include('shop.layouts.categories')
-        </div>
+        {{--<div class="col-lg-3">--}}
+            {{--<h1 class="my-4">AutoShop</h1>--}}
+            {{--@include('shop.layouts.categories')--}}
+        {{--</div>--}}
         <!-- /.col-lg-3 -->
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <br>
             <div class="row">
                 @yield('content')

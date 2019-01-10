@@ -43,14 +43,15 @@ class EloquentPagesRepository extends AbstractRepository implements PagesReposit
     }
 
     /**
-     * @param int $id
+     * @param string $slug
      * @return Pages|\Illuminate\Database\Eloquent\Builder|mixed
      */
-    public function getByTypeId(int $id)
+    public function getBySlug(string $slug)
     {
         return $this->model
             ->newQuery()
-            ->where('product_type_id', $id)
-            ->get();
+            ->where('slug', $slug)
+            ->where('isPrivate', 0)
+            ->firstOrFail();
     }
 }

@@ -23,8 +23,8 @@ interface PagesRepository
     public function getPaginated($relations =[], $perPage = 15);
 
     /**
-     * @param int $id
+     * @param string $id
      * @return mixed
      */
-    public function getByTypeId(int $id);
+    public function getBySlug(string $id);
 }
