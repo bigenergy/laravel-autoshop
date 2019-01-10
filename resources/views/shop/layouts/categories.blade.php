@@ -6,15 +6,3 @@
     <a href="#" class="list-group-item">Нет категорий</a>
 @endforelse
 </div>
-<br>
-<h6>Фильтр</h6>
-<div class="list-group">
-    <div class="list-group-item">
-        <label><input type="checkbox" value=""> Option 1</label>
-    </div>
-    <div class="list-group-item">
-        <label><input type="checkbox" value=""> Option 2</label>
-    </div>
-</div>
-<br>
-<button class="btn btn-success btn-block">Применить</button>
