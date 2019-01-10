@@ -42,10 +42,13 @@ mix.scripts([
 
 mix.styles([
     'resources/assets/shop/css/shop-homepage.css',
+    'resources/assets/shop/vendor/owl.carousel.min.css',
+    'resources/assets/shop/vendor/owl.theme.default.min',
 ], 'public/assets/shop/css/all.css');
 
 mix.js([
     'resources/assets/shop/js/common.js',
+    'resources/assets/admin/vendor/js/owl.carousel.min.js',
 ], 'public/assets/shop/js/scripts.js');
 
 /* FONTAWESOME 5 & BOOTSTRAP 4.1.3 */

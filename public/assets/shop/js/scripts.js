@@ -10444,7 +10444,8 @@ return jQuery;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(8);
+__webpack_require__(8);
+module.exports = __webpack_require__(15);
 
 
 /***/ }),
@@ -17406,6 +17407,12 @@ var CartDetail = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (CartDetail);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'c:\\OSPanel\\domains\\laratest\\resources\\assets\\admin\\vendor\\js\\owl.carousel.min.js'");
 
 /***/ })
 /******/ ]);
