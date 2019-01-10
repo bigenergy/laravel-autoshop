@@ -17,7 +17,7 @@ class CreatePages extends Migration
             $table->increments('id');
             $table->string('slug');
             $table->boolean('isPrivate');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
         });
     }
