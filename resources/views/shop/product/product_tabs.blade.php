@@ -1,5 +1,5 @@
 <nav>
-    <div class="nav nav-pills" id="nav-tab" role="tablist">
+    <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
         <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="true">Описание</a>
         <a class="nav-item nav-link" id="nav-props-tab" data-toggle="tab" href="#nav-props" role="tab" aria-controls="nav-props" aria-selected="false">Характеристики</a>
         <a class="nav-item nav-link" id="nav-feedback-tab" data-toggle="tab" href="#nav-feedback" role="tab" aria-controls="nav-feedback" aria-selected="false">Отзывы</a>
@@ -41,4 +41,5 @@
     <div class="tab-pane fade" id="nav-topic" role="tabpanel" aria-labelledby="nav-topic-tab">
         in dev...
     </div>
+
 </div>
