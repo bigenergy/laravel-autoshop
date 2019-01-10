@@ -12,19 +12,19 @@ class PagesService
      * @var Pages
      */
     private $pagesModel;
+
     /**
      * @var PagesRepository
      */
-    private $pagesRepository;
+    public $pagesRepository;
 
     /**
-     * PagesService constructor.
+     * ProductService constructor.
      * @param Pages $pagesModel
      * @param PagesRepository $pagesRepository
      */
     public function __construct(Pages $pagesModel, PagesRepository $pagesRepository)
     {
-
         $this->pagesModel = $pagesModel;
         $this->pagesRepository = $pagesRepository;
     }
@@ -39,18 +39,18 @@ class PagesService
 
     public function update(int $id, array $attributes): bool
     {
-        /** @var Pages $updatedPage */
-        $updatedPage = $this->pagesModel->find($id);
-        $updatedPage->fill($attributes);
-        $updatedPage->save();
+        /** @var Pages $updatedPages */
+        $updatedPages = $this->pagesModel->find($id);
+        $updatedPages->fill($attributes);
+        $updatedPages->save();
 
         return true;
     }
 
     public function destroy(int $id): bool
     {
-        $pageToDelete = $this->pagesModel->findOrFail($id);
-        $pageToDelete->delete();
+        $pagesToDelete = $this->pagesModel->findOrFail($id);
+        $pagesToDelete->delete();
 
         return true;
     }
