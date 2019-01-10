@@ -4,7 +4,8 @@
     {!! Form::open([
         'route' => 'pages.store',
         'class' => 'form-horizontal',
-        'method' => 'post'
+        'method' => 'post',
+        'novalidate'
     ]) !!}
     @include('admin.pages.form')
     <div class="box-footer">

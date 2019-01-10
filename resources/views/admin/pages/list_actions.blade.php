@@ -8,3 +8,5 @@
 <button type="submit" class="btn btn-danger btn-xs">Удалить <i class="fa fa-times"></i></button>
 
 {{ Form::close() }}
+
+
