@@ -11,12 +11,12 @@ use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Category\EloquentCategoryRepository;
 use App\Repositories\Order\EloquentOrderRepository;
 use App\Repositories\Order\OrderRepository;
+use App\Repositories\Pages\PagesRepository;
 use App\Repositories\Product\EloquentProductRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\ProductType\EloquentProductTypeRepository;
 use App\Repositories\ProductType\ProductTypeRepository;
-use App\Repositories\Props\EloquentPropsRepository;
-use App\Repositories\Props\PropsRepository;
+use App\Repositories\Props\EloquentPagesRepository;
 use App\Repositories\Status\EloquentStatusRepository;
 use App\Repositories\Status\StatusRepository;
 use Illuminate\Support\ServiceProvider;
@@ -77,8 +77,8 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            PropsRepository::class,
-            EloquentPropsRepository::class
+            PagesRepository::class,
+            EloquentPagesRepository::class
         );
     }
 }
