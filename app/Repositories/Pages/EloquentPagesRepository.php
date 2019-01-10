@@ -12,10 +12,6 @@ class EloquentPagesRepository extends AbstractRepository implements PagesReposit
      * @var Pages
      */
     private $model;
-    /**
-     * @var Pages
-     */
-    private $pages;
 
     /**
      * EloquentPagesRepository constructor.
@@ -23,7 +19,7 @@ class EloquentPagesRepository extends AbstractRepository implements PagesReposit
      */
     public function __construct(Pages $pages)
     {
-        $this->pages = $pages;
+        $this->model = $pages;
         parent::__construct($pages);
     }
 
