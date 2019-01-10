@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStaticPages extends Migration
+class CreatePages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStaticPages extends Migration
      */
     public function up()
     {
-        Schema::create('static_pages', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug');
             $table->boolean('isPrivate');
@@ -29,6 +29,6 @@ class CreateStaticPages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('static_pages');
+        Schema::dropIfExists('pages');
     }
 }
