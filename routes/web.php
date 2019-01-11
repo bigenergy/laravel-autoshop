@@ -60,7 +60,7 @@ Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
 
 Route::get('/getprops', 'Admin\PropsController@getProps');
 
-
+Route::get('/new', 'Shop\ProductController@newSellers');
 
 
 // Catch all page controller (place at the very bottom)

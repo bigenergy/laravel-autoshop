@@ -51,6 +51,7 @@ class ProductController extends Controller
     {
         $product = $this->productService->repository->getBySlug('props', $productSlug);
 
+
         if (is_null($product)) {
             abort(404, "product not found");
         }
@@ -60,4 +61,9 @@ class ProductController extends Controller
         return view('shop.product.index', compact('product', 'isInCart'));
     }
 
+    public function newSellers()
+    {
+        $newSeller = $this->productService->repository->getNewAll();
+        return view('shop.newsellers.new_sellers', compact('newSeller'));
+    }
 }
