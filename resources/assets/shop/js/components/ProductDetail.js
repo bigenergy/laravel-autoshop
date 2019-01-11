@@ -16,6 +16,7 @@ let ProductDetail = (() => {
             $.post($routeAddToCart, productData).then(function (response) {
                 console.log('OK');
                 $('#cartModal').modal('show');
+                $(".refresh-cart").load(window.location + " .refresh-cart");
 
                 $buyButton.remove();
                 $('<a href="/cart" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>').appendTo('.card-footer' ).trigger( 'create' );

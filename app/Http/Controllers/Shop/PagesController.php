@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pages;
 use App\Services\Pages\PagesService;
-use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
@@ -23,7 +21,7 @@ class PagesController extends Controller
         $this->pagesService = $pagesService;
     }
 
-    public function getPage($slug = null)
+    public function getPage(string $slug)
     {
         $page = $this->pagesService->pagesRepository->getBySlug($slug);
 

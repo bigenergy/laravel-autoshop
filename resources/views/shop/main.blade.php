@@ -23,10 +23,6 @@
 
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
-
-
 <!-- Page Content -->
 <div class="container">
     @include('shop.layouts.menu')
@@ -55,26 +51,7 @@
     </div>
 </footer>
 <!-- JavaScript -->
-{{--<script src="{{ asset('assets/shop/js/all.js') }}"></script>--}}
-
 <script src="{{ asset('assets/shop/js/scripts.js') }}"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-            dynamicBullets: true,
-        },
-    });
 
-    var swipernew = new Swiper('#sliderNew', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: '#sliderNewPagination',
-            clickable: true,
-        },
-    });
-</script>
 </body>
 </html>

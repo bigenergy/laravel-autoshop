@@ -32,7 +32,8 @@ class CategoryController extends Controller
     {
         $category = $this->categoryRepository->getBySlug($slug);
         $products = $this->productRepository->getByCategory($category);
+        $categories = $this->categoryRepository->getAll();
 
-        return view('shop.category.products', ['products' => $products]);
+        return view('shop.category.products', compact('products', 'categories'));
     }
 }

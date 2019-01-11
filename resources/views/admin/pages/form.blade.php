@@ -9,7 +9,7 @@
         {{ Form::label('slug', 'Slug (url страницы)', ['class' => 'col-sm-2 control-label']) }}
         <div class="col-sm-10">
             {{ Form::text('slug', null, ['class' => 'form-control', 'required']) }}
-            <small>Slug URL - часть ссылки после {{ env('APP_URL') }}/page/<b>Slug_URL</b></small>
+            <small>Slug URL - часть ссылки после {{ env('APP_URL') }}/<b>Slug_URL</b></small>
         </div>
     </div>
     <div class="form-group">
