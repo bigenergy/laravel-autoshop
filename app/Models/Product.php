@@ -17,7 +17,7 @@ class Product extends Model
     private $imagesPath = 'products';
 
     protected $fillable = [
-        'name', 'description', 'disable', 'brand_id', 'sort', 'price', 'slug', 'type_id'
+        'name', 'description', 'disable', 'brand_id', 'sort', 'price', 'slug', 'type_id', 'isNew'
     ];
 
     protected $guarded = [];

@@ -52,6 +52,13 @@
             <small>Slug URL</small>
         </div>
     </div>
+    <div class="form-group">
+        {{ Form::label('isNew', 'Новинка', ['class' => 'col-sm-2 control-label']) }}
+        <div class="col-sm-10">
+            {{ Form::select('isNew', ['Нет', 'Да'], null, ['class' => 'form-control']) }}
+            <small>Новинки отображатся на главной странице сайта в специальном слайдере</small>
+        </div>
+    </div>
     <hr>
     <div class="form-group">
         {{ Form::label('type_id', 'Тип продукта', ['class' => 'col-sm-2 control-label']) }}

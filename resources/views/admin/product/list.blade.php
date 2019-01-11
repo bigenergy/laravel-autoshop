@@ -11,6 +11,7 @@
                 <th>Тип</th>
                 <th>Сортировка</th>
                 <th>Активность</th>
+                <th>Новинка</th>
                 <th>Действия</th>
             </tr>
             @forelse($products as $product)
@@ -30,6 +31,8 @@
                     </td>
                     <td>{{ $product->sort }}</td>
                     <td>@if(!$product->disable)<span class="label label-success">Активно</span> @else <span class="label label-danger">Неактивно</span>@endif</td>
+                    <td>@if($product->isNew)<span class="label label-success">Да</span> @else <span class="label label-danger">Нет</span>@endif</td>
+
                     <td>@include('admin.product.list_actions')</td>
                 </tr>
             @empty

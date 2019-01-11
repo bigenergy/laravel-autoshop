@@ -41,7 +41,6 @@
         <!-- Swiper -->
         <div class="swiper-container" id="sliderNew">
             <div class="swiper-wrapper">
-
                 @forelse($products as $product)
                     <div class="swiper-slide">
                         <div class="card h-50">
@@ -50,7 +49,7 @@
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <b>{{ $product->name }}</b>
+                                    <b>{{ $product->name }} <span class="badge badge-danger">Новинка</span></b>
                                 </h4>
                                 <h5>{{ $product->price }} $</h5>
                             </div>
@@ -58,7 +57,7 @@
                     </div>
                 @empty
                     <div class="container alert alert-warning" role="alert">
-                        В магазине нет продуктов.
+                       Новинки отсутсвуют :(
                     </div>
                 @endforelse
             </div>
@@ -68,11 +67,6 @@
         <br>
         <h2>О компании</h2>
         <hr>
-        <p>  Оптовый интернет-магазин AutoShop начал свою работу 120 лет назад на базе пещерного магазина-склада, который находится на промрынке «7 километр».
-            Всю бытовую электронику, которая реализуется на складе, мы предлагаем приобрести через Интернет, чтобы покупатели из любого региона Украины могли получить качественный товар по приемлемым ценам, не приезжая для этого специально в Одессу.
-            Наш магазин-склад в Одессе работает с 2002 года. Мы уже 14 лет специализируемся только на бытовой электронике, поэтому знаем все свои модели и детально проконсультируем каждого своего клиента.
-            В интернет-магазине AvtoShop представлено 26 категорий и более 3000 наименований товара, среди которых автоэлектроника, компьютерная техника, мобильные телефоны, зарядные устройства, системы видеонаблюдений и многое другое. У нас есть что выбрать без дополнительных переплат.
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>{!! $about->content !!}</p>
     </div>
 @endsection

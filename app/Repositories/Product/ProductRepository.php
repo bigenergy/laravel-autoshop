@@ -19,4 +19,10 @@ interface ProductRepository extends Repository
      * @return mixed
      */
     public function getBySlug($relations = [], string $slug);
+
+    /**
+     * @param array $relations
+     * @return mixed
+     */
+    public function getNewAll($relations = []);
 }
