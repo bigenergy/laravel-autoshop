@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10435,22 +10435,23 @@ return jQuery;
 
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-module.exports = __webpack_require__(6);
+__webpack_require__(3);
+module.exports = __webpack_require__(7);
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 window.$ = window.JQuery = __webpack_require__(0);
 
-var AjaxSetupHeaders = __webpack_require__(3).default;
-var OrderDetail = __webpack_require__(4).default;
-var ProductType = __webpack_require__(5).default;
+var AjaxSetupHeaders = __webpack_require__(4).default;
+var OrderDetail = __webpack_require__(5).default;
+var ProductType = __webpack_require__(6).default;
 
 $(document).ready(function () {
     AjaxSetupHeaders.init();
@@ -10459,7 +10460,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10481,7 +10482,7 @@ var AjaxSetupHeaders = function () {
 /* harmony default export */ __webpack_exports__["default"] = (AjaxSetupHeaders);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10586,7 +10587,7 @@ var OrderDetail = function () {
 /* harmony default export */ __webpack_exports__["default"] = (OrderDetail);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10617,7 +10618,7 @@ var ProductType = function () {
 /* harmony default export */ __webpack_exports__["default"] = (ProductType);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

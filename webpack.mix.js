@@ -47,7 +47,6 @@ mix.styles([
 
 mix.js([
     'resources/assets/shop/js/common.js',
-    'resources/assets/shop/vendor/swiper/swiper.min.js',
 ], 'public/assets/shop/js/scripts.js');
 
 /* FONTAWESOME 5 & BOOTSTRAP 4.1.3 */
