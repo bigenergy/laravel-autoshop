@@ -30,6 +30,6 @@ class CategoriesList
      */
     public function compose(View $view)
     {
-        $view->with('categoryShowList', $this->categoryRepository->getPaginated());
+        $view->with('categoryShowList', $this->categoryRepository->getAll());
     }
 }
