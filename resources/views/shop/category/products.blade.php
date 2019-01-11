@@ -1,6 +1,10 @@
 @extends('shop.main')
-@section('content')
 
+@section('content')
+    <div class="container">
+        <h5>Товаров найдено: {{ $products->count() }}</h5>
+        <hr>
+    </div>
     @forelse($products as $product)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
