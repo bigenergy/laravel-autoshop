@@ -108,17 +108,4 @@ class PropsController extends Controller
 
         return redirect()->route('props.index')->with('status', 'Поле удалёно!');
     }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getProps(Request $request)
-    {
-        $list = $this->propsService->propsRepository->getByTypeId($request->get('id'));
-        if(count($list)) {
-            return response()->json($list, 200, [], JSON_UNESCAPED_UNICODE);
-        }
-        return abort(404);
-    }
 }
