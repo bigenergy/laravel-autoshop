@@ -23,7 +23,6 @@ interface ProductTypeRepository
     public function getPaginated($relations =[], $perPage = 15);
 
     /**
-     * @param array $relations
      * @param string $slug
      * @return mixed
      */
