@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Composers\ProductTypes;
 use App\Http\View\Composers\CartItems;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,5 +19,6 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('shop.layouts.categories', CategoriesList::class);
         View::composer('*', CartItems::class);
+        View::composer('*', ProductTypes::class);
     }
 }

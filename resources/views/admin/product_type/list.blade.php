@@ -6,12 +6,14 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
+                <th>Slug</th>
                 <th>Действия</th>
             </tr>
             @forelse($productType as $type)
                 <tr>
                     <td>{{ $type->id }}</td>
                     <td>{{ $type->name }}</td>
+                    <td>{{ $type->slug }}</td>
                     <td>@include('admin.product_type.list_actions')</td>
                 </tr>
             @empty
