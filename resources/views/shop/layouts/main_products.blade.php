@@ -49,7 +49,7 @@
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <b>{{ $product->name }} <span class="badge badge-danger">Новинка</span></b>
+                                    <b>{{ $product->name }} <br><span class="badge badge-danger">Новинка</span></b>
                                 </h4>
                                 <h5>{{ $product->price }} $</h5>
                             </div>
