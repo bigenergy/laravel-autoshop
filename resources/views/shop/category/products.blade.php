@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="card-footer">
-                                    <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
+                                    <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm"><i class="fas fa-cart-arrow-down"></i> Купить</a>
                                 </div>
                             </div>
                         </div>
