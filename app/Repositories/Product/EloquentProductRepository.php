@@ -50,8 +50,8 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     public function getByCategory($category, $perPage = 15)
     {
         return $this->model->whereHas('productType', function($q) use ($category) {
-            $q->where('type_id', '=', $category);
-        })->orderBy('sort', 'desc')->paginate($perPage);
+            $q->where('type_id', $category)->where('disable', 0);
+        })->orderBy('sort', 'asc')->paginate($perPage);
     }
 
     /**
