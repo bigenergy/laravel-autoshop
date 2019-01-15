@@ -1,5 +1,35 @@
 @extends('shop.main')
 @section('content')
+    <!-- Demo styles -->
+    <style>
+
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-top {
+            height: 80%;
+            width: 100%;
+        }
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+        .gallery-thumbs .swiper-slide {
+            height: 100%;
+            opacity: 0.4;
+        }
+        .gallery-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+    </style>
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -8,29 +38,49 @@
                     <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
                 </ol>
             </nav>
+           <div class="row">
+               <div class="col-sm-6">
+                   <!-- Swiper -->
+                   <div class="swiper-container gallery-top">
+                       <div class="swiper-wrapper">
+                           @foreach($product->images as $image)
+                               <div class="swiper-slide" style="background-image:url({{ $image->fullUrl }})"></div>
+                           @endforeach
+                       </div>
+                       <!-- Add Arrows -->
+                       <div class="swiper-button-next swiper-button-white"></div>
+                       <div class="swiper-button-prev swiper-button-white"></div>
+                   </div>
+                   <div class="swiper-container gallery-thumbs">
+                       <div class="swiper-wrapper">
+                           @foreach($product->images as $image)
+                               <div class="swiper-slide" style="background-image:url({{ $image->fullUrl }})"></div>
+                           @endforeach
+                       </div>
+                   </div>
+               </div>
+               <div class="col-sm-6 mb-5">
+                   <h4 class="card-title">
+                       {{ $product->name }}
+                   </h4>
+                   <h5>Стоимость: {{ $product->price }} <i class="fas fa-dollar-sign"></i></h5>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+               </div>
+           </div>
+
             <div class="card h-100">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        @foreach( $product->images as $photo )
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
-                        @endforeach
-                    </ol>
-                    <div class="carousel-inner">
-                        @foreach($product->images as $image)
-                            <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                                <img class="d-block img-fluid" src="{{ $image->fullUrl }}" alt="Изображение товара {{ $product->name }}">
-                            </div>
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Предыдущий</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Следующий</span>
-                    </a>
-                </div>
+
                 <div class="card-body">
                     <h4 class="card-title">
                         {{ $product->name }}

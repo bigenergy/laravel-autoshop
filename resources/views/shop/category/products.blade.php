@@ -36,7 +36,7 @@
                         </div>
                     @empty
                         <div class="container alert alert-warning" role="alert">
-                            В этой категории нет продуктов
+                            Не найдено ни одного продукта :(
                         </div>
                     @endforelse
                 </div>

@@ -10573,6 +10573,28 @@ var swipernew = new __WEBPACK_IMPORTED_MODULE_0_swiper__["a" /* default */]('#sl
     }
 });
 
+var galleryThumbs = new __WEBPACK_IMPORTED_MODULE_0_swiper__["a" /* default */]('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    loop: true,
+    freeMode: true,
+    loopedSlides: 5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true
+});
+var galleryTop = new __WEBPACK_IMPORTED_MODULE_0_swiper__["a" /* default */]('.gallery-top', {
+    spaceBetween: 10,
+    loop: true,
+    loopedSlides: 5, //looped slides should be the same
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+    thumbs: {
+        swiper: galleryThumbs
+    }
+});
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {

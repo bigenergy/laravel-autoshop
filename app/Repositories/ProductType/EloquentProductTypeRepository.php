@@ -41,4 +41,13 @@ class EloquentProductTypeRepository extends AbstractRepository implements Produc
         return $this->model->with($relations)->paginate($perPage);
     }
 
+    /**
+     * @param array $relations
+     * @param string $slug
+     * @return mixed
+     */
+    public function getBySlug(string $slug)
+    {
+        return $this->model->with([])->where('slug', '=', $slug)->first();
+    }
 }
