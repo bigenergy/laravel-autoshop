@@ -26,6 +26,8 @@ Route::resource('/admin/order', 'Admin\OrderController');
 Route::resource('/admin/status', 'Admin\StatusController');
 Route::resource('/admin/pages', 'Admin\PagesController');
 
+Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
+
 // Product types
 Route::get('admin/type/{type_id}/attributes', 'Admin\ProductTypeController@getAttributes');
 Route::resource('/admin/type', 'Admin\ProductTypeController');
@@ -55,8 +57,7 @@ Route::post('/cart/edit', 'Shop\CartController@editCart')->name('shop.cart.edit'
 
 Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('shop.order.detail.write');
 
-Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
-
+// NEW PRODUCTS PAGE
 Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers');
 
 
