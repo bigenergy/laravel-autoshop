@@ -57,7 +57,7 @@ Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('sh
 
 Route::post('/admin/order/order_items', 'Admin\OrderController@orderItemsList');
 
-Route::get('/new', 'Shop\ProductController@newSellers');
+Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers');
 
 
 // Catch all page controller (place at the very bottom)

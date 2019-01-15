@@ -36,7 +36,7 @@
             <div class="swiper-pagination"></div>
         </div>
         <br>
-        <h2><a href="/new">Новинки</a></h2>
+        <h2><a href="{{ route('shop.new_sellers') }}"><i class="far fa-newspaper"></i> Новинки</a></h2>
         <hr>
         <!-- Swiper -->
         <div class="swiper-container" id="sliderNew">
@@ -65,7 +65,7 @@
             <div class="swiper-pagination"></div>
         </div>
         <br>
-        <h2><a href="/about">О компании</a></h2>
+        <h2><a href="/about"><i class="fas fa-info-circle"></i> О компании</a></h2>
         <hr>
         <p>{!! $about->content !!}</p>
     </div>
