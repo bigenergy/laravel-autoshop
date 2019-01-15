@@ -25,7 +25,7 @@
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="/"><i class="fas fa-home"></i> Главная</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ set_active(["catalog/*"]) }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-list-ul"></i> Каталог
                     </a>
