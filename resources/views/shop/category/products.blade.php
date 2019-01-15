@@ -23,12 +23,16 @@
                                     <img class="card-img-top" src="{{ $product->thumbnail }}" height="140px" alt="{{ $product->name }}">
                                 </a>
                                 <div class="card-body">
+                                    @if($product->isNew)
+                                        <span class="badge badge-danger">Новинка</span>
+                                    @endif
                                     <h4 class="card-title">
                                         <b>{{ $product->name }}</b>
                                     </h4>
                                     <h5>{{ $product->price }} $</h5>
                                     <p class="card-text">{{ substr($product->description, 0, 100) }}...</p>
                                 </div>
+
                                 <div class="card-footer">
                                     <a href="{{ route('shop.product', ['productSlug' => $product->slug]) }}" class="btn btn-outline-success btn-block btn-sm">Просмотреть</a>
                                 </div>
