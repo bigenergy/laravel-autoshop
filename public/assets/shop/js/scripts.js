@@ -26028,10 +26028,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var FilterDetail = function () {
     var $routeSortFilter = '/filter/sorting';
     var $changeButtonSelector = '#sortingSelector';
+    var $sortFilter = '#sort_filter';
+    var $sortLoader = '#sorting_loader';
+    var $filterResult = '#filter_information';
 
     var init = function init() {
         listenClickChangeButton();
-        //$('#sorting_loader').hide();
     };
 
     var listenClickChangeButton = function listenClickChangeButton() {
@@ -26042,24 +26044,22 @@ var FilterDetail = function () {
                 'sort': $('#sortingSelector option:selected').val()
             };
 
-            history.pushState('page2', 'Title');
+            history.pushState('page2', 'Title', '/catalog/' + sortingData.slug + '?sort=' + sortingData.sort);
 
-            $('#sorting_loader').prop('hidden', false);
-            $('#sort_filter').prop('disabled', true);
-
-            console.log('OK GUY');
+            $($sortLoader).prop('hidden', false);
+            $($sortFilter).prop('disabled', true);
 
             $.post($routeSortFilter, sortingData).then(function (response) {
                 insertFilterInformation(response);
-                $('#sort_filter').prop('disabled', false);
-                $('#sorting_loader').prop('hidden', true);
+                $($sortFilter).prop('disabled', false);
+                $($sortLoader).prop('hidden', true);
             });
         });
     };
 
     // Заполнить результаты фильтра
     var insertFilterInformation = function insertFilterInformation(data) {
-        $("#filter_information").html(data);
+        $($filterResult).html(data);
     };
 
     return {

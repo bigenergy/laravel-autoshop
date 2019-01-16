@@ -52,7 +52,6 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     {
         $sorting = $request->get('sort');
 
-
         if ($sorting == 1) {
             /**
              * Sort 1 = По возрастанию цены (asc price)
@@ -66,7 +65,6 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
              */
             $sortingParam = 'price';
             $sortingType = 'desc';
-
         }
         if ($sorting == 3) {
             /**

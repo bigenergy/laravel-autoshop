@@ -1,10 +1,12 @@
 let FilterDetail = (() => {
     const $routeSortFilter = '/filter/sorting';
     const $changeButtonSelector = '#sortingSelector';
+    const $sortFilter = '#sort_filter';
+    const $sortLoader = '#sorting_loader';
+    const $filterResult = '#filter_information';
 
     let init = () => {
         listenClickChangeButton();
-        //$('#sorting_loader').hide();
     };
 
     let listenClickChangeButton = () => {
@@ -15,17 +17,15 @@ let FilterDetail = (() => {
                 'sort': $('#sortingSelector option:selected').val(),
             };
 
-            history.pushState('page2', 'Title',);
+            history.pushState('page2', 'Title', '/catalog/' + sortingData.slug + '?sort=' + sortingData.sort);
 
-            $('#sorting_loader').prop('hidden', false);
-            $('#sort_filter').prop('disabled', true);
-
-            console.log('OK GUY');
+            $($sortLoader).prop('hidden', false);
+            $($sortFilter).prop('disabled', true);
 
             $.post($routeSortFilter, sortingData).then(function (response) {
                 insertFilterInformation(response);
-                $('#sort_filter').prop('disabled', false);
-                $('#sorting_loader').prop('hidden', true);
+                $($sortFilter).prop('disabled', false);
+                $($sortLoader).prop('hidden', true);
             });
 
         });
@@ -33,7 +33,7 @@ let FilterDetail = (() => {
 
     // Заполнить результаты фильтра
     let insertFilterInformation = function(data) {
-        $("#filter_information").html(data);
+        $($filterResult).html(data);
     };
 
     return {
