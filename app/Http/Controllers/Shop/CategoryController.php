@@ -59,12 +59,6 @@ class CategoryController extends Controller
         $categories = $this->categoryRepository->getAll();
         $brands = $this->brandRepository->getAll();
 
-//        $sorting = $request->get('desc');
-//        if (isset($sorting)) {
-//            echo "Эта переменная определена, поэтому меня и напечатали.";
-//        }
-
-
         return view('shop.category.products', compact(
             'products',
             'catalog',
