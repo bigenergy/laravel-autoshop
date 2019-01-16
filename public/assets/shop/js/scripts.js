@@ -10545,11 +10545,13 @@ __webpack_require__(10);
 var ProductDetail = __webpack_require__(15).default;
 var AjaxSetupHeaders = __webpack_require__(16).default;
 var CartDetail = __webpack_require__(17).default;
+var FilterDetail = __webpack_require__(38).default;
 
 $(document).ready(function () {
     AjaxSetupHeaders.init();
     ProductDetail.init();
     CartDetail.init();
+    FilterDetail.init();
 
     // if ($('#product-page').length) {
     //     ProductDetail.init();
@@ -25996,6 +25998,76 @@ var CartDetail = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (CartDetail);
+
+/***/ }),
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var FilterDetail = function () {
+    var $routeSortFilter = '/filter/sorting';
+    var $changeButtonSelector = '#sortingSelector';
+
+    var init = function init() {
+        listenClickChangeButton();
+        //$('#sorting_loader').hide();
+    };
+
+    var listenClickChangeButton = function listenClickChangeButton() {
+        $(document).on('change', $changeButtonSelector, function () {
+            var sortingData = {
+                'slug': $(this).data('slug'),
+                'value': $('#sortingSelector option:selected').val(),
+                'sort': $('#sortingSelector option:selected').val()
+            };
+
+            history.pushState('page2', 'Title');
+
+            $('#sorting_loader').prop('hidden', false);
+            $('#sort_filter').prop('disabled', true);
+
+            console.log('OK GUY');
+
+            $.post($routeSortFilter, sortingData).then(function (response) {
+                insertFilterInformation(response);
+                $('#sort_filter').prop('disabled', false);
+                $('#sorting_loader').prop('hidden', true);
+            });
+        });
+    };
+
+    // Заполнить результаты фильтра
+    var insertFilterInformation = function insertFilterInformation(data) {
+        $("#filter_information").html(data);
+    };
+
+    return {
+        init: init
+    };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (FilterDetail);
 
 /***/ })
 /******/ ]);

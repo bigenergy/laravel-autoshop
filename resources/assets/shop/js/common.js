@@ -6,11 +6,13 @@ import Swiper from 'swiper';
 let ProductDetail = require('./components/ProductDetail').default;
 let AjaxSetupHeaders = require('./components/AjaxSetupHeaders').default;
 let CartDetail = require('./components/CartDetail').default;
+let FilterDetail = require('./components/FilterDetail').default;
 
 $(document).ready(() => {
     AjaxSetupHeaders.init();
     ProductDetail.init();
     CartDetail.init();
+    FilterDetail.init();
 
     // if ($('#product-page').length) {
     //     ProductDetail.init();

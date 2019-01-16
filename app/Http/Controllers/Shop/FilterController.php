@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepository;
-use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Product\ProductRepository;
 use App\Repositories\ProductType\ProductTypeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class CategoryController extends Controller
+class FilterController extends Controller
 {
-    /**
-     * @var CategoryRepository
-     */
-    private $categoryRepository;
+
     /**
      * @var ProductRepository
      */
@@ -24,53 +21,50 @@ class CategoryController extends Controller
      */
     private $productTypeRepository;
     /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+    /**
      * @var BrandRepository
      */
     private $brandRepository;
 
     /**
-     * CategoryController constructor.
-     * @param CategoryRepository $categoryRepository
+     * FilterController constructor.
      * @param ProductRepository $productRepository
      * @param ProductTypeRepository $productTypeRepository
+     * @param CategoryRepository $categoryRepository
      * @param BrandRepository $brandRepository
      */
     public function __construct(
-        CategoryRepository $categoryRepository,
         ProductRepository $productRepository,
         ProductTypeRepository $productTypeRepository,
+        CategoryRepository $categoryRepository,
         BrandRepository $brandRepository
     ){
-        $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
         $this->productTypeRepository = $productTypeRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->brandRepository = $brandRepository;
     }
 
     /**
-     * @param string $slug
+     * Display a listing of the resource.
+     *
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return void
+     * @throws \Throwable
      */
-    public function show(string $slug, Request $request)
+    public function sortingFilter(Request $request)
     {
-        $catalogType = $this->productTypeRepository->getBySlug($slug);
+        $catalogType = $this->productTypeRepository->getBySlug($request->slug);
         $products = $this->productRepository->getByCategory($catalogType->id, $request);
         $categories = $this->categoryRepository->getAll();
         $brands = $this->brandRepository->getAll();
 
-//        $sorting = $request->get('desc');
-//        if (isset($sorting)) {
-//            echo "Эта переменная определена, поэтому меня и напечатали.";
-//        }
+        $getProducts = view('shop.category.list', compact('products', 'catalogType', 'categories', 'brands'))->render();
 
-
-        return view('shop.category.products', compact(
-            'products',
-            'catalog',
-            'categories',
-            'brands',
-            'catalogType'
-        ));
+        return response()->json($getProducts);
     }
+
 }

@@ -57,6 +57,8 @@ class ProductController extends Controller
 
         $isInCart = $this->cartService->checkInCart($product);
 
+
+
         return view('shop.product.index', compact('product', 'isInCart'));
     }
 

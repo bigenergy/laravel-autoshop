@@ -44,14 +44,49 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
     /**
      * Get all products from selected category
      * @param $category
+     * @param $request
      * @param int $perPage
      * @return mixed
      */
-    public function getByCategory($category, $perPage = 15)
+    public function getByCategory($category, $request, $perPage = 15)
     {
+        $sorting = $request->get('sort');
+
+
+        if ($sorting == 1) {
+            /**
+             * Sort 1 = По возрастанию цены (asc price)
+             */
+            $sortingParam = 'price';
+            $sortingType = 'asc';
+        }
+        if ($sorting == 2) {
+            /**
+             * Sort 2 = По убыванию цены (desc price)
+             */
+            $sortingParam = 'price';
+            $sortingType = 'desc';
+
+        }
+        if ($sorting == 3) {
+            /**
+             * Sort 3 = По наименованию (name of product)
+             */
+            $sortingParam = 'name';
+            $sortingType = 'desc';
+        }
+        if ($sorting == 4) {
+            /**
+             * Sort 4 = По новинкам (new sellers)
+             */
+            $sortingParam = 'isNew';
+            $sortingType = 'desc';
+        }
+
         return $this->model->whereHas('productType', function($q) use ($category) {
             $q->where('type_id', $category)->where('disable', 0);
-        })->orderBy('sort', 'asc')->paginate($perPage);
+        })->orderBy($sortingParam ?? 'sort', $sortingType ?? 'asc')->paginate($perPage);
+
     }
 
     /**

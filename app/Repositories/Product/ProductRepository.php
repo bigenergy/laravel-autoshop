@@ -9,9 +9,10 @@ interface ProductRepository extends Repository
     /**
      * Get all products from selected category
      * @param $category
+     * @param $request
      * @return mixed
      */
-    public function getByCategory($category);
+    public function getByCategory($category, $request);
 
     /**
      * @param array $relations
