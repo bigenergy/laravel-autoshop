@@ -10,10 +10,8 @@ let FilterDetail = (() => {
     const $sort_type = '#sort_type';
 
     let init = () => {
-        // listenClickChangeButton();
         listenChangeForm();
         listenSyncSortingFilter();
-
     };
 
     let getFilterInputs = () => {

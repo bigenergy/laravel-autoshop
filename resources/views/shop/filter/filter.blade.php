@@ -1,6 +1,6 @@
 <form id="filter_form" method="POST">
     <fieldset id="filter_form_lock">
-    <h5>Каталог</h5>
+    <h5><i class="fas fa-list-alt"></i> Каталог</h5>
     <div class="list-group mb-4">
         @forelse($productTypes as $type)
             <a href="{{ route('shop.category', $type->slug) }}"
@@ -11,7 +11,7 @@
             <a href="#" class="list-group-item">Нет типов товаров</a>
         @endforelse
     </div>
-    <h5>Цена</h5>
+    <h5><i class="fas fa-dollar-sign"></i> Цена</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>От</label>
@@ -28,7 +28,7 @@
                    id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "value=" . $products->max('price')}}>
         </div>
     </div>
-    <h5>Категории</h5>
+    <h5><i class="fas fa-list-ol"></i> Категории</h5>
     <div class="list-group mb-4">
         <div class="">
             @forelse($categories as $category)
@@ -45,7 +45,7 @@
             @endforelse
         </div>
     </div>
-    <h5>Производитель</h5>
+    <h5><i class="fab fa-mailchimp"></i> Производитель</h5>
     <div class="list-group mb-4">
         <div class="">
         @forelse($brands as $brand)

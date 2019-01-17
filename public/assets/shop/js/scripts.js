@@ -26037,7 +26037,6 @@ var FilterDetail = function () {
     var $sort_type = '#sort_type';
 
     var init = function init() {
-        // listenClickChangeButton();
         listenChangeForm();
         listenSyncSortingFilter();
     };
