@@ -46,15 +46,15 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
 
     /**
      * Get all products from selected category
-     * @param $category
+     * @param $product_type
      * @param $request
      * @param int $perPage
      * @return mixed
      */
-    public function getByCategory($category, $request, $perPage = 15)
+    public function getByCategory($product_type, $request, $perPage = 15)
     {
-        return $this->model->whereHas('categories', function ($q) use ($category, $request) {
-            $q->where('type_id', $category)
+        return $this->model->whereHas('categories', function ($q) use ($product_type, $request) {
+            $q->where('type_id', $product_type)
                 ->where('disable', 0)
                 ->whereIn('category_id', $request->get('categories') ?? Category::all('id'))
                 ->whereBetween('price', [$request->min_price ?? Product::min('price'), $request->max_price ?? Product::max('price')])
