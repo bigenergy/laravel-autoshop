@@ -5,10 +5,18 @@
         </div>
         <select class="custom-select" id="sortingSelector">
             <option selected disabled>Выберите...</option>
-            <option value="price" data-type="asc">По возрастанию цены</option>
-            <option value="price" data-type="desc">По убыванию цены</option>
-            <option value="name" data-type="asc">По наименованию</option>
-            <option value="isNew" data-type="desc">По новинкам</option>
+            <option value="price"
+                    data-type="asc"
+                    {{ Request::get('sort') == 'price' && Request::get('sort_type') == 'asc' ? 'selected="selected"' : '' }}>По возрастанию цены</option>
+            <option value="price"
+                    data-type="desc"
+                    {{ Request::get('sort') == 'price' && Request::get('sort_type') == 'desc' ? 'selected="selected"' : '' }}>По убыванию цены</option>
+            <option value="name"
+                    data-type="asc"
+                    {{ Request::get('sort') == 'name' && Request::get('sort_type') == 'asc' ? 'selected="selected"' : '' }}>По наименованию</option>
+            <option value="isNew"
+                    data-type="desc"
+                    {{ Request::get('sort') == 'isNew' && Request::get('sort_type') == 'desc' ? 'selected="selected"' : '' }}>По новинкам</option>
         </select>
     </div>
 

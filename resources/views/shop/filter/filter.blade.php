@@ -11,6 +11,23 @@
             <a href="#" class="list-group-item">Нет типов товаров</a>
         @endforelse
     </div>
+    <h5>Цена</h5>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>От</label>
+            <input type="number"
+                   class="form-control"
+                   name="min_price"
+                   id="min_price" {{ !empty(Request::get('min_price')) ? "placeholder=".  Request::get('min_price'): "value=" . $products->min('price')}}>
+        </div>
+        <div class="form-group col-md-6 text-right">
+            <label>До</label>
+            <input type="number"
+                   class="form-control"
+                   name="max_price"
+                   id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "value=" . $products->max('price')}}>
+        </div>
+    </div>
     <h5>Категории</h5>
     <div class="list-group mb-4">
         <div class="">
@@ -43,24 +60,6 @@
         @empty
             <a href="#" class="list-group-item">Нет производителей</a>
         @endforelse
-        </div>
-    </div>
-
-    <h5>Стоимость</h5>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>От</label>
-            <input type="number"
-                   class="form-control"
-                   name="min_price"
-                   id="min_price" {{ !empty(Request::get('min_price')) ? "placeholder=".  Request::get('min_price'): "value=" . $products->min('price')}}>
-        </div>
-        <div class="form-group col-md-6 text-right">
-            <label>До</label>
-            <input type="number"
-                   class="form-control"
-                   name="max_price"
-                   id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "value=" . $products->max('price')}}>
         </div>
     </div>
     <input type="hidden" name="slug" id="slug" value="{{ $catalogType->slug }}">
