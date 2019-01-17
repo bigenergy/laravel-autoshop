@@ -63,6 +63,7 @@ Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers'
 
 // FILTER
 Route::post('/filter/sorting', 'Shop\FilterController@sortingFilter');
+Route::post('/filter', 'Shop\FilterController@filter');
 
 
 

@@ -26027,37 +26027,102 @@ var CartDetail = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var FilterDetail = function () {
     var $routeSortFilter = '/filter/sorting';
+    var $routeFilter = '/filter/sorting';
     var $changeButtonSelector = '#sortingSelector';
     var $sortFilter = '#sort_filter';
     var $sortLoader = '#sorting_loader';
     var $filterResult = '#filter_information';
+    var $changeForm = '#filter_form';
+    var $sort = '#sort';
+    var $sort_type = '#sort_type';
 
     var init = function init() {
-        listenClickChangeButton();
+        // listenClickChangeButton();
+        listenChangeForm();
+        listenSyncSortingFilter();
     };
 
-    var listenClickChangeButton = function listenClickChangeButton() {
-        $(document).on('change', $changeButtonSelector, function () {
-            var sortingData = {
-                'slug': $(this).data('slug'),
-                'value': $('#sortingSelector option:selected').val(),
-                'sort': $('#sortingSelector option:selected').val()
-            };
+    var getFilterInputs = function getFilterInputs() {
+        var inputs = $(document).find('#filter_form input');
 
-            history.pushState('page2', 'Title', '/catalog/' + sortingData.slug + '?sort=' + sortingData.sort);
-
-            $($sortLoader).prop('hidden', false);
-            $($sortFilter).prop('disabled', true);
-
-            $.post($routeSortFilter, sortingData).then(function (response) {
-                insertFilterInformation(response);
-                $($sortFilter).prop('disabled', false);
-                $($sortLoader).prop('hidden', true);
-            });
+        return inputs.filter(function () {
+            var input = $(this);
+            return input.attr('type') === 'checkbox' && input.prop('checked') || input.attr('type') !== 'checkbox';
         });
     };
 
-    // Заполнить результаты фильтра
+    var getAppliedParams = function getAppliedParams() {
+        var inputs = getFilterInputs();
+        return getAppliedFilters(inputs);
+    };
+
+    var getAppliedFilters = function getAppliedFilters(inputs) {
+        var selectedParams = [];
+        inputs.each(function () {
+            var input = $(this);
+            if (input.attr('name') && input.val() !== '0' && input.val() !== '' && input.data('min-available') !== Number(input.val()) && input.data('max-available') !== Number(input.val())) {
+                selectedParams.push({
+                    name: input.attr('name'),
+                    value: input.val()
+                });
+            }
+        });
+
+        return selectedParams;
+    };
+
+    var getParams = function getParams(toArray) {
+        var selectedParams = getAppliedParams();
+
+        return toArray ? selectedParams : $.param(selectedParams);
+    };
+
+    var setUrl = function setUrl() {
+        history.pushState(null, null, window.location.href.split('?')[0] + '?' + getParams());
+    };
+
+    var listenChangeForm = function listenChangeForm() {
+        $(document).on('change', $changeForm, function () {
+            listenSyncSortingFilter();
+            setUrl();
+            applyFilter();
+        });
+    };
+
+    // Cинхронизация фильтра сортировки с hidden inputs
+    var listenSyncSortingFilter = function listenSyncSortingFilter() {
+        $(document).on('change', $sortFilter, function () {
+            $($sort).val($('#sortingSelector option:selected').val());
+            $($sort_type).val($('#sortingSelector option:selected').data('type'));
+            setUrl();
+            applyFilter();
+        });
+    };
+
+    // Собрать данные с формы и отправить их на бэкенд
+    var applyFilter = function applyFilter() {
+        lockForms();
+        $.post($routeFilter, getAppliedParams()).then(function (response) {
+            console.log('Filter applied, form send success');
+            insertFilterInformation(response);
+            unlockForms();
+        });
+    };
+
+    // Блокировка форм на время выполнения запроса
+    var lockForms = function lockForms() {
+        $($sortLoader).prop('hidden', false);
+        $($sortFilter).prop('disabled', true);
+        $('#filter_form_lock').prop('disabled', true);
+    };
+
+    // Разблокировка форм после запроса
+    var unlockForms = function unlockForms() {
+        $($sortFilter).prop('disabled', false);
+        $($sortLoader).prop('hidden', true);
+        $('#filter_form_lock').prop('disabled', false);
+    };
+    // Заполнить результаты фильтра в шаблон
     var insertFilterInformation = function insertFilterInformation(data) {
         $($filterResult).html(data);
     };

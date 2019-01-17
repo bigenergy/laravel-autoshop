@@ -2,8 +2,11 @@
 
 namespace App\Repositories\Product;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use App\Repositories\AbstractRepository;
+use App\Repositories\Brand\BrandRepository;
 
 class EloquentProductRepository extends AbstractRepository implements ProductRepository
 {
@@ -50,40 +53,13 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getByCategory($category, $request, $perPage = 15)
     {
-        $sorting = $request->get('sort');
-
-        if ($sorting == 1) {
-            /**
-             * Sort 1 = По возрастанию цены (asc price)
-             */
-            $sortingParam = 'price';
-            $sortingType = 'asc';
-        }
-        if ($sorting == 2) {
-            /**
-             * Sort 2 = По убыванию цены (desc price)
-             */
-            $sortingParam = 'price';
-            $sortingType = 'desc';
-        }
-        if ($sorting == 3) {
-            /**
-             * Sort 3 = По наименованию (name of product)
-             */
-            $sortingParam = 'name';
-            $sortingType = 'desc';
-        }
-        if ($sorting == 4) {
-            /**
-             * Sort 4 = По новинкам (new sellers)
-             */
-            $sortingParam = 'isNew';
-            $sortingType = 'desc';
-        }
-
-        return $this->model->whereHas('productType', function($q) use ($category) {
-            $q->where('type_id', $category)->where('disable', 0);
-        })->orderBy($sortingParam ?? 'sort', $sortingType ?? 'asc')->paginate($perPage);
+        return $this->model->whereHas('categories', function ($q) use ($category, $request) {
+            $q->where('type_id', $category)
+                ->where('disable', 0)
+                ->whereIn('category_id', $request->get('categories') ?? Category::all('id'))
+                ->whereBetween('price', [$request->min_price ?? Product::min('price'), $request->max_price ?? Product::max('price')])
+                ->whereIn('brand_id', $request->get('brands') ?? Brand::all('id'));
+        })->orderBy($request->sort ?? 'sort', $request->sort_type ?? 'desc')->paginate($perPage);
 
     }
 

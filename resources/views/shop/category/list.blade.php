@@ -21,7 +21,9 @@
         </div>
     </div>
 @empty
-    <div class="container alert alert-warning" role="alert">
-        Не найдено ни одного продукта :(
+    <div class="container">
+        <div class="alert alert-warning" role="alert">
+            По вашему запросу ничего не найдено :(
+        </div>
     </div>
 @endforelse

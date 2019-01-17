@@ -11,7 +11,6 @@ use Illuminate\Routing\Controller;
 
 class FilterController extends Controller
 {
-
     /**
      * @var ProductRepository
      */
@@ -65,6 +64,11 @@ class FilterController extends Controller
         $getProducts = view('shop.category.list', compact('products', 'catalogType', 'categories', 'brands'))->render();
 
         return response()->json($getProducts);
+    }
+
+    public function filter(Request $request)
+    {
+        dd($request->all());
     }
 
 }
