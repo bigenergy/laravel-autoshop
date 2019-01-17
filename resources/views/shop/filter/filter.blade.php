@@ -25,6 +25,8 @@
             <input type="number"
                    class="form-control"
                    name="min_price"
+                   min="{{ $products->min('price') }}"
+                   max="{{ $products->max('price') }}"
                    id="min_price" {{ !empty(Request::get('min_price')) ? "placeholder=".  Request::get('min_price'): "value=" . $products->min('price')}}>
         </div>
         <div class="form-group col-md-6 text-right">
@@ -32,6 +34,8 @@
             <input type="number"
                    class="form-control"
                    name="max_price"
+                   min="{{ $products->min('price') }}"
+                   max="{{ $products->max('price') }}"
                    id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "value=" . $products->max('price')}}>
         </div>
     </div>

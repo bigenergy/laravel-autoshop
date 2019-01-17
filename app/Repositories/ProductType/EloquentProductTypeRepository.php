@@ -42,7 +42,6 @@ class EloquentProductTypeRepository extends AbstractRepository implements Produc
     }
 
     /**
-     * @param array $relations
      * @param string $slug
      * @return mixed
      */
