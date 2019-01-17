@@ -39,8 +39,6 @@
                     <input type="number"
                            class="form-control"
                            name="max_price"
-                           min="{{ $products->min('price') }}"
-                           max="{{ $products->max('price') }}"
                            id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "value=" . $products->max('price')}}>
                 </div>
             </div>
