@@ -1,7 +1,14 @@
 <form id="filter_form" method="POST">
     <fieldset id="filter_form_lock">
-    <h5><i class="fas fa-list-alt"></i> Каталог</h5>
-    <div class="list-group mb-4">
+        <button class="btn btn-outline-primary btn-block"
+                type="button" data-toggle="collapse"
+                data-target="#collapseCatalog"
+                aria-expanded="false"
+                aria-controls="collapseCatalog">
+            <i class="fas fa-list-alt"></i> Каталог
+        </button>
+        <br>
+    <div class="list-group mb-5 collapse" id="collapseCatalog">
         @forelse($productTypes as $type)
             <a href="{{ route('shop.category', $type->slug) }}"
                class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }}">
