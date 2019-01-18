@@ -1,5 +1,4 @@
 let FilterDetail = (() => {
-    const $routeSortFilter = '/filter/sorting';
     const $routeFilter = '/filter/sorting';
     const $changeButtonSelector = '#sortingSelector';
     const $sortFilter = '#sort_filter';
@@ -63,7 +62,6 @@ let FilterDetail = (() => {
          history.pushState(null, null, window.location.href.split('?')[0] + '?' + getParams());
     };
 
-
     let listenChangeForm = () => {
         $(document).on('change', $changeForm, function() {
             listenSyncSortingFilter();
@@ -109,6 +107,7 @@ let FilterDetail = (() => {
     let insertFilterInformation = function(data) {
         $($filterResult).html(data);
     };
+
 
     return {
         init: init
