@@ -43,6 +43,7 @@ Route::post('admin/orders/destroy', 'Admin\OrderController@destroy');
 //
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
 Route::get('/catalog/{slug}', 'Shop\CategoryController@show')->name('shop.category');
+Route::get('/catalog', 'Shop\CategoryController@showCatalog')->name('shop.catalog');
 Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.product');
 
 // SHOPPING CART
@@ -60,13 +61,8 @@ Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('sh
 // NEW PRODUCTS PAGE
 Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers');
 
-
 // FILTER
 Route::post('/filter/sorting', 'Shop\FilterController@sortingFilter');
-Route::post('/filter', 'Shop\FilterController@filter');
-
-
-
 
 // Catch all page controller (place at the very bottom)
 Route::get('{slug}', ['uses' => 'Shop\PagesController@getPage'])

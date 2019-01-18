@@ -26006,7 +26006,6 @@ var CartDetail = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var FilterDetail = function () {
-    var $routeSortFilter = '/filter/sorting';
     var $routeFilter = '/filter/sorting';
     var $changeButtonSelector = '#sortingSelector';
     var $sortFilter = '#sort_filter';

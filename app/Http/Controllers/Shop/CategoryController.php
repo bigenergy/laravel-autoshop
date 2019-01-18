@@ -67,4 +67,9 @@ class CategoryController extends Controller
             'catalogType'
         ));
     }
+
+    public function showCatalog()
+    {
+        return view('shop.category.catalog_page');
+    }
 }
