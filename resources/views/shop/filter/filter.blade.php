@@ -11,8 +11,8 @@
     <div class="list-group mb-5 collapse" id="collapseCatalog">
         @forelse($productTypes as $type)
             <a href="{{ route('shop.category', $type->slug) }}"
-               class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }}">
-                <i class="fas fa-car"></i> {{ $type->name }}
+               class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }} @if(!$type->product->count()) disabled @endif">
+                <i class="fas fa-car"></i> {{ $type->name }} <span class="badge badge-dark badge-pill">{{ $type->product->count() }}</span>
             </a>
         @empty
             <a href="#" class="list-group-item">Нет типов товаров</a>
@@ -57,9 +57,10 @@
                         <input type="checkbox"
                                name="categories[]"
                                value="{{ $category->id }}"
-                                {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
+                               {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
+                               @if(!$category->products->count()) disabled @endif
                         >
-                        {{ $category->name }}
+                        {{ $category->name }} ({{ $category->products->count() }})
                     </label>
                 @empty
                     <a href="#" class="list-group-item">Нет категорий</a>
