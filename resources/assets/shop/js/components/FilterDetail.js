@@ -1,6 +1,5 @@
 let FilterDetail = (() => {
-    const $routeFilter = '/filter/sorting';
-    const $changeButtonSelector = '#sortingSelector';
+    const $routeFilter = '/filter';
     const $sortFilter = '#sort_filter';
     const $sortLoader = '#sorting_loader';
     const $filterResult = '#filter_information';

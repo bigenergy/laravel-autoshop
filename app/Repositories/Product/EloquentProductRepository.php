@@ -5,6 +5,8 @@ namespace App\Repositories\Product;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Props;
+use App\Models\PropsProduct;
 use App\Repositories\AbstractRepository;
 use App\Repositories\Brand\BrandRepository;
 
@@ -53,14 +55,17 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
      */
     public function getByCategory($product_type, $request, $perPage = 15)
     {
-        return $this->model->whereHas('categories', function ($q) use ($product_type, $request) {
+        return $this->model->with('props')->whereHas('categories', function ($q) use ($product_type, $request) {
             $q->where('type_id', $product_type)
                 ->where('disable', 0)
                 ->whereIn('category_id', $request->get('categories') ?? Category::all('id'))
                 ->whereBetween('price', [$request->min_price ?? Product::min('price'), $request->max_price ?? Product::max('price')])
                 ->whereIn('brand_id', $request->get('brands') ?? Brand::all('id'));
-        })->orderBy($request->sort ?? 'sort', $request->sort_type ?? 'desc')->paginate($perPage);
-
+        })->whereHas('props', function ($q) use ($request) {
+            if($request->engine) {
+                $q->whereIn('value', $request->get('engine') ?? PropsProduct::all('value'));
+            }
+        })->withCount('productType')->orderBy($request->sort ?? 'sort', $request->sort_type ?? 'desc')->get();
     }
 
     /**

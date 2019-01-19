@@ -65,25 +65,39 @@
                        {{ $product->name }}
                    </h4>
                    <h5>Стоимость: {{ $product->price }} <i class="fas fa-dollar-sign"></i></h5>
+                   <ul>
+                       <li>Оценка товара: 3.9 из 5 </li>
+                       <li>В наличии: 99 шт.</li>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                   </ul>
+                   <div class="detail-product-cart__container">
+                       <div class="detail-product-cart__container">
+                           @if($isInCart)
+                               <a href="{{ route('shop.cart') }}" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
+                           @else
+                               <div align="center">
+                                   <input type="number" class="product-count form-control" min="1" value="1">
+                               </div>
+                               <br>
+                               <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">В корзину <i class="fas fa-cart-plus"></i></button>
+                           @endif
+                       </div>
+                   </div>
                    <br>
                    <br>
                    <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
+
+
+
                </div>
            </div>
 
-            <div class="card h-100">
+            <div class="card">
 
                 <div class="card-body">
                     <h4 class="card-title">
@@ -94,17 +108,7 @@
                     @include('shop.product.product_tabs')
                 </div>
                 <div class="card-footer">
-                    <div class="detail-product-cart__container">
-                        @if($isInCart)
-                            <a href="{{ route('shop.cart') }}" class="buy-button btn btn-outline-success btn-block">В корзине <i class="fas fa-cart-arrow-down"></i></a>
-                        @else
-                            <div align="center">
-                                <input type="number" class="product-count form-control" min="1" value="1">
-                            </div>
-                            <br>
-                            <button data-id={{ $product->id }} type="button" class="buy-button btn btn-outline-success btn-block">В корзину <i class="fas fa-cart-plus"></i></button>
-                        @endif
-                    </div>
+                    Номер товара: #{{ $product->id }}
                 </div>
             </div>
         </div>

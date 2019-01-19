@@ -50,4 +50,16 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
     {
         return $this->model->where('slug', '=', $slug)->first();
     }
+
+    /**
+     * @param array $relations
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getWithCount($relations = [])
+    {
+        return $this->model
+            ->newQuery()
+            ->withCount($relations)
+            ->get();
+    }
 }

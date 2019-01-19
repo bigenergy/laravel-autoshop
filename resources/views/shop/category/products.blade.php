@@ -24,6 +24,5 @@
             </div>
         </div>
     </div>
-<div class="container">{{ $products->links() }}</div>
 
 @endsection

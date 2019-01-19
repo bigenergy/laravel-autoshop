@@ -12,8 +12,8 @@
         <div class="list-group mb-5 collapse" id="collapseCatalog">
             @forelse($productTypes as $type)
                 <a href="{{ route('shop.category', $type->slug) }}"
-                   class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }} @if(!$type->product->count()) disabled @endif">
-                    <i class="fas fa-car"></i> {{ $type->name }} <span class="badge badge-dark badge-pill">{{ $type->product->count() }}</span>
+                   class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }}">
+                    <i class="fas fa-car"></i> {{ $type->name }}
                 </a>
             @empty
                 <a href="#" class="list-group-item">Нет типов товаров</a>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="list-group list-group-flush">
-                    <button type="button" class="btn btn-outline-primary btn-sm list-group-item text-center"><i class="fas fa-redo"></i> Сбросить фильтры</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm list-group-item text-center"><i class="fas fa-redo"></i> Сбросить фильтры (dev)</button>
                 </div>
 
 
@@ -59,9 +59,9 @@
                                    name="categories[]"
                                    value="{{ $category->id }}"
                                    {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
-                                   @if(!$category->products->count()) disabled @endif
+                                   @if(!$category->products_count) disabled @endif
                             >
-                            {{ $category->name }} ({{ $category->products->count() }})
+                            {{ $category->name }} ({{ $category->products_count }})
                         </label>
                     @empty
                         <a href="#" class="list-group-item">Нет категорий</a>
@@ -85,8 +85,25 @@
                         <a href="#" class="list-group-item">Нет производителей</a>
                     @endforelse
                 </div>
-            </div>
+                <div class="card-header">
+                    <i class="fab fa-mailchimp"></i> Объем двигателя
+                </div>
 
+                @forelse($props->unique('value') as $filter)
+                <div class="list-group list-group-flush">
+                        <label class="form-check-label list-group-item list-group-item-action">
+                            <input type="checkbox" name="engine[]"
+                                   value="{{ $filter->value }}"
+                                    {{ !empty(Request::get('engine')) && in_array($filter->id, Request::get('engine')) ? "checked" : ""}}
+                            >
+                            {{ $filter->value }}
+                        </label>
+                </div>
+                @empty
+                    <a href="#" class="list-group-item">Нет производителей</a>
+                @endforelse
+
+            </div>
 
         <input type="hidden" name="slug" id="slug" value="{{ $catalogType->slug }}">
         <input type="hidden" name="sort" id="sort" value="name">

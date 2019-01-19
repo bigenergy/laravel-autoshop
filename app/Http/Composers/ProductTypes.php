@@ -30,6 +30,6 @@ class ProductTypes
      */
     public function compose(View $view)
     {
-        $view->with('productTypes', $this->productTypeService->productTypeRepository->getAll('product'));
+        $view->with('productTypes', $this->productTypeService->productTypeRepository->getAll());
     }
 }

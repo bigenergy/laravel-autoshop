@@ -28,4 +28,10 @@ interface CategoryRepository
      * @return mixed
      */
     public function getBySlug(string $slug);
+
+    /**
+     * @param array $relations
+     * @return mixed
+     */
+    public function getWithCount($relations =[]);
 }

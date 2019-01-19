@@ -35,7 +35,7 @@
                     @empty
                         <div class="container">
                             <div class="alert alert-warning" role="alert">
-                                По вашему запросу ничего не найдено :(
+                               Магазин пуст :(
                             </div>
                         </div>
                     @endforelse

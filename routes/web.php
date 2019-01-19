@@ -62,7 +62,7 @@ Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('sh
 Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers');
 
 // FILTER
-Route::post('/filter/sorting', 'Shop\FilterController@sortingFilter');
+Route::post('/filter', 'Shop\FilterController@filter');
 
 // Catch all page controller (place at the very bottom)
 Route::get('{slug}', ['uses' => 'Shop\PagesController@getPage'])

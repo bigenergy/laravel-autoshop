@@ -53,4 +53,13 @@ class EloquentPropsRepository extends AbstractRepository implements PropsReposit
             ->where('product_type_id', $id)
             ->get();
     }
+
+    /**
+     * @param array $relations
+     * @return Props[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getFilterProps($relations = [])
+    {
+        return $this->model->with($relations)->get();
+    }
 }

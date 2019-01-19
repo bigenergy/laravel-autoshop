@@ -22,8 +22,10 @@
     </div>
 @empty
     <div class="container">
-        <div class="alert alert-warning" role="alert">
-            По вашему запросу ничего не найдено :(
+        <div class="alert alert-warning text-center" role="alert">
+            <i class="far fa-frown fa-5x mb-3"></i><br>
+            К сожалению, нет товаров, удовлетворяющих выбранным условиям.<br>
+            Попробуйте изменить критерии поиска.
         </div>
     </div>
 @endforelse

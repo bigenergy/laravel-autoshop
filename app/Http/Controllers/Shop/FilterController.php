@@ -54,7 +54,7 @@ class FilterController extends Controller
      * @return void
      * @throws \Throwable
      */
-    public function sortingFilter(Request $request)
+    public function filter(Request $request)
     {
         $catalogType = $this->productTypeRepository->getBySlug($request->slug);
         $products = $this->productRepository->getByCategory($catalogType->id, $request);
@@ -64,11 +64,6 @@ class FilterController extends Controller
         $getProducts = view('shop.category.list', compact('products', 'catalogType', 'categories', 'brands'))->render();
 
         return response()->json($getProducts);
-    }
-
-    public function filter(Request $request)
-    {
-        dd($request->all());
     }
 
 }

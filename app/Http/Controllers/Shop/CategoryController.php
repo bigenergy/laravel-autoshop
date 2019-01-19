@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\PropsProduct;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\ProductType\ProductTypeRepository;
+use App\Repositories\Props\PropsRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -27,6 +30,10 @@ class CategoryController extends Controller
      * @var BrandRepository
      */
     private $brandRepository;
+    /**
+     * @var PropsRepository
+     */
+    private $propsRepository;
 
     /**
      * CategoryController constructor.
@@ -34,17 +41,20 @@ class CategoryController extends Controller
      * @param ProductRepository $productRepository
      * @param ProductTypeRepository $productTypeRepository
      * @param BrandRepository $brandRepository
+     * @param PropsRepository $propsRepository
      */
     public function __construct(
         CategoryRepository $categoryRepository,
         ProductRepository $productRepository,
         ProductTypeRepository $productTypeRepository,
-        BrandRepository $brandRepository
+        BrandRepository $brandRepository,
+        PropsRepository $propsRepository
     ){
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
         $this->productTypeRepository = $productTypeRepository;
         $this->brandRepository = $brandRepository;
+        $this->propsRepository = $propsRepository;
     }
 
     /**
@@ -54,20 +64,32 @@ class CategoryController extends Controller
      */
     public function show(string $slug, Request $request)
     {
+
         $catalogType = $this->productTypeRepository->getBySlug($slug);
         $products = $this->productRepository->getByCategory($catalogType->id, $request);
-        $categories = $this->categoryRepository->getAll('products');
-        $brands = $this->brandRepository->getAll('product');
+        $brands = $this->brandRepository->getAll();
+        //$props = $this->propsService->propsRepository->getAll();
 
+
+        $props = PropsProduct::where('prop_id', 8)->get();
+
+        $categories = $this->categoryRepository->getWithCount('products');
+
+       // dd($categories);
         return view('shop.category.products', compact(
             'products',
             'catalog',
             'categories',
             'brands',
-            'catalogType'
+            'catalogType',
+            'props'
         ));
     }
 
+    /**
+     * Catalog page (/catalog)
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCatalog()
     {
         return view('shop.category.catalog_page');

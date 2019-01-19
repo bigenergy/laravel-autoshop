@@ -27,4 +27,5 @@ interface PropsRepository
      * @return mixed
      */
     public function getByTypeId(int $id);
+    public function getFilterProps($relation = []);
 }
