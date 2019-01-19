@@ -62,10 +62,8 @@ class EloquentProductRepository extends AbstractRepository implements ProductRep
                 ->whereBetween('price', [$request->min_price ?? Product::min('price'), $request->max_price ?? Product::max('price')])
                 ->whereIn('brand_id', $request->get('brands') ?? Brand::all('id'));
         })->whereHas('props', function ($q) use ($request) {
-            if($request->engine) {
                 $q->whereIn('value', $request->get('engine') ?? PropsProduct::all('value'));
-            }
-        })->withCount('productType')->orderBy($request->sort ?? 'sort', $request->sort_type ?? 'desc')->get();
+        })->withCount('brand')->orderBy($request->sort ?? 'sort', $request->sort_type ?? 'desc')->get();
     }
 
     /**

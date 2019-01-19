@@ -55,7 +55,7 @@ class EloquentCategoryRepository extends AbstractRepository implements CategoryR
      * @param array $relations
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function getWithCount($relations = [])
+    public function getAllWithCount($relations = [])
     {
         return $this->model
             ->newQuery()

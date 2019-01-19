@@ -67,13 +67,13 @@ class CategoryController extends Controller
 
         $catalogType = $this->productTypeRepository->getBySlug($slug);
         $products = $this->productRepository->getByCategory($catalogType->id, $request);
-        $brands = $this->brandRepository->getAll();
+        $brands = $this->brandRepository->getAllWithCount('product', $catalogType->id);
         //$props = $this->propsService->propsRepository->getAll();
 
 
         $props = PropsProduct::where('prop_id', 8)->get();
 
-        $categories = $this->categoryRepository->getWithCount('products');
+        $categories = $this->categoryRepository->getAllWithCount('products');
 
        // dd($categories);
         return view('shop.category.products', compact(

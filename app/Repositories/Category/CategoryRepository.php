@@ -33,5 +33,5 @@ interface CategoryRepository
      * @param array $relations
      * @return mixed
      */
-    public function getWithCount($relations =[]);
+    public function getAllWithCount($relations =[]);
 }

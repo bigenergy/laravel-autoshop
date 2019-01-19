@@ -79,10 +79,10 @@
                                    value="{{ $brand->id }}"
                                     {{ !empty(Request::get('brands')) && in_array($brand->id, Request::get('brands')) ? "checked" : ""}}
                             >
-                            {{ $brand->name }}
+                            {{ $brand->name }} ({{ $brand->product_count }})
                         </label>
                     @empty
-                        <a href="#" class="list-group-item">Нет производителей</a>
+                        <li class="list-group-item text-center">Нет производителей</li>
                     @endforelse
                 </div>
                 <div class="card-header">

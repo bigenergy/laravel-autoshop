@@ -21,4 +21,11 @@ interface BrandRepository
      * @return mixed
      */
     public function getPaginated($relations =[], $perPage = 15);
+
+    /**
+     * @param array $relations
+     * @param $currentType
+     * @return mixed
+     */
+    public function getAllWithCount($relations = [], $currentType);
 }

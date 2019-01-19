@@ -40,4 +40,19 @@ class EloquentBrandRepository extends AbstractRepository implements BrandReposit
     {
         return $this->model->with($relations)->paginate($perPage);
     }
+
+    /**
+     * @param array $relations
+     * @param $currentType
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllWithCount($relations = [], $currentType) {
+        return $this->model
+            ->whereHas('product', function ($q) use ($currentType) {
+                $q->where('type_id', $currentType ?? Brand::all());
+            })
+            ->withCount($relations)
+            ->get();
+    }
+
 }
