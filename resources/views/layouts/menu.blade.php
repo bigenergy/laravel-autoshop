@@ -75,6 +75,7 @@
                     <li><a href="{{ route('brand.create') }}"><i class="fa fa-plus-circle"></i> Добавить</a></li>
                 </ul>
             </li>
+            <li class="header">КОНТЕНТ</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file-text-o"></i> <span>Статичные страницы</span>

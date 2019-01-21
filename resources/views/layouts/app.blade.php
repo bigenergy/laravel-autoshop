@@ -44,7 +44,18 @@
 
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-
+                    @if(env('APP_DEBUG'))
+                    <li class="dropdown messages-menu">
+                        <a href="#" target="_blank">
+                            <b class="text-danger">DEBUG: TRUE</b>
+                        </a>
+                    </li>
+                    @endif
+                    <li class="dropdown messages-menu">
+                        <a href="{{ env('APP_URL') }}" target="_blank">
+                           Просмотр сайта
+                        </a>
+                    </li>
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
