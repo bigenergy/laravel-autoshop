@@ -54,15 +54,16 @@
                 </div>
                 <div class="list-group list-group-flush">
                     @forelse($categories as $category)
-                        <label class="form-check-label list-group-item list-group-item-action">
-                            <input type="checkbox"
-                                   name="categories[]"
-                                   value="{{ $category->id }}"
-                                   {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
-                                   @if(!$category->products_count) disabled @endif
-                            >
-                            {{ $category->name }} ({{ $category->products_count }})
-                        </label>
+                        @if($category->products_count)
+                            <label class="form-check-label list-group-item list-group-item-action">
+                                <input type="checkbox"
+                                       name="categories[]"
+                                       value="{{ $category->id }}"
+                                       {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
+                                >
+                                {{ $category->name }} ({{ $category->products_count }})
+                            </label>
+                        @endif
                     @empty
                         <a href="#" class="list-group-item">Нет категорий</a>
                     @endforelse
@@ -105,7 +106,6 @@
 
             </div>
 
-        <input type="hidden" name="slug" id="slug" value="{{ $catalogType->slug }}">
         <input type="hidden" name="sort" id="sort" value="name">
         <input type="hidden" name="sort_type" id="sort_type" value="asc">
         </fieldset>

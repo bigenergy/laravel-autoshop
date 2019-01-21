@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\CatalogFilter;
+use App\Models\Filter;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Product\ProductRepository;
@@ -47,23 +49,28 @@ class FilterController extends Controller
         $this->brandRepository = $brandRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param Request $request
-     * @return void
-     * @throws \Throwable
-     */
-    public function filter(Request $request)
+//    /**
+//     * Display a listing of the resource.
+//     *
+//     * @param Request $request
+//     * @return void
+//     * @throws \Throwable
+//     */
+//    public function filterOld(Request $request)
+//    {
+//        $catalogType = $this->productTypeRepository->getBySlug($request->slug);
+//        $products = $this->productRepository->getByCategory($catalogType->id, $request);
+//        $categories = $this->categoryRepository->getAll();
+//        $brands = $this->brandRepository->getAll();
+//
+//        $getProducts = view('shop.category.list', compact('products', 'catalogType', 'categories', 'brands'))->render();
+//
+//        return response()->json($getProducts);
+//    }
+
+    public function filter(Filter $filters)
     {
-        $catalogType = $this->productTypeRepository->getBySlug($request->slug);
-        $products = $this->productRepository->getByCategory($catalogType->id, $request);
-        $categories = $this->categoryRepository->getAll();
-        $brands = $this->brandRepository->getAll();
-
-        $getProducts = view('shop.category.list', compact('products', 'catalogType', 'categories', 'brands'))->render();
-
-        return response()->json($getProducts);
+        return Filter::filter($filters)->get();
     }
 
 }
