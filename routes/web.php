@@ -43,7 +43,7 @@ Route::post('admin/orders/destroy', 'Admin\OrderController@destroy');
 //
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
 Route::get('/catalog/{slug}', 'Shop\CatalogController@show')->name('shop.category');
-Route::get('/catalog', 'Shop\CategoryController@showCatalog')->name('shop.catalog');
+Route::get('/catalog', 'Shop\CatalogController@showCatalog')->name('shop.catalog');
 Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.product');
 
 // SHOPPING CART
