@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Props;
 
-
 use App\Models\Props;
 use App\Repositories\AbstractRepository;
 

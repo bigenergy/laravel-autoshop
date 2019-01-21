@@ -7,14 +7,6 @@ use App\Repositories\Repository;
 interface ProductRepository extends Repository
 {
     /**
-     * Get all products from selected category
-     * @param $product_type
-     * @param $request
-     * @return mixed
-     */
-    public function getByCategory($product_type, $request);
-
-    /**
      * @param array $relations
      * @param string $slug
      * @return mixed
@@ -27,5 +19,9 @@ interface ProductRepository extends Repository
      */
     public function getNewAll($relations = []);
 
+    /**
+     * @param array $relations
+     * @return mixed
+     */
     public function getAll($relations = []);
 }

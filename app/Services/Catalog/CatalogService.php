@@ -5,7 +5,9 @@ use App\Models\Product;
 
 class CatalogService
 {
-
+    /**
+     * @var \Illuminate\Database\Eloquent\Builder
+     */
     private $builder;
 
     /**
@@ -37,11 +39,20 @@ class CatalogService
 
     }
 
+    /**
+     * Filter by price
+     * @param $price
+     */
+
     public function price($price)
     {
         $this->builder->whereBetween('price',  [$price['from'], $price['to']]);
     }
 
+    /**
+     * Filter by ProductType
+     * @param $productType
+     */
     public function product_type($productType)
     {
         $this->builder->whereHas('productType', function ($query) use ($productType) {
@@ -49,6 +60,10 @@ class CatalogService
         });
     }
 
+    /**
+     * Filter by Categories
+     * @param $category
+     */
     public function category($category)
     {
         $this->builder->whereHas('categories', function ($query) use ($category) {
@@ -56,16 +71,28 @@ class CatalogService
         });
     }
 
+    /**
+     * Sorting filter
+     * @param $sort
+     */
     public function sort($sort)
     {
         $this->builder->orderBy($sort['column'], $sort['order']);
     }
 
+    /**
+     * Filter by Brands
+     * @param $brand
+     */
     public function brand($brand)
     {
         $this->builder->whereIn('brand_id', $brand);
     }
 
+    /**
+     * Filter by Properties
+     * @param $prop
+     */
     public function prop($prop)
     {
         $this->builder->whereHas('props', function ($query) use ($prop){

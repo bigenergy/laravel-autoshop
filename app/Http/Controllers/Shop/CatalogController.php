@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Shop;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\PropsProduct;
+use App\Services\Catalog\CatalogService;
+use App\Repositories\Props\PropsRepository;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\ProductType\ProductTypeRepository;
-use App\Repositories\Props\PropsRepository;
-use App\Services\Catalog\CatalogService;
-use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -88,8 +87,7 @@ class CatalogController extends Controller
             'categories',
             'brands',
             'catalogType',
-            'props',
-            'props2'
+            'props'
         ));
     }
 
