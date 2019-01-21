@@ -101,7 +101,7 @@ let FilterDetail = (() => {
         $($sortFilter).prop('disabled', false);
         $($sortLoader).prop('hidden', true);
         $('#filter_form_lock').prop('disabled', false);
-    }
+    };
     // Заполнить результаты фильтра в шаблон
     let insertFilterInformation = function(data) {
         $($filterResult).html(data);
