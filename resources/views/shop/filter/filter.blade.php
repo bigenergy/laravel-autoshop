@@ -30,17 +30,17 @@
                         </div>
                         <input type="number"
                                class="form-control"
-                               name="min_price"
+                               name="price[from]"
                                min="{{ $products->min('price') }}"
                                max="{{ $products->max('price') }}"
-                               id="min_price" {{ !empty(Request::get('min_price')) ? "placeholder=".  Request::get('min_price'): "placeholder=" . $products->min('price')}}>
+                               id="price[from]" {{ !empty(Request::get('price[from]')) ? "placeholder=".  Request::get('price[from]'): "value=" . $products->min('price')}}>
                         <div class="input-group-prepend">
                             <span class="input-group-text">До</span>
                         </div>
                         <input type="number"
                                class="form-control"
-                               name="max_price"
-                               id="max_price" {{ !empty(Request::get('max_price')) ? "placeholder=".  Request::get('max_price'): "placeholder=" . $products->max('price')}}>
+                               name="price[to]"
+                               id="price[to]" {{ !empty(Request::get('price[to]')) ? "placeholder=".  Request::get('price[to]'): "value=" . $products->max('price')}}>
                     </div>
                 </div>
 
@@ -57,9 +57,9 @@
                         @if($category->products_count)
                             <label class="form-check-label list-group-item list-group-item-action">
                                 <input type="checkbox"
-                                       name="categories[]"
+                                       name="category[]"
                                        value="{{ $category->id }}"
-                                       {{ !empty(Request::get('categories')) && in_array($category->id, Request::get('categories')) ? "checked" : ""}}
+                                       {{ !empty(Request::get('category')) && in_array($category->id, Request::get('category')) ? "checked" : ""}}
                                 >
                                 {{ $category->name }} ({{ $category->products_count }})
                             </label>
@@ -75,10 +75,10 @@
                 <div class="list-group list-group-flush">
                     @forelse($brands as $brand)
                         <label class="form-check-label list-group-item list-group-item-action">
-                            <input type="checkbox" name="brands[]"
+                            <input type="checkbox" name="brand[]"
                                    class="filter_brand_{{ $brand->id }}"
                                    value="{{ $brand->id }}"
-                                    {{ !empty(Request::get('brands')) && in_array($brand->id, Request::get('brands')) ? "checked" : ""}}
+                                    {{ !empty(Request::get('brand')) && in_array($brand->id, Request::get('brand')) ? "checked" : ""}}
                             >
                             {{ $brand->name }} ({{ $brand->product_count }})
                         </label>
@@ -86,28 +86,31 @@
                         <li class="list-group-item text-center">Нет производителей</li>
                     @endforelse
                 </div>
-                <div class="card-header">
-                    <i class="fab fa-mailchimp"></i> Объем двигателя
-                </div>
 
-                @forelse($props->unique('value') as $filter)
-                <div class="list-group list-group-flush">
-                        <label class="form-check-label list-group-item list-group-item-action">
-                            <input type="checkbox" name="engine[]"
-                                   value="{{ $filter->value }}"
-                                    {{ !empty(Request::get('engine')) && in_array($filter->id, Request::get('engine')) ? "checked" : ""}}
-                            >
-                            {{ $filter->value }}
-                        </label>
-                </div>
-                @empty
-                    <a href="#" class="list-group-item">Нет производителей</a>
-                @endforelse
+                @foreach($props as $prop)
+                    <div class="card-header">
+                        <i class="fab fa-mailchimp"></i> {{ $prop->name }}
+                    </div>
+
+                    @foreach($prop->propValue->unique('value') as $value)
+                        <div class="list-group list-group-flush">
+                            <label class="form-check-label list-group-item list-group-item-action">
+                                <input type="checkbox" name="prop[{{ $value->id }}][]"
+                                       value="{{ $value->value }}"
+                                        {{ !empty(Request::get('prop')) && in_array($value->value, Request::get('prop')) ? "checked" : ""}}                                >
+                                {{ $value->value }}
+                            </label>
+                        </div>
+                    @endforeach
+                @endforeach
+
 
             </div>
 
-        <input type="hidden" name="sort" id="sort" value="name">
-        <input type="hidden" name="sort_type" id="sort_type" value="asc">
+        <input type="hidden" name="sort[column]" id="sort[column]" value="name">
+        <input type="hidden" name="sort[order]" id="sort[order]" value="asc">
+        <input type="hidden" name="slug" id="slug" value="{{ $catalogType->slug }}">
+
         </fieldset>
     </form>
 </div>

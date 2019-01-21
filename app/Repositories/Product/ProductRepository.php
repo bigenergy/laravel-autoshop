@@ -26,4 +26,6 @@ interface ProductRepository extends Repository
      * @return mixed
      */
     public function getNewAll($relations = []);
+
+    public function getAll($relations = []);
 }

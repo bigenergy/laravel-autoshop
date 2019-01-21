@@ -42,13 +42,12 @@ Route::post('admin/orders/destroy', 'Admin\OrderController@destroy');
 
 //
 Route::get('/', 'Shop\MainController@index')->name('shop.main');
-Route::get('/catalog/{slug}', 'Shop\CategoryController@show')->name('shop.category');
+Route::get('/catalog/{slug}', 'Shop\CatalogController@show')->name('shop.category');
 Route::get('/catalog', 'Shop\CategoryController@showCatalog')->name('shop.catalog');
 Route::get('/product/{productSlug}', 'Shop\ProductController@show')->name('shop.product');
 
 // SHOPPING CART
 Route::get('/cart', 'Shop\CartController@showCart')->name('shop.cart');
-
 Route::get('/order/detail', 'Shop\OrderController@showDetail')->name('shop.order.detail');
 Route::get('/order/complete', 'Shop\OrderController@showComplete')->name('shop.order.complete');
 
@@ -62,7 +61,7 @@ Route::post('/order/detail/write', 'Shop\OrderController@storeDetail')->name('sh
 Route::get('/new', 'Shop\ProductController@newSellers')->name('shop.new_sellers');
 
 // FILTER
-Route::post('/filter', 'Shop\FilterController@filter');
+Route::post('/filter', 'Shop\CatalogController@catalogRender');
 
 // Catch all page controller (place at the very bottom)
 Route::get('{slug}', ['uses' => 'Shop\PagesController@getPage'])

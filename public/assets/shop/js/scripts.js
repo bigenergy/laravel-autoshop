@@ -26011,14 +26011,13 @@ var FilterDetail = function () {
     var $sortLoader = '#sorting_loader';
     var $filterResult = '#filter_information';
     var $changeForm = '#filter_form';
-    var $sort = '#sort';
-    var $sort_type = '#sort_type';
+    var $sort = '#sort[column]';
+    var $sort_type = '#sort[order]';
 
     var init = function init() {
         listenChangeForm();
         listenSyncSortingFilter();
     };
-
     var getFilterInputs = function getFilterInputs() {
         var inputs = $(document).find('#filter_form input');
 

@@ -2,7 +2,6 @@
 
 namespace App\Services\Product;
 
-
 use App\Models\Product;
 use App\Repositories\Product\ProductRepository;
 
@@ -16,7 +15,6 @@ class ProductService
      * @var ProductRepository
      */
     public $repository;
-
 
     /**
      * ProductService constructor.
@@ -51,6 +49,7 @@ class ProductService
 
         return true;
     }
+
 
     /**
      * @param int $id

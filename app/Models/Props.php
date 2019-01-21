@@ -25,4 +25,9 @@ class Props extends Model
         return $this->hasMany(ProductType::class, 'id', 'product_type_id');
     }
 
+    public function propValue()
+    {
+        return $this->hasMany(PropsProduct::class, 'prop_id');
+    }
+
 }

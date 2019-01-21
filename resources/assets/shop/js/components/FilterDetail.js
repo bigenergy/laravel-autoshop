@@ -4,14 +4,13 @@ let FilterDetail = (() => {
     const $sortLoader = '#sorting_loader';
     const $filterResult = '#filter_information';
     const $changeForm = '#filter_form';
-    const $sort = '#sort';
-    const $sort_type = '#sort_type';
+    const $sort = '#sort[column]';
+    const $sort_type = '#sort[order]';
 
     let init = () => {
         listenChangeForm();
         listenSyncSortingFilter();
     };
-
     let getFilterInputs = () => {
         let inputs = $(document).find('#filter_form input');
 
