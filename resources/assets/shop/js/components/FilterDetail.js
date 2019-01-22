@@ -4,8 +4,8 @@ let FilterDetail = (() => {
     const $sortLoader = '#sorting_loader';
     const $filterResult = '#filter_information';
     const $changeForm = '#filter_form';
-    const $sort = '#sort[column]';
-    const $sort_type = '#sort[order]';
+    const $sort = '#sort_column';
+    const $sort_type = '#sort_order';
 
     let init = () => {
         listenChangeForm();
@@ -73,6 +73,9 @@ let FilterDetail = (() => {
         $(document).on('change', $sortFilter, function() {
             $($sort).val($('#sortingSelector option:selected').val());
             $($sort_type).val($('#sortingSelector option:selected').data('type'));
+
+           // $('#sortingSelector option:selected').val();
+
             setUrl();
             applyFilter();
         });
