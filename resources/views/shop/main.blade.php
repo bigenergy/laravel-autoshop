@@ -21,51 +21,34 @@
 
 <body>
 
-
-
 <!-- Page Content -->
 <div class="container">
     @include('shop.layouts.menu')
-
-
-            <br>
-            <div class="row">
-                @yield('content')
-            </div>
-            <!-- /.row -->
-            <br>
-            <br>
-            <br>
-
-            <br>
-            <br>
-            <br>
-
+        <div class="row mt-3">
+            @yield('content')
+        </div>
     <!-- /.row -->
 </div>
 <!-- /.container -->
-<br>
-<style>
-    /*
- * Footer
- */
-    .blog-footer {
-        padding: 2.5rem 0;
-        color: #999;
-        text-align: center;
-        background-color: #f9f9f9;
-        border-top: .05rem solid #e5e5e5;
-    }
-    .blog-footer p:last-child {
-        margin-bottom: 0;
-    }
-</style>
-<footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    <p>
-        <a href="#">Back to top</a>
-    </p>
-</footer>
+
+<!-- Footer -->
+<div class="container">
+    <div align="center">
+        Developed by Big_Energy (AUzhegov || bigenergy) @ Copyright 2018-2019
+        <hr>
+    </div>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">AutoShop CMS version <b>{{ env('CMS_VERSION') }}</b></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="https://github.com/bigenergy/laravel-autoshop" target="_blank"><i class="fab fa-github mr-2"></i>GitHub Repository</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://vk.com/mrenergy" target="_blank"><i class="fab fa-vk mr-2"></i>Developer link</a>
+        </li>
+    </ul>
+</div>
 <!-- JavaScript -->
 <script src="{{ asset('assets/shop/js/scripts.js') }}"></script>
 
