@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="card-header">
-                    <i class="fab fa-mailchimp"></i> Производитель
+                    <i class="fas fa-archive"></i> Производитель
                 </div>
                 <div class="list-group list-group-flush">
                     @forelse($brands as $brand)
@@ -89,7 +89,7 @@
 
                 @foreach($props as $prop)
                     <div class="card-header">
-                        <i class="fab fa-mailchimp"></i> {{ $prop->name }}
+                        <i class="fas fa-filter"></i> {{ $prop->name }}
                     </div>
 
                     @foreach($prop->propValue->unique('value') as $value)
