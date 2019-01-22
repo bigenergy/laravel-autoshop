@@ -39,6 +39,11 @@ class CatalogService
 
     }
 
+    public function page($page)
+    {
+        $this->builder->paginate(2, null, null, $page);
+    }
+
     /**
      * Filter by price
      * @param $price

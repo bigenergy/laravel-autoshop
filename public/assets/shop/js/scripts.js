@@ -26011,8 +26011,8 @@ var FilterDetail = function () {
     var $sortLoader = '#sorting_loader';
     var $filterResult = '#filter_information';
     var $changeForm = '#filter_form';
-    var $sort = '#sort[column]';
-    var $sort_type = '#sort[order]';
+    var $sort = '#sort_column';
+    var $sort_type = '#sort_order';
 
     var init = function init() {
         listenChangeForm();
@@ -26070,6 +26070,9 @@ var FilterDetail = function () {
         $(document).on('change', $sortFilter, function () {
             $($sort).val($('#sortingSelector option:selected').val());
             $($sort_type).val($('#sortingSelector option:selected').data('type'));
+
+            // $('#sortingSelector option:selected').val();
+
             setUrl();
             applyFilter();
         });
