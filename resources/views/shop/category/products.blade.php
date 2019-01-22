@@ -5,11 +5,10 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ env('APP_NAME') }}</a></li>
-                <li class="breadcrumb-item"><a href="/">Каталог</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('shop.catalog') }}">Каталог</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('shop.catalog') }}/{{ $catalogType->slug }}">{{ $catalogType->name }}</a></li>
             </ol>
         </nav>
-        <h5>Товаров найдено: {{ $products->count() }}</h5>
-        <hr>
     </div>
     <div class="container">
         <div class="row">
