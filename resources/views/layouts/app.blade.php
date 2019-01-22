@@ -139,7 +139,7 @@
         <div class="pull-right hidden-xs">
             AutoShop CMS version <b>{{ env('CMS_VERSION') }}</b>
         </div>
-        Developed by Big_Energy (AUzhegov || bigenergy) @ Copyright 2018-2019
+            Developed by Big_Energy (AUzhegov || bigenergy) @ Copyright 2018-2019
     </footer>
 </div>
 
