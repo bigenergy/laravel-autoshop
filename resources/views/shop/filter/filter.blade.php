@@ -6,10 +6,10 @@
                     data-target="#collapseCatalog"
                     aria-expanded="false"
                     aria-controls="collapseCatalog">
-                <i class="fas fa-list-alt"></i> Каталог
+                <i class="fas fa-list-alt"></i> Каталог {{ '/ ' . $catalogType->name ?? '' }}
             </button>
             <br>
-        <div class="list-group mb-5 collapse" id="collapseCatalog">
+        <div class="list-group mb-4 collapse" id="collapseCatalog">
             @forelse($productTypes as $type)
                 <a href="{{ route('shop.category', $type->slug) }}"
                    class="list-group-item list-group-item-action {{ set_active(["catalog/{$type->slug}"]) }}">
@@ -107,8 +107,8 @@
 
             </div>
 
-        <input type="hidden" name="sort[column]" id="sort[column]" value="name">
-        <input type="hidden" name="sort[order]" id="sort[order]" value="asc">
+        <input type="hidden" name="sort[column]" id="sort_column" value="name">
+        <input type="hidden" name="sort[order]" id="sort_order" value="asc">
         <input type="hidden" name="slug" id="slug" value="{{ $catalogType->slug }}">
 
         </fieldset>
