@@ -26032,6 +26032,7 @@ var FilterDetail = function () {
         return getAppliedFilters(inputs);
     };
 
+    // Получить выбраные параметры
     var getAppliedFilters = function getAppliedFilters(inputs) {
         var selectedParams = [];
         inputs.each(function () {

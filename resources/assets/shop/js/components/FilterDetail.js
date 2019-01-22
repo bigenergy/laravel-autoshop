@@ -26,6 +26,7 @@ let FilterDetail = (() => {
         return getAppliedFilters(inputs);
     };
 
+    // Получить выбраные параметры
     let getAppliedFilters = (inputs) => {
         let selectedParams = [];
         inputs.each(function () {
