@@ -14,12 +14,10 @@ Functionality
     <li>User: List products, categories, cookie cart (no login/register), order, filter</li>
 </ul>
 <hr>
-<h3>Screenshots v.0.5.4</h3>
+<h3>Screenshots</h3>
 <h5>Admin Panel</h5>
-<img src="https://i.imgur.com/ZlvQ1SC.png"><br><br>
-<img src="https://i.imgur.com/KTMXko8.png">
-<h5>User interface</h5>
-<img src="https://i.imgur.com/6A5XKMs.png"<br>
-<hr>
-<img src="https://i.imgur.com/yN1MzFq.png">
+<a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Admin">Screenshots</a>
+<h5>Shop Interface</h5>
+<a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Shop">Screenshots</a>
+
 
