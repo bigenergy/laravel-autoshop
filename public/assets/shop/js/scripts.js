@@ -26053,10 +26053,12 @@ var FilterDetail = function () {
         return toArray ? selectedParams : $.param(selectedParams);
     };
 
+    // Установка URL по выбранным фильтрам
     var setUrl = function setUrl() {
         history.pushState(null, null, window.location.href.split('?')[0] + '?' + getParams());
     };
 
+    // Слушатель изменения формы фильтра
     var listenChangeForm = function listenChangeForm() {
         $(document).on('change', $changeForm, function () {
             listenSyncSortingFilter();
@@ -26070,9 +26072,6 @@ var FilterDetail = function () {
         $(document).on('change', $sortFilter, function () {
             $($sort).val($('#sortingSelector option:selected').val());
             $($sort_type).val($('#sortingSelector option:selected').data('type'));
-
-            // $('#sortingSelector option:selected').val();
-
             setUrl();
             applyFilter();
         });

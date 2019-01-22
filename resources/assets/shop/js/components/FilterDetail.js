@@ -56,10 +56,12 @@ let FilterDetail = (() => {
             : $.param(selectedParams);
     };
 
+    // Установка URL по выбранным фильтрам
     let setUrl = () => {
          history.pushState(null, null, window.location.href.split('?')[0] + '?' + getParams());
     };
 
+    // Слушатель изменения формы фильтра
     let listenChangeForm = () => {
         $(document).on('change', $changeForm, function() {
             listenSyncSortingFilter();
@@ -73,9 +75,6 @@ let FilterDetail = (() => {
         $(document).on('change', $sortFilter, function() {
             $($sort).val($('#sortingSelector option:selected').val());
             $($sort_type).val($('#sortingSelector option:selected').data('type'));
-
-           // $('#sortingSelector option:selected').val();
-
             setUrl();
             applyFilter();
         });
