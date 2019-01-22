@@ -18,6 +18,6 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('shop.layouts.menu', CartItems::class);
-        View::composer(['shop.layouts.menu', 'shop.filter.filter'], ProductTypes::class);
+        View::composer(['shop.layouts.menu', 'shop.filter.filter', 'shop.category.catalog_page'], ProductTypes::class);
     }
 }
