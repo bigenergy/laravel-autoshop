@@ -137,10 +137,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 0.1.0
+            AutoShop CMS version <b>{{ env('CMS_VERSION') }}</b>
         </div>
-        <strong>Copyright &copy; 2018 Theme by <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-        reserved.
+        Developed by Big_Energy (AUzhegov || bigenergy) @ Copyright 2018-2019
     </footer>
 </div>
 
