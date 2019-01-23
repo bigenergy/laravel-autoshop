@@ -38,7 +38,7 @@ class EloquentProductTypeRepository extends AbstractRepository implements Produc
      */
     public function getPaginated($relations = [], $perPage = 15)
     {
-        return $this->model->with($relations)->paginate($perPage);
+        return $this->model->with($relations)->orderBy('created_at', 'desc')->paginate($perPage);
     }
 
     /**
