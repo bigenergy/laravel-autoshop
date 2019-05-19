@@ -1,9 +1,9 @@
 <h2>Laravel AutoShop CMS</h2>
 <p>Online store management system at laravel 5.7. Project in developing.</p>
 <ul>
-    <li>Laravel 5.7.21</li>
-    <li>Clean Bootstrap 4.2.1</li>
-    <li>jQuery 3.3.1</li>
+    <li>Laravel 5.7.28</li>
+    <li>Clean Bootstrap 4.3.1</li>
+    <li>jQuery 3.4.1</li>
     <li>Ajax</li>
     <li>Admin LTE Theme (only for admin pages)</li>
 </ul>
