@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('number');
             $table->integer('status_id')->unsigned()->default('1');
-            $table->foreign('status_id')->references('id')->on('status')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade')->onDelete('cascade')->nullable();
+			$table->string('email');
             $table->string('name');
             $table->string('surname');
             $table->string('patronymic');

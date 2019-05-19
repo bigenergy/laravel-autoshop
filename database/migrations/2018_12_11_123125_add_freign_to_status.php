@@ -14,7 +14,7 @@ class AddFreignToStatus extends Migration
     public function up()
     {
         Schema::table('status', function (Blueprint $table) {
-            $table->foreign('id')->references('status_id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
+           // $table->foreign('id')->references('status_id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
