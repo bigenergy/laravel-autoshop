@@ -15,7 +15,7 @@
     <title>AutoShop - Каталог</title>
 
     <!-- All CSS -->
-    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{ asset('assets/shop/css/all.css') }}" rel="stylesheet">
 </head>
 
