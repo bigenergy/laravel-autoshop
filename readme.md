@@ -1,9 +1,9 @@
 <h2>Laravel AutoShop CMS</h2>
 <p>Online store management system at laravel 5.7. Project in developing.</p>
 <ul>
-    <li>Laravel 5.7.21</li>
-    <li>Clean Bootstrap 4.2.1</li>
-    <li>jQuery 3.3.1</li>
+    <li>Laravel 5.7.28</li>
+    <li>Clean Bootstrap 4.3.1</li>
+    <li>jQuery 3.4.1</li>
     <li>Ajax</li>
     <li>Admin LTE Theme (only for admin pages)</li>
 </ul>
@@ -20,4 +20,23 @@ Functionality
 <h5>Shop Interface</h5>
 <a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Shop">Screenshots</a>
 
+<hr>
+<h3>Install Laravel-AutoShop</h3>
+<ul>
+    <li>composer install</li>
+    <li>php artisan migrate</li>
+    <li>chmod -R 777 storage</li>
+    <li>php artisan key:generate</li>
+    <li>npm install</li>
+</ul>
 
+<hr>
+<h3>How to add new product?</h3>
+<ul>
+    <li>Register & Login admin panel (/register)</li>
+    <li>Create Category</li>
+    <li>Create Brand</li>
+    <li>Create Product Type</li>
+    <li>Create Properties for created Product Type</li>
+    <li>Create new product!</li>
+</ul>
