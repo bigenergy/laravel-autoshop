@@ -37,7 +37,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет продуктов для отображения, <a href="{{ route('product.create') }}">создать новый</a> </h3></td>
+                    <td colspan="9" align="center"><h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Нет продуктов для отображения, <a href="{{ route('product.create') }}">создать новый</a> </h3></td>
                 </tr>
             @endforelse
 
