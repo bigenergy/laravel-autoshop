@@ -30,3 +30,13 @@ Functionality
     <li>npm install</li>
 </ul>
 
+<hr>
+<h3>How to add new product?</h3>
+<ul>
+    <li>Register & Login admin panel (/register)</li>
+    <li>Create Category</li>
+    <li>Create Brand</li>
+    <li>Create Product Type</li>
+    <li>Create Properties for created Product Type</li>
+    <li>Create new product!</li>
+</ul>
