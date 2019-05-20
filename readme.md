@@ -20,4 +20,13 @@ Functionality
 <h5>Shop Interface</h5>
 <a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Shop">Screenshots</a>
 
+<hr>
+<h3>Install Laravel-AutoShop</h3>
+<ul>
+    <li>composer install</li>
+    <li>php artisan migrate</li>
+    <li>chmod -R 777 storage</li>
+    <li>php artisan key:generate</li>
+    <li>npm install</li>
+</ul>
 
