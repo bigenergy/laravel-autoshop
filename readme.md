@@ -25,7 +25,7 @@ Functionality
 <ul>
     <li>Login: admin@autoshop.ru</li>
     <li>Password: 123456qw</li>
-    <li>http://autoshop.fluxstudio.info</li>
+    <li>http://autoshop.fluxstudio.info/login</li>
 </ul>
 <hr>
 <h3>Install Laravel-AutoShop</h3>
