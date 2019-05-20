@@ -25,6 +25,7 @@ class OrderController extends Controller
         StatusRepository $statusRepository,
         ProductRepository $productRepository
     ) {
+		$this->middleware(['auth', 'admin']);
         $this->orderService = $orderService;
         $this->orderRepository = $orderRepository;
         $this->statusRepository = $statusRepository;

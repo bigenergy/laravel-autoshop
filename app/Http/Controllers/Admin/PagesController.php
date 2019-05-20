@@ -19,7 +19,7 @@ class PagesController extends Controller
      */
     public function __construct(PagesService $pagesService)
     {
-        $this->middleware('admin');
+        $this->middleware(['auth', 'admin']);
         $this->pagesService = $pagesService;
     }
 

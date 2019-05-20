@@ -18,7 +18,7 @@ class StatusController extends Controller
      */
     public function __construct(StatusService $statusService)
     {
-        $this->middleware('admin');
+        $this->middleware(['auth', 'admin']);
         $this->statusService = $statusService;
     }
 

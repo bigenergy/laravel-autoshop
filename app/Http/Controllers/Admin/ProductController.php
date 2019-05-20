@@ -43,7 +43,7 @@ class ProductController extends Controller
         BrandRepository $brandRepository,
         ProductTypeRepository $productTypeRepository
     ) {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'admin']);
         $this->productService = $productService;
         $this->categoryRepository = $categoryRepository;
         $this->brandRepository = $brandRepository;

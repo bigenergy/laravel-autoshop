@@ -26,8 +26,7 @@ class ProductTypeController extends Controller
      */
     public function __construct(PropsService $propsService, ProductTypeService $productTypeService)
     {
-        $this->middleware('admin');
-
+        $this->middleware(['auth', 'admin']);
         $this->propsService = $propsService;
         $this->productTypeService = $productTypeService;
     }
