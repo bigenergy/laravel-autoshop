@@ -13,8 +13,7 @@
                 <h4>Информация о заказе</h4>
                 <div class="row">
                     <div id="order_information">
-                        @include("admin.order.order_information")
-
+                        
                     </div>
 
                 </div>
