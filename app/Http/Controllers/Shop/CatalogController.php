@@ -103,12 +103,7 @@ class CatalogController extends Controller
         $products = $this->catalogService->getProducts($filters);
 
         $getProducts = view('shop.category.list', compact(
-            'products',
-            'catalog',
-            'categories',
-            'brands',
-            'catalogType',
-            'props'
+            'products'
         ))->render();
 
         return response()->json($getProducts);
