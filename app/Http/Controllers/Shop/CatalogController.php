@@ -83,7 +83,6 @@ class CatalogController extends Controller
 
         return view('shop.category.products', compact(
             'products',
-            'catalog',
             'categories',
             'brands',
             'catalogType',
