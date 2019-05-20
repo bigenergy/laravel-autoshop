@@ -34,6 +34,7 @@ Functionality
 <h3>How to add new product?</h3>
 <ul>
     <li>Register & Login admin panel (/register)</li>
+	<li>Login database editor, set "role" your account (user -> admin)</li>
     <li>Create Category</li>
     <li>Create Brand</li>
     <li>Create Product Type</li>
