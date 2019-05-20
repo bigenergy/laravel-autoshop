@@ -20,7 +20,13 @@ Functionality
 <a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Admin">Screenshots</a>
 <h5>Shop Interface</h5>
 <a href="https://github.com/bigenergy/laravel-autoshop/tree/restyle/screenshots/Shop">Screenshots</a>
-
+<hr>
+<h3>DEMO site</h3>
+<ul>
+    <li>Login: admin@autoshop.ru</li>
+    <li>Password: 123456qw</li>
+    <li>http://autoshop.fluxstudio.info</li>
+</ul>
 <hr>
 <h3>Install Laravel-AutoShop</h3>
 <ul>
