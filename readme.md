@@ -4,7 +4,7 @@
 <ul>
     <li>Laravel 5.7.28</li>
     <li>Clean Bootstrap 4.3.1</li>
-    <li>jQuery 3.4.1</li>
+    <li>jQuery 3.4.1 (lol)</li>
     <li>Ajax</li>
     <li>Admin LTE Theme (only for admin pages)</li>
 </ul>
