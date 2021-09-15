@@ -25,7 +25,7 @@ Functionality
 <ul>
     <li>composer install</li>
     <li>php artisan migrate</li>
-    <li>chmod -R 777 storage</li>
+    <li>chmod -R 777 storage (WARNING ⚠️⚠️⚠️ ONLY FOR TESTING!!!</li>
     <li>php artisan key:generate</li>
     <li>npm install</li>
 </ul>
