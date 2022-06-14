@@ -1,4 +1,4 @@
-<h2>Laravel AutoShop CMS</h2>
+<h2>Laravel AutoShop CMS [UNSUPPORTED]</h2>
 <p>Online store management system at laravel 5.7. Project in developing.</p>
 <p><b>[WARN] All the frontend part of the project is translated into Russian!</b></p>
 <ul>
@@ -25,7 +25,7 @@ Functionality
 <ul>
     <li>composer install</li>
     <li>php artisan migrate</li>
-    <li>chmod -R 777 storage (WARNING ⚠️⚠️⚠️ ONLY FOR TESTING!!!</li>
+    <li>chmod -R 777 storage (WARNING ⚠️⚠️⚠️ ONLY FOR TESTING!!!)</li>
     <li>php artisan key:generate</li>
     <li>npm install</li>
 </ul>
