@@ -1,5 +1,5 @@
 <h2>Laravel AutoShop CMS [UNSUPPORTED]</h2>
-<p>Online store management system at laravel 5.7. Project in developing.</p>
+<p>Online store management system at laravel 5.7. <s>Project in developing</s>.</p>
 <p><b>[WARN] All the frontend part of the project is translated into Russian!</b></p>
 <ul>
     <li>Laravel 5.7.28</li>
